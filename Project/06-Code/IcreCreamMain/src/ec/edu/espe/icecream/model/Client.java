@@ -1,6 +1,9 @@
 
 package ec.edu.espe.icecream.model;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Carlos
@@ -12,7 +15,8 @@ public class Client {
     private String cellphoneNumber;
     private boolean isNorth;
     private boolean isMajority;
-
+    private static int lastID = 0;
+    
     public Client(int id, String name, String email, String cellphoneNumber, boolean isNorth, boolean isMajority) {
         this.id = id;
         this.name = name;
@@ -20,6 +24,57 @@ public class Client {
         this.cellphoneNumber = cellphoneNumber;
         this.isNorth = isNorth;
         this.isMajority = isMajority;
+    }
+    
+        private static int generateID() {
+        return ++lastID;
+    }
+        public static Client addClient() {
+        Scanner scan = new Scanner(System.in);
+        int newID = generateID();
+        System.out.println("Ingrese el nombre del cliente");
+        String name = scan.nextLine();
+        System.out.println("Ingrese el email del cliente");
+        String email = scan.nextLine();
+        System.out.println("Ingrese el número de teléfono del cliente");
+        String cellphoneNumber = scan.nextLine();
+        System.out.println("¿El cliente está en el norte? (true/false)");
+        boolean isNorth = scan.nextBoolean();
+        System.out.println("¿El cliente es mayoritario? (true/false)");
+        boolean isMajority = scan.nextBoolean();
+
+        return new Client(newID, name, email, cellphoneNumber, isNorth, isMajority);
+    }
+    public static void editClient(ArrayList<Client> clients) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Ingrese el id del cliente a editar");
+        int idToEdit = scan.nextInt();
+        scan.nextLine();
+
+        for (Client client : clients) {
+            if (client.getId() == idToEdit) {
+                System.out.println("Ingrese el nuevo nombre");
+                String newName = scan.nextLine();
+                client.setName(newName);
+                System.out.println("Ingrese el nuevo email");
+                String newEmail = scan.nextLine();
+                client.setEmail(newEmail);
+                System.out.println("Ingrese el nuevo numero del telefono del cliente");
+                String newPhone = scan.nextLine();
+                client.setCellphoneNumber(newPhone);
+                System.out.println("Ingrese si el cliente esta en el norte? (true/false)");
+                boolean newNorth = scan.nextBoolean();
+                client.setIsNorth(newNorth);
+                System.out.println("¿El cliente es mayoritario edad? (true/false)");
+                boolean newIsMajority = scan.nextBoolean();
+                client.setIsMajority(newIsMajority);
+                
+                System.out.println("Cliente editado exitosamente.");
+                return;
+            }
+        }
+
+        System.out.println("Cliente no encontrado.");
     }
 
     @Override

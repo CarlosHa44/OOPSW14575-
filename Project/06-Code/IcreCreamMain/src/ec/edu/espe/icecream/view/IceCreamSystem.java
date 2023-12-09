@@ -27,6 +27,9 @@ public class IceCreamSystem {
         ArrayList<Product> products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>(){}.getType());
         UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
         ArrayList<Invoice> invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>(){}.getType());
+        UseJson<Client> jsonUtilClients = new UseJson<>();
+        ArrayList<Client> clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {}.getType());
+
         
         do {
             System.out.println("///////Ice Cream System/////////");
@@ -90,7 +93,33 @@ public class IceCreamSystem {
                     } while (optionInvoice != 3);
                     break;
                 case 3:
-                    //Aui debemos mostrar la lista de clientes del json
+                    int optionClient=0;
+                    do {
+                        System.out.println("//////////CLIENT/////////");
+                        System.out.println("1.Ingresar Clientes");
+                        System.out.println("2.Editar Cleintes");
+                        System.out.println("3.Mostrar Clientes");
+                        System.out.println("4.Regresar al menu principal");
+                        optionClient = scan.nextInt();
+                        scan.nextLine();
+                        switch (optionClient) {
+                            case 1:
+                                clients.add(Client.addClient());
+                                jsonUtilClients.writeFile("clientdata.json", clients);
+                                break;
+                            case 2:
+                                Client.editClient(clients);
+                                jsonUtilClients.writeFile("clientdata.json", clients);
+                                break;
+                            case 3:
+                                System.out.println("array" + clients);
+                                        
+                                break;
+                            case 4:
+                                break;
+                        }
+                    } while (optionClient != 4);
+
                     break;
                 case 4:
                     //Aqui creamos la funcion de crear una nota de venta o factura
