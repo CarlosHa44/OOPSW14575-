@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "dateI": "May 3, 3923, 12:00:00 AM",
+    "value": 2.0,
+    "boxes": {
+      "id": 1,
+      "amount": 4,
+      "name": "Heladitos",
+      "cost": 36.0
+    }
+  },
+  {
+    "id": 1,
+    "dateI": "Jan 8, 3924, 12:00:00 AM",
+    "value": 1.4,
+    "boxes": {
+      "id": 1,
+      "amount": 4,
+      "name": "Heladitos",
+      "cost": 36.0
+    }
+  },
+  {
+    "id": 1,
+    "dateI": "Jun 12, 3112, 12:00:00 AM",
+    "value": 1.4,
+    "boxes": {
+      "id": 1,
+      "amount": 4,
+      "name": "Heladitos",
+      "cost": 36.0
+    }
+  },
+  {
+    "id": 2,
+    "dateI": "Mar 1, 1903, 12:00:00 AM",
+    "value": 4.0,
+    "boxes": {
+      "id": 2,
+      "amount": 10,
+      "name": "Daya",
+      "cost": 0.45
+    }
+  },
+  {
+    "id": 2,
+    "dateI": "Apr 1, 3923, 12:00:00 AM",
+    "value": 7.5600004,
+    "boxes": {
+      "id": 2,
+      "amount": 14,
+      "name": "Daya",
+      "cost": 0.45
+    }
+  }
+]

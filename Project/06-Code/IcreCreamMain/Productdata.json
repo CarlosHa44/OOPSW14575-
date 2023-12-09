@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "amount": 8,
+    "name": "Heladitos",
+    "cost": 36.0
+  },
+  {
+    "id": 3,
+    "amount": 105,
+    "name": "Polar",
+    "cost": 1.0
+  },
+  {
+    "id": 2,
+    "amount": 14,
+    "name": "Daya",
+    "cost": 0.45
+  }
+]

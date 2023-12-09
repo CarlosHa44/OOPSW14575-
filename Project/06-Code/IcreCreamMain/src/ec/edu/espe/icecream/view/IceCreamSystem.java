@@ -1,84 +1,106 @@
 package ec.edu.espe.icecream.view;
 
-import ec.edu.espe.model.icecream.Client;
-import ec.edu.espe.model.icecream.GestionClient;
+import static ec.edu.espe.icecream.model.Inventory.addProduct;
+import static ec.edu.espe.icecream.model.Inventory.deleteProduct;
+import static ec.edu.espe.icecream.model.Invoice.addInvoice;
+import ec.edu.espe.icecream.model.Invoice;
+import ec.edu.espe.icecream.model.Product;
+import ec.edu.espe.icecream.utils.UseJson;
+import ec.edu.espe.icecream.utils.UseJsonInvoice;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  *
- * @author Carlos Hernandez, Mateo Iza
+ * @author Carlos Hernandez
  */
 public class IceCreamSystem {
-static Scanner scan = new Scanner(System.in);
+
+    static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scannerClient = new Scanner(System.in);
-
-        // Crear un objeto GestionClient
-        GestionClient gestionClient = new GestionClient();
         int option = 0;
-        do{
+        UseJson file = new UseJson();
+        ArrayList<Product> products = file.readFile("Productdata.json");
+        UseJsonInvoice fileInvoice = new UseJsonInvoice();
+        ArrayList<Invoice> invoices = fileInvoice.readFile("Invoicedata.json");
+        
+        do {
             System.out.println("///////Ice Cream System/////////");
-            System.out.println("1.Show Inventory");
-            System.out.println("2.Add Invoice");
-            System.out.println("3.Add Clients");
-            System.out.println("4.Show clients");
-            System.out.println("5.Generate a SaleNote");
-            System.out.println("6.Show the business report");
-            System.out.println("7. Exit");
-            option=scan.nextInt();
+            System.out.println("1.Inventory");
+            System.out.println("2.Invoice");
+            System.out.println("3.Clients");
+            System.out.println("4.SaleNote");
+            System.out.println("5.Business report");
+            System.out.println("6. Exit");
+            option = scan.nextInt();
             scan.nextLine();
-            switch(option){
-                case 1 -> {
-                }
-                case 2 -> {
-                }
-                case 3 -> {
-                    System.out.println("Ingrese los datos del Cliente:");
-
-        System.out.print("ID: ");
-        int id = scannerClient.nextInt();
-        scannerClient.nextLine(); // Consumir la nueva línea
-
-        System.out.print("Name: ");
-        String name = scannerClient.nextLine();
-
-        System.out.print("Email: ");
-        String email = scannerClient.nextLine();
-
-        System.out.print("Número de teléfono: ");
-        String cellphoneNumber = scannerClient.nextLine();
-
-        System.out.print("¿Es del sur? (true/false): ");
-        boolean ifsouth = scannerClient.nextBoolean();
-
-        System.out.print("¿Es mayor de edad? (true/false): ");
-        boolean ifmajority = scannerClient.nextBoolean();
-
-        // Crear el objeto Cliente con los datos proporcionados
-        Client client = new Client(id, name, email, cellphoneNumber, ifsouth, ifmajority);
-
-        // Agregar el cliente a la lista de clientes en GestionClient
-        gestionClient.agregarCliente(client);
-                }
-                case 4 -> {
-                }
-                case 5 -> {
-                }
-                case 6 -> {
-                }
-                case 7 -> {
-                }
+            switch (option) {
+                case 1:
+                    int optionInventory = 0;
+                    do {
+                        System.out.println("///////////Inventary////////");
+                        System.out.println("1.Añadir un nuevo producto");
+                        System.out.println("2.Mostrar los productos del inventario");
+                        System.out.println("3.Eliminar un producto del inventario");
+                        System.out.println("4.Regresar al menu principal");
+                        optionInventory = scan.nextInt();
+                        scan.nextLine();
+                        switch (optionInventory) {
+                            case 1:
+                                products.add(addProduct(products));
+                                file.writeFile("Productdata.json", products);
+                                break;
+                            case 2:
+                                System.out.println("array" + products);
+                                break;
+                            case 3:
+                                deleteProduct(products);
+                                file.writeFile("Productdata.json", products);
+                                break;
+                            case 4:
+                                break;
+                        }
+                    } while (optionInventory != 4);
+                    break;
+                case 2:
+                    int optionInvoice=0;
+                    do {
+                        System.out.println("//////////Invoice/////////");
+                        System.out.println("1.Añadir una nueva factura");
+                        System.out.println("2.Buscar una factura");
+                        System.out.println("3.Regresar al menu principal");
+                        optionInvoice = scan.nextInt();
+                        scan.nextLine();
+                        switch (optionInvoice) {
+                            case 1:
+                                invoices.add(addInvoice(invoices,products));
+                                fileInvoice.writeFile("Invoicedata.json", invoices);
+                                file.writeFile("Productdata.json", products);
+                                break;
+                            case 2:
+                                System.out.println("array" + invoices);
+                                break;
+                            case 3:
+                                break;
+                        }
+                    } while (optionInvoice != 3);
+                    break;
+                case 3:
+                    //Aui debemos mostrar la lista de clientes del json
+                    break;
+                case 4:
+                    //Aqui creamos la funcion de crear una nota de venta o factura
+                    break;
+                case 5:
+                    //Mostrar el reporte de ventas en funcion de los invoice y las notesale
+                    break;
+                case 6:
+                    break;
             }
-            //Aqui deberiamos desarrollar una funcion que muestre el arhivo Json del inventario
-            //Aqui debemos crear la funcion de crear notas de venta
-            //Aui debemos mostrar la lista de clientes del json
-            //Aqui creamos la funcion de crear una nota de venta o factura
-            //Mostrar el reporte de ventas en funcion de los invoice y las notesale
-                        
-        }while(option!=7);
-        
-        
-        
+
+        } while (option != 6);
+
     }
 
 }
