@@ -1,9 +1,8 @@
 package ec.edu.espe.icecream.view;
 
-<<<<<<< HEAD
+import com.google.gson.reflect.TypeToken;
 import ec.edu.espe.icecream.model.Client;
 import ec.edu.espe.icecream.model.GestionClient;
-=======
 import static ec.edu.espe.icecream.model.Inventory.addProduct;
 import static ec.edu.espe.icecream.model.Inventory.deleteProduct;
 import static ec.edu.espe.icecream.model.Invoice.addInvoice;
@@ -12,7 +11,6 @@ import ec.edu.espe.icecream.model.Product;
 import ec.edu.espe.icecream.utils.UseJson;
 import ec.edu.espe.icecream.utils.UseJsonInvoice;
 import java.util.ArrayList;
->>>>>>> 5e119563c24b697c0104146b047528bf84636905
 import java.util.Scanner;
 
 /**
@@ -25,10 +23,10 @@ public class IceCreamSystem {
 
     public static void main(String[] args) {
         int option = 0;
-        UseJson file = new UseJson();
-        ArrayList<Product> products = file.readFile("Productdata.json");
-        UseJsonInvoice fileInvoice = new UseJsonInvoice();
-        ArrayList<Invoice> invoices = fileInvoice.readFile("Invoicedata.json");
+        UseJson<Product> jsonUtilProducts = new UseJson<>();
+        ArrayList<Product> products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>(){}.getType());
+        UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
+        ArrayList<Invoice> invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>(){}.getType());
         
         do {
             System.out.println("///////Ice Cream System/////////");
@@ -54,14 +52,14 @@ public class IceCreamSystem {
                         switch (optionInventory) {
                             case 1:
                                 products.add(addProduct(products));
-                                file.writeFile("Productdata.json", products);
+                                jsonUtilProducts.writeFile("productdata.json", products);
                                 break;
                             case 2:
                                 System.out.println("array" + products);
                                 break;
                             case 3:
                                 deleteProduct(products);
-                                file.writeFile("Productdata.json", products);
+                                jsonUtilInvoice.writeFile("invoicedata.json", invoices);
                                 break;
                             case 4:
                                 break;
@@ -80,8 +78,8 @@ public class IceCreamSystem {
                         switch (optionInvoice) {
                             case 1:
                                 invoices.add(addInvoice(invoices,products));
-                                fileInvoice.writeFile("Invoicedata.json", invoices);
-                                file.writeFile("Productdata.json", products);
+                                jsonUtilProducts.writeFile("productdata.json", products);
+                                jsonUtilInvoice.writeFile("invoicedata.json", invoices);
                                 break;
                             case 2:
                                 System.out.println("array" + invoices);

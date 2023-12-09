@@ -1,30 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/mateo/Downloads/Git/Proyecto%201/OOPSW14575-ERROR404/Project/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/view/IceCreamSystem.java</file>
-=======
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/ec/edu/espe/icecream/view/IceCreamSystem.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>38</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Carlos/OneDrive/Documentos/NetBeansProjects/IcreCreamMain/src/ec/edu/espe/icecream/utils/UseJson.java</file>
-            <file>file:/C:/Users/Carlos/OneDrive/Documentos/NetBeansProjects/IcreCreamMain/src/ec/edu/espe/icecream/utils/UseJsonInvoice.java</file>
-            <file>file:/C:/Users/Carlos/OneDrive/Documentos/NetBeansProjects/IcreCreamMain/src/ec/edu/espe/icecream/view/IceCreamSystem.java</file>
-            <file>file:/C:/Users/Carlos/OneDrive/Documentos/NetBeansProjects/IcreCreamMain/src/ec/edu/espe/icecream/model/Inventory.java</file>
-            <file>file:/C:/Users/Carlos/OneDrive/Documentos/NetBeansProjects/IcreCreamMain/src/ec/edu/espe/icecream/model/Invoice.java</file>
-            <file>file:/C:/Users/Carlos/OneDrive/Documentos/NetBeansProjects/IcreCreamMain/src/ec/edu/espe/icecream/model/Product.java</file>
->>>>>>> 5e119563c24b697c0104146b047528bf84636905
-        </group>
-    </open-files>
 </project-private>
