@@ -8,10 +8,13 @@ import static ec.edu.espe.icecream.model.Inventory.deleteProduct;
 import static ec.edu.espe.icecream.model.Invoice.addInvoice;
 import ec.edu.espe.icecream.model.Invoice;
 import ec.edu.espe.icecream.model.Product;
+import ec.edu.espe.icecream.model.SaleNote;
 import ec.edu.espe.icecream.utils.UseJson;
+
 import ec.edu.espe.icecream.utils.UseJsonInvoice;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 /**
  *
@@ -122,8 +125,9 @@ public class IceCreamSystem {
 
                     break;
                 case 4:
-                    //Aqui creamos la funcion de crear una nota de venta o factura
+                       SaleNote saleNote = SaleNote.createSaleNote(clients, products);
                     break;
+                    
                 case 5:
                     //Mostrar el reporte de ventas en funcion de los invoice y las notesale
                     break;
