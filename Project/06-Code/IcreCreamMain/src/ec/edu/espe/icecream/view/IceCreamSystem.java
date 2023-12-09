@@ -1,7 +1,7 @@
 package ec.edu.espe.icecream.view;
 
-import ec.edu.espe.model.icecream.Client;
-import ec.edu.espe.model.icecream.GestionClient;
+import ec.edu.espe.icecream.model.Client;
+import ec.edu.espe.icecream.model.GestionClient;
 import java.util.Scanner;
 
 /**
