@@ -14,5 +14,61 @@
     "cellphoneNumber": "0991802942",
     "isNorth": true,
     "isMajority": false
+  },
+  {
+    "id": 3,
+    "name": "Juan",
+    "email": "juan.granda3424@gmail.com",
+    "cellphoneNumber": "0987271121",
+    "isNorth": false,
+    "isMajority": false
+  },
+  {
+    "id": 4,
+    "name": "Jixon",
+    "email": "jixon34@gmail.com",
+    "cellphoneNumber": "09994141283",
+    "isNorth": false,
+    "isMajority": true
+  },
+  {
+    "id": 5,
+    "name": "Angel",
+    "email": "Angel.Sand3425@gmail.com",
+    "cellphoneNumber": "0987777168",
+    "isNorth": false,
+    "isMajority": true
+  },
+  {
+    "id": 6,
+    "name": "Jaqueline",
+    "email": "jaqueline.ramiez2@gamil.com",
+    "cellphoneNumber": "0995872711",
+    "isNorth": true,
+    "isMajority": true
+  },
+  {
+    "id": 7,
+    "name": "Carlos",
+    "email": "carlos.hidalgo234@gmail.com",
+    "cellphoneNumber": "0985868412",
+    "isNorth": true,
+    "isMajority": true
+  },
+  {
+    "id": 8,
+    "name": "Oscar",
+    "email": "oscar.arcos648@gmail.com",
+    "cellphoneNumber": "0987654546",
+    "isNorth": true,
+    "isMajority": true
+  },
+  {
+    "id": 9,
+    "name": "Marcos",
+    "email": "marcos.cocha6589@gmail.com",
+    "cellphoneNumber": "0963363521",
+    "isNorth": true,
+    "isMajority": true
   }
 ]

@@ -10,5 +10,167 @@
     "amount": 90,
     "name": "Goliat",
     "cost": 0.65
+  },
+  {
+    "id": 3,
+    "amount": 30,
+    "name": "Sabores",
+    "cost": 0.4
+  },
+  {
+    "id": 4,
+    "amount": 30,
+    "name": "Chicle",
+    "cost": 0.4
+  },
+  {
+    "id": 5,
+    "amount": 40,
+    "name": "Chocolate",
+    "cost": 0.4
+  },
+  {
+    "id": 6,
+    "amount": 20,
+    "name": "Mora",
+    "cost": 0.4
+  },
+  {
+    "id": 7,
+    "amount": 50,
+    "name": "Galleta",
+    "cost": 0.4
+  },
+  {
+    "id": 8,
+    "amount": 30,
+    "name": "Coco",
+    "cost": 0.4
+  },
+  {
+    "id": 9,
+    "amount": 30,
+    "name": "Ron",
+    "cost": 0.4
+  },
+  {
+    "id": 10,
+    "amount": 40,
+    "name": "Frutas",
+    "cost": 0.4
+  },
+  {
+    "id": 11,
+    "amount": 39,
+    "name": "Marmoleado",
+    "cost": 0.4
+  },
+  {
+    "id": 12,
+    "amount": 45,
+    "name": "Piña",
+    "cost": 0.4
+  },
+  {
+    "id": 13,
+    "amount": 45,
+    "name": "Guanabana",
+    "cost": 0.4
+  },
+  {
+    "id": 14,
+    "amount": 32,
+    "name": "Maxibon",
+    "cost": 0.5
+  },
+  {
+    "id": 15,
+    "amount": 38,
+    "name": "Cono",
+    "cost": 0.4
+  },
+  {
+    "id": 16,
+    "amount": 36,
+    "name": "Copa",
+    "cost": 0.5
+  },
+  {
+    "id": 17,
+    "amount": 65,
+    "name": "Peke",
+    "cost": 0.25
+  },
+  {
+    "id": 18,
+    "amount": 70,
+    "name": "Milky",
+    "cost": 0.2
+  },
+  {
+    "id": 19,
+    "amount": 55,
+    "name": "Choconew",
+    "cost": 0.25
+  },
+  {
+    "id": 20,
+    "amount": 65,
+    "name": "Tung Tunga",
+    "cost": 0.25
+  },
+  {
+    "id": 21,
+    "amount": 40,
+    "name": "Gemelo L\\N ",
+    "cost": 0.3
+  },
+  {
+    "id": 22,
+    "amount": 40,
+    "name": "Gemelo L\\CH",
+    "cost": 0.3
+  },
+  {
+    "id": 23,
+    "amount": 70,
+    "name": "Paleta de agua",
+    "cost": 0.15
+  },
+  {
+    "id": 24,
+    "amount": 30,
+    "name": "Sanduche",
+    "cost": 0.5
+  },
+  {
+    "id": 25,
+    "amount": 32,
+    "name": "Batu",
+    "cost": 0.38
+  },
+  {
+    "id": 26,
+    "amount": 42,
+    "name": "Crio Genio",
+    "cost": 0.25
+  },
+  {
+    "id": 27,
+    "amount": 35,
+    "name": "Pasion",
+    "cost": 0.3
+  },
+  {
+    "id": 28,
+    "amount": 35,
+    "name": "Mango",
+    "cost": 0.3
+  },
+  {
+    "id": 29,
+    "amount": 35,
+    "name": "Maracuya",
+    "cost": 0.3
   }
 ]
