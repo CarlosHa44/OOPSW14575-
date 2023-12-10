@@ -30,9 +30,7 @@ public class Inventory {
     }
 
     public static Product addProduct(ArrayList<Product> products) {
-        System.out.println("Ingrese el id del producto");
-        int idaux = scan.nextInt();
-        scan.nextLine();
+        int idaux=getActualId(products);
         System.out.println("Ingresa la cantidad de productos que dese agregar");
         int amountaux = scan.nextInt();
         scan.nextLine();
@@ -46,7 +44,6 @@ public class Inventory {
 
 
     public static void deleteProduct(ArrayList<Product> products) {
-        int iterador = 0;
         System.out.println("Ingrese el id a eliminar");
         int idDelete = scan.nextInt();
         scan.nextLine();
@@ -57,7 +54,13 @@ public class Inventory {
                 System.out.println("Su producto es-->" + nameProduct);
                 products.remove(currentProduct);
             }
-            iterador++;
         }
+    }
+    public static int getActualId(ArrayList<Product> products){
+        int idProduct=0;
+        for (Product currentProduct : products){
+            idProduct = currentProduct.getId();
+        }
+        return idProduct+1;
     }
 }

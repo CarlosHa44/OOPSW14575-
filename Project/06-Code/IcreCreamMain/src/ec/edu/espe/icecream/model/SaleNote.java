@@ -96,7 +96,7 @@ public class SaleNote {
         System.out.println("Select a product:");
         System.out.println("Available products: " + products);
         int productIndex = scan.nextInt();
-        Product selectedProduct = products.get(productIndex - 1);
+        Product selectedProduct = products.get(productIndex);
 
         System.out.println("Enter the number of products:");
         int numberOfProducts = scan.nextInt();

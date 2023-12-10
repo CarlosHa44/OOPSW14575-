@@ -26,12 +26,16 @@ public class Client {
         this.isMajority = isMajority;
     }
     
-        private static int generateID() {
-        return ++lastID;
+        private static int generateID(ArrayList<Client> clients){
+            int actualId=0;
+            for(Client currentClient: clients){
+               actualId=currentClient.getId();
+            }
+        return actualId+1;
     }
-        public static Client addClient() {
+        public static Client addClient(ArrayList<Client> clients) {
         Scanner scan = new Scanner(System.in);
-        int newID = generateID();
+        int newID = generateID(clients);
         System.out.println("Ingrese el nombre del cliente");
         String name = scan.nextLine();
         System.out.println("Ingrese el email del cliente");

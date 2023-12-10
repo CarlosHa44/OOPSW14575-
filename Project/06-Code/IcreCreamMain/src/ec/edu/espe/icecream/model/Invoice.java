@@ -60,16 +60,8 @@ static Scanner scan = new Scanner(System.in);
     }
     public static Invoice addInvoice(ArrayList<Invoice> invoices,ArrayList<Product> products){
         Product productAux;
-        System.out.println("Ingrese el dia");
-        int day=scan.nextInt();
-        scan.nextLine();
-        System.out.println("Ingrese el mes");
-        int month=scan.nextInt();
-        scan.nextLine();
-        System.out.println("Ingrese el año");
-        int year=scan.nextInt();
-        scan.nextLine();
-        Date dateAux=new Date(year, month, day);
+        int idInvoice=getActualId(invoices);
+        Date dateAux=new Date();
         System.out.println("Ingrese el Id del producto a agregar");
         int idAux=scan.nextInt();
         scan.nextLine();
@@ -80,7 +72,7 @@ static Scanner scan = new Scanner(System.in);
         float unitCost=scan.nextFloat();
         scan.nextLine();
         float value=currentAmount*unitCost;
-        return new Invoice(idAux, dateAux, value, productAux); 
+        return new Invoice(idInvoice, dateAux, value, productAux); 
     }
     
     public static void addAmount(ArrayList<Product> products,int id,int amount) {
@@ -110,5 +102,13 @@ static Scanner scan = new Scanner(System.in);
         }
         System.out.println("Id no encontrado");
         return null;
+    }
+    
+    public static int getActualId(ArrayList<Invoice> invoices){
+        int actualId=0;
+        for(Invoice invoiceCurrent:invoices){
+            actualId=invoiceCurrent.getId();
+        }
+        return actualId+1;
     }
 }

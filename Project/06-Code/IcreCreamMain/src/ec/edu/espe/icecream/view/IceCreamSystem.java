@@ -10,7 +10,6 @@ import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 /**
  *
  * @author Carlos Hernandez
@@ -20,16 +19,19 @@ public class IceCreamSystem {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        
+
         UseJson<Product> jsonUtilProducts = new UseJson<>();
-        ArrayList<Product> products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>(){}.getType());
+        ArrayList<Product> products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
+        }.getType());
         UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
-        ArrayList<Invoice> invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>(){}.getType());
+        ArrayList<Invoice> invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>() {
+        }.getType());
         UseJson<Client> jsonUtilClients = new UseJson<>();
-        ArrayList<Client> clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {}.getType());
+        ArrayList<Client> clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {
+        }.getType());
         UseJson<SaleNote> jsonUtilSaleNotes = new UseJson<>();
-        ArrayList<SaleNote> saleNotes = jsonUtilSaleNotes.readFile("salenotedata.json",new TypeToken<ArrayList<SaleNote>>(){}.getType());
-        
+        ArrayList<SaleNote> saleNotes = jsonUtilSaleNotes.readFile("salenotedata.json", new TypeToken<ArrayList<SaleNote>>() {
+        }.getType());
 
         int option = 0;
         do {
@@ -71,7 +73,7 @@ public class IceCreamSystem {
                     } while (optionInventory != 4);
                     break;
                 case 2:
-                    int optionInvoice=0;
+                    int optionInvoice = 0;
                     do {
                         System.out.println("//////////Invoice/////////");
                         System.out.println("1.Añadir una nueva factura");
@@ -81,7 +83,7 @@ public class IceCreamSystem {
                         scan.nextLine();
                         switch (optionInvoice) {
                             case 1:
-                                invoices.add(Invoice.addInvoice(invoices,products));
+                                invoices.add(Invoice.addInvoice(invoices, products));
                                 jsonUtilProducts.writeFile("productdata.json", products);
                                 jsonUtilInvoice.writeFile("invoicedata.json", invoices);
                                 break;
@@ -94,7 +96,7 @@ public class IceCreamSystem {
                     } while (optionInvoice != 3);
                     break;
                 case 3:
-                    int optionClient=0;
+                    int optionClient = 0;
                     do {
                         System.out.println("//////////CLIENT/////////");
                         System.out.println("1.Ingresar Clientes");
@@ -105,7 +107,7 @@ public class IceCreamSystem {
                         scan.nextLine();
                         switch (optionClient) {
                             case 1:
-                                clients.add(Client.addClient());
+                                clients.add(Client.addClient(clients));
                                 jsonUtilClients.writeFile("clientdata.json", clients);
                                 break;
                             case 2:
@@ -114,7 +116,7 @@ public class IceCreamSystem {
                                 break;
                             case 3:
                                 System.out.println("array" + clients);
-                                        
+
                                 break;
                             case 4:
                                 break;
@@ -123,11 +125,28 @@ public class IceCreamSystem {
 
                     break;
                 case 4:
-                       saleNotes.add(SaleNote.createSaleNote(clients,products));
-                       jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
-                       System.out.println("Array"+saleNotes);
+                    int optionSaleNote = 0;
+                    do {
+                        System.out.println("///////////SaleNotes///////////");
+                        System.out.println("1.Crear una nota de venta");
+                        System.out.println("2.Mostrar las notas de venta");
+                        System.out.println("3.Regresar al menu principal");
+                        optionSaleNote = scan.nextInt();
+                        scan.nextLine();
+                    } while (optionSaleNote != 3);
+                    switch (optionSaleNote) {
+                        case 1:
+                            saleNotes.add(SaleNote.createSaleNote(clients, products));
+                            jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
+                            break;
+                        case 2:
+                            System.out.println("Array" + saleNotes);
+                            break;
+                        case 3:
+                            break;
+                    }
                     break;
-                    
+
                 case 5:
                     //Mostrar el reporte de ventas en funcion de los invoice y las notesale
                     break;
