@@ -3,8 +3,6 @@ package ec.edu.espe.icecream.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import ec.edu.espe.icecream.model.Product;
-import ec.edu.espe.icecream.model.Client;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -16,6 +14,8 @@ import java.util.Scanner;
  * @author Carlos
  */
 public class SaleNote { 
+    private static Scanner scan = new Scanner(System.in);
+    
     private Client client;
     private Date date;
     private Product numberOfProducts;
@@ -26,10 +26,6 @@ public class SaleNote {
         this.date = date;
         this.numberOfProducts = numberOfProducts;
         this.totalValue = totalValue;
-    }
-
-    private SaleNote() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public Client getClient() {
@@ -74,7 +70,7 @@ public class SaleNote {
                 '}';
                  
     }
-    private static Scanner scan = new Scanner(System.in);
+    
     
     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products) {
         System.out.println("//////////Create Sale Note/////////");
@@ -104,17 +100,12 @@ public class SaleNote {
 
         System.out.println("Enter the number of products:");
         int numberOfProducts = scan.nextInt();
+        scan.nextLine();
 
-     
         float totalValue = selectedProduct.getCost() * numberOfProducts;
 
         
-        
-        SaleNote saleNote = new SaleNote(); 
-        saleNote.setClient(selectedClient);
-        saleNote.setDate(date);
-        saleNote.setNumberOfProducts(selectedProduct);
-        saleNote.setTotalValue(totalValue);
+        SaleNote saleNote = new SaleNote(selectedClient, date, selectedProduct, totalValue); 
 
         System.out.println("Sale Note created successfully!");
 

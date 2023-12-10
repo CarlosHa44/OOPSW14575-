@@ -1,0 +1,21 @@
+[
+  null,
+  {
+    "client": {
+      "id": 1,
+      "name": "Juan",
+      "email": "mateoiza64@gmail.com",
+      "cellphoneNumber": "0998229477",
+      "isNorth": false,
+      "isMajority": true
+    },
+    "date": "Sep 6, 2006, 12:00:00 AM",
+    "numberOfProducts": {
+      "id": 2,
+      "amount": 14,
+      "name": "Daya",
+      "cost": 0.45
+    },
+    "totalValue": 47.699997
+  }
+]
