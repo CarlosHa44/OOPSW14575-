@@ -83,7 +83,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + 
+        return "\nClient{" + 
                 "id=" + getId() + 
                 ", name=" + getName() + 
                 ", email=" + getEmail() + 

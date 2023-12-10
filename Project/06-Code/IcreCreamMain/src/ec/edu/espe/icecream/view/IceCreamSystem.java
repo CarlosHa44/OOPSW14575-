@@ -133,7 +133,7 @@ public class IceCreamSystem {
                         System.out.println("3.Regresar al menu principal");
                         optionSaleNote = scan.nextInt();
                         scan.nextLine();
-                    } while (optionSaleNote != 3);
+                    
                     switch (optionSaleNote) {
                         case 1:
                             saleNotes.add(SaleNote.createSaleNote(clients, products));
@@ -145,6 +145,7 @@ public class IceCreamSystem {
                         case 3:
                             break;
                     }
+                    } while (optionSaleNote != 3);
                     break;
 
                 case 5:

@@ -1,4 +1,3 @@
-
 package ec.edu.espe.icecream.model;
 
 import java.util.ArrayList;
@@ -7,15 +6,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-
-
 /**
  *
  * @author Carlos
  */
-public class SaleNote { 
+public class SaleNote {
+
     private static Scanner scan = new Scanner(System.in);
-    
+
     private Client client;
     private Date date;
     private Product numberOfProducts;
@@ -59,28 +57,24 @@ public class SaleNote {
     public void setTotalValue(float totalValue) {
         this.totalValue = totalValue;
     }
-    
-    @Override 
-    public String toString(){
-        return "SaleNote{" +
-                "client=" + client +
-                ", date=" + date +
-                ", numberOfProducts=" + numberOfProducts +
-                ", totalValue=" + totalValue +
-                '}';
-                 
+
+    @Override
+    public String toString() {
+        return "SaleNote{"
+                + "client=" + client
+                + ", date=" + date
+                + ", numberOfProducts=" + numberOfProducts
+                + ", totalValue=" + totalValue
+                + '}';
+
     }
-    
-    
+
     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products) {
         System.out.println("//////////Create Sale Note/////////");
-
-        
         System.out.println("Select a client:");
         System.out.println("Available clients: " + clients);
         int clientIndex = scan.nextInt();
-        Client selectedClient = clients.get(clientIndex - 1);
-
+        Client selectedClient = clients.get(clientIndex-1);
         System.out.println("Enter the date (in format yyyy-MM-dd):");
         String dateString = scan.next();
         Date date;
@@ -89,26 +83,38 @@ public class SaleNote {
             date = dateFormat.parse(dateString);
         } catch (ParseException e) {
             System.out.println("Error parsing date. Please enter a valid date format.");
-            return null; 
+            return null;
         }
-
-
         System.out.println("Select a product:");
         System.out.println("Available products: " + products);
         int productIndex = scan.nextInt();
-        Product selectedProduct = products.get(productIndex);
-
+        Product selectedProduct = products.get(productIndex-1);
+        int idAux=selectedProduct.getId();
         System.out.println("Enter the number of products:");
         int numberOfProducts = scan.nextInt();
         scan.nextLine();
-
+        deduceProduct(products,idAux,numberOfProducts);
         float totalValue = selectedProduct.getCost() * numberOfProducts;
 
-        
-        SaleNote saleNote = new SaleNote(selectedClient, date, selectedProduct, totalValue); 
+        SaleNote saleNote = new SaleNote(selectedClient, date, selectedProduct, totalValue);
 
         System.out.println("Sale Note created successfully!");
 
         return saleNote;
+    }
+
+    public static void deduceProduct(ArrayList<Product> products,int id,int numberOfProducts){
+        for(Product currentProduct:products){
+            int idProduct=currentProduct.getId();
+            if(idProduct==id){
+                int currentAmount=currentProduct.getAmount();
+                int finalAmount=currentAmount-numberOfProducts;
+                    if(finalAmount>=0){
+                     currentProduct.setAmount(finalAmount);
+                    }else{
+                        System.out.println("No exiten productos suficientes");
+                    }
+            }
+        }
     }
 }

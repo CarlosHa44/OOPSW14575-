@@ -9,5 +9,16 @@
       "name": "Heladitos",
       "cost": 36.0
     }
+  },
+  {
+    "id": 2,
+    "dateI": "Dec 10, 2023, 04:30:08 PM",
+    "value": 24.300001,
+    "boxes": {
+      "id": 2,
+      "amount": 90,
+      "name": "Goliat",
+      "cost": 0.65
+    }
   }
 ]
