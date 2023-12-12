@@ -1,5 +1,4 @@
 [
-  null,
   {
     "client": {
       "id": 1,
@@ -17,23 +16,5 @@
       "cost": 0.45
     },
     "totalValue": 47.699997
-  },
-  {
-    "client": {
-      "id": 2,
-      "name": "Carlos",
-      "email": "carlosha@gmail.com",
-      "cellphoneNumber": "0991802942",
-      "isNorth": true,
-      "isMajority": false
-    },
-    "date": "Jul 24, 2008, 12:00:00 AM",
-    "numberOfProducts": {
-      "id": 2,
-      "amount": 50,
-      "name": "Goliat",
-      "cost": 0.65
-    },
-    "totalValue": 26.0
   }
 ]

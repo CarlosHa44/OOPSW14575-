@@ -1,5 +1,4 @@
 package ec.edu.espe.icecream.view;
-
 import com.google.gson.reflect.TypeToken;
 import ec.edu.espe.icecream.model.Client;
 import ec.edu.espe.icecream.model.Inventory;
@@ -51,7 +50,6 @@ public class IceCreamSystem {
                         System.out.println("///////////Inventary////////");
                         System.out.println("1.Añadir un nuevo producto");
                         System.out.println("2.Mostrar los productos del inventario");
-                        System.out.println("3.Eliminar un producto del inventario");
                         System.out.println("4.Regresar al menu principal");
                         optionInventory = scan.nextInt();
                         scan.nextLine();
@@ -64,10 +62,6 @@ public class IceCreamSystem {
                                 System.out.println("array" + products);
                                 break;
                             case 3:
-                                Inventory.deleteProduct(products);
-                                jsonUtilInvoice.writeFile("invoicedata.json", invoices);
-                                break;
-                            case 4:
                                 break;
                         }
                     } while (optionInventory != 4);
