@@ -1,4 +1,8 @@
 package ec.edu.espe.icecream.model;
+import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.icecream.utils.UseJson;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -15,6 +19,32 @@ public class Product {
         this.amount = amount;
         this.name = name;
         this.cost = cost;
+    }
+    static Scanner scan = new Scanner(System.in);
+    public static void menuProduct(ArrayList<Product> products) {
+        UseJson<Product> jsonUtilProducts = new UseJson<>();
+        products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
+        }.getType());
+        int optionInventory = 0;
+                        do {
+                            System.out.println("///////////Inventary////////");
+                            System.out.println("1.Añadir un nuevo producto");
+                            System.out.println("2.Mostrar los productos del inventario");
+                            System.out.println("3.Regresar al menu principal");
+                            optionInventory = scan.nextInt();
+                            scan.nextLine();
+                            switch (optionInventory) {
+                                case 1:
+                                    products.add(Inventory.addProduct(products));
+                                    jsonUtilProducts.writeFile("productdata.json", products);
+                                    break;
+                                case 2:
+                                    System.out.println("array" + products);
+                                    break;
+                                case 3:
+                                    break;
+                            }
+                        } while (optionInventory != 3);
     }
 
     @Override

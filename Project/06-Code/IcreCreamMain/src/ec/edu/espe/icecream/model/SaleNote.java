@@ -1,9 +1,21 @@
 package ec.edu.espe.icecream.model;
 
+import com.google.gson.reflect.TypeToken;
+import static ec.edu.espe.icecream.model.Invoice.scan;
+import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Scanner;
+import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.icecream.model.Client;
+import ec.edu.espe.icecream.model.Inventory;
+import ec.edu.espe.icecream.model.Invoice;
+import ec.edu.espe.icecream.model.Product;
+import ec.edu.espe.icecream.model.SaleNote;
+import ec.edu.espe.icecream.utils.UseJson;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -116,5 +128,38 @@ public class SaleNote {
                     }
             }
         }
+    }
+    public static void menuSaleNote(ArrayList<Product> products, ArrayList<Client> clients) {
+        UseJson<SaleNote> jsonUtilSaleNotes = new UseJson<>();
+        ArrayList<SaleNote> saleNotes = jsonUtilSaleNotes.readFile("salenotedata.json", new TypeToken<ArrayList<SaleNote>>() {
+        }.getType());
+
+        UseJson<Client> jsonUtilClients = new UseJson<>();
+        clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {
+        }.getType());
+        UseJson<Product> jsonUtilProducts = new UseJson<>();
+        products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
+        }.getType());    
+        int optionSaleNote = 0;
+            do {
+                System.out.println("///////////SaleNotes///////////");
+                System.out.println("1.Crear una nota de venta");
+                System.out.println("2.Mostrar las notas de venta");
+                System.out.println("3.Regresar al menu principal");
+                optionSaleNote = scan.nextInt();
+                scan.nextLine();
+                  
+                    switch (optionSaleNote) {
+                        case 1:
+                            saleNotes.add(SaleNote.createSaleNote(clients, products));
+                            jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
+                            break;
+                        case 2:
+                            System.out.println("Array" + saleNotes);
+                            break;
+                        case 3:
+                            break;
+                    }
+            } while (optionSaleNote != 3);
     }
 }

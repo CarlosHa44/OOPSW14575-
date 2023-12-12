@@ -1,7 +1,9 @@
 
 package ec.edu.espe.icecream.model;
-import java.util.ArrayList;
 import java.util.Date;
+import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.icecream.utils.UseJson;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -22,6 +24,35 @@ static Scanner scan = new Scanner(System.in);
         this.boxes = boxes;
     }
 
+    public static void menuInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
+        UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
+        invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>() {
+        }.getType());
+        UseJson<Product> jsonUtilProducts = new UseJson<>();
+        products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
+        }.getType());
+         int optionInvoice = 0;
+          do {
+            System.out.println("//////////Invoice/////////");
+            System.out.println("1.Añadir una nueva factura");
+            System.out.println("2.Buscar una factura");
+            System.out.println("3.Regresar al menu principal");
+            optionInvoice = scan.nextInt();
+            scan.nextLine();
+                switch (optionInvoice) {
+                    case 1:
+                        invoices.add(Invoice.addInvoice(invoices, products));
+                        jsonUtilProducts.writeFile("productdata.json", products);
+                        jsonUtilInvoice.writeFile("invoicedata.json", invoices);
+                    break;
+                    case 2:
+                        System.out.println("array" + invoices);
+                    break;
+                    case 3:
+                    break;
+                        }
+                    } while (optionInvoice != 3);
+    }
     @Override
     public String toString() {
         return "\n\tid=" + getId() + "\n\t dateI=" + getDateI() + "\n\t value=" + getValue() + "\n\t boxes=" + getBoxes();

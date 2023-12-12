@@ -70,5 +70,13 @@
     "cellphoneNumber": "0963363521",
     "isNorth": true,
     "isMajority": true
+  },
+  {
+    "id": 10,
+    "name": "Luis",
+    "email": "luis@gmail.com",
+    "cellphoneNumber": "0998224788",
+    "isNorth": false,
+    "isMajority": true
   }
 ]

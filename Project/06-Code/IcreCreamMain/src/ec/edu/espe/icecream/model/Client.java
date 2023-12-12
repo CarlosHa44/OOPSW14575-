@@ -1,8 +1,12 @@
 
 package ec.edu.espe.icecream.model;
 
+import static ec.edu.espe.icecream.model.Invoice.scan;
+import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 /**
  *
@@ -81,6 +85,36 @@ public class Client {
         System.out.println("Cliente no encontrado.");
     }
 
+    public static void menuClient(ArrayList<Client> clients) {
+        UseJson<Client> jsonUtilClients = new UseJson<>();
+        clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {
+        }.getType());
+        int optionClient = 0;
+            do {
+                System.out.println("//////////CLIENT/////////");
+                System.out.println("1.Ingresar Clientes");
+                System.out.println("2.Editar Cleintes");
+                System.out.println("3.Mostrar Clientes");
+                System.out.println("4.Regresar al menu principal");
+                optionClient = scan.nextInt();
+                scan.nextLine();
+                switch (optionClient) {
+                    case 1:
+                        clients.add(Client.addClient(clients));
+                        jsonUtilClients.writeFile("clientdata.json", clients);
+                    break;
+                    case 2:
+                        Client.editClient(clients);
+                        jsonUtilClients.writeFile("clientdata.json", clients);
+                    break;
+                    case 3:
+                    System.out.println("array" + clients);
+                    break;
+                    case 4:
+                    break;
+                    }
+                    } while (optionClient != 4);
+    }
     @Override
     public String toString() {
         return "\nClient{" + 
