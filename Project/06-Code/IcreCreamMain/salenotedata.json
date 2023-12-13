@@ -9,12 +9,6 @@
       "isMajority": true
     },
     "date": "Sep 6, 2006, 12:00:00 AM",
-    "numberOfProducts": {
-      "id": 2,
-      "amount": 14,
-      "name": "Daya",
-      "cost": 0.45
-    },
     "totalValue": 47.699997
   },
   {
@@ -27,12 +21,6 @@
       "isMajority": true
     },
     "date": "Jan 5, 2004, 12:00:00 AM",
-    "numberOfProducts": {
-      "id": 9,
-      "amount": 25,
-      "name": "Ron",
-      "cost": 0.4
-    },
     "totalValue": 2.25
   },
   {
@@ -45,12 +33,6 @@
       "isMajority": true
     },
     "date": "Jan 12, 2024, 12:00:00 AM",
-    "numberOfProducts": {
-      "id": 2,
-      "amount": 45,
-      "name": "Goliat",
-      "cost": 0.65
-    },
     "totalValue": 29.249998
   },
   {
@@ -63,12 +45,44 @@
       "isMajority": true
     },
     "date": "Jan 5, 2024, 12:00:00 AM",
-    "numberOfProducts": {
-      "id": 31,
-      "amount": 2,
-      "name": "Jose Alberto",
-      "cost": 0.56
-    },
     "totalValue": 3.66
+  },
+  {
+    "client": {
+      "id": 10,
+      "name": "Luis",
+      "email": "luis@gmail.com",
+      "cellphoneNumber": "0998224788",
+      "isNorth": false,
+      "isMajority": true
+    },
+    "date": "Mar 10, 2023, 12:00:00 AM",
+    "totalValue": 3.6000001
+  },
+  {
+    "client": {
+      "id": 7,
+      "name": "Carlos",
+      "email": "carlos.hidalgo234@gmail.com",
+      "cellphoneNumber": "0985868412",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Jan 13, 2024, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 23,
+        "amount": 68,
+        "name": "Paleta de agua",
+        "cost": 0.15
+      },
+      {
+        "id": 22,
+        "amount": 36,
+        "name": "Gemelo L\\CH",
+        "cost": 0.3
+      }
+    ],
+    "totalValue": 1.5
   }
 ]

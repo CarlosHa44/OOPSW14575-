@@ -1,11 +1,11 @@
 package ec.edu.espe.icecream.model;
 
-import java.util.Date;
 import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 import static ec.edu.espe.icecream.utils.Dates.validatedate;
 import ec.edu.espe.icecream.utils.UseJson;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -13,91 +13,65 @@ import java.util.Scanner;
  */
 public class SaleNote {
 
-    private static final Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
 
-    private Client client;
+private Client client;
     private Date date;
-    private Product numberOfProducts;
+    private ArrayList<Product> listOfProducts;
     private float totalValue;
 
-    public SaleNote(Client client, Date date, Product numberOfProducts, float totalValue) {
+    public SaleNote(Client client, Date date, ArrayList<Product> listOfProducts, float totalValue) {
         this.client = client;
         this.date = date;
-        this.numberOfProducts = numberOfProducts;
-        this.totalValue = totalValue;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Product getNumberOfProducts() {
-        return numberOfProducts;
-    }
-
-    public void setNumberOfProducts(Product numberOfProducts) {
-        this.numberOfProducts = numberOfProducts;
-    }
-
-    public float getTotalValue() {
-        return totalValue;
-    }
-
-    public void setTotalValue(float totalValue) {
+        this.listOfProducts = listOfProducts;
         this.totalValue = totalValue;
     }
 
     @Override
     public String toString() {
-        return "\nclient=" + client + ", date=" + date + ", numberOfProducts=" + numberOfProducts + ", totalValue=" + totalValue;
-
+        return "SaleNote{" + "client=" + client + ", date=" + date + ", listOfProducts=" + listOfProducts + ", totalValue=" + totalValue + '}';
     }
 
+
+    
     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products) {
-        System.out.println("1.Select a client(Type the id):");
+        System.out.println("1. Select a client (Type the id):");
         System.out.println("Available clients: " + clients);
         int clientIndex = scan.nextInt();
         Client selectedClient = clients.get(clientIndex - 1);
-        Date date=validatedate();
-        System.out.println("2.Select a product(Type the id):");
-        System.out.println("Available products: " + products);
-        int productIndex = scan.nextInt();
-        Product selectedProduct = products.get(productIndex - 1);
-        int idAux = selectedProduct.getId();
 
-        int productsAvailable = selectedProduct.getAmount();
-        int numberOfProducts;
+        Date date = validatedate();
+
+        ArrayList<Product> productsInSaleNote = new ArrayList<>();
+        float totalValue = 0;
+
+        int option = 0;
         do {
-            System.out.println("Enter the number of products:");
-            numberOfProducts = scan.nextInt();
+            System.out.println("2. Select a product (Type the id):");
+            System.out.println("Available products: " + products);
+            int productIndex = scan.nextInt();
+            Product selectedProduct = products.get(productIndex - 1);
+
+            int idAux = selectedProduct.getId();
+
+            int productsAvailable = selectedProduct.getAmount();
+            int numberOfProducts;
+            do {
+                System.out.println("Enter the number of products:");
+                numberOfProducts = scan.nextInt();
+                scan.nextLine();
+                deduceProduct(products, idAux, numberOfProducts);
+            } while (productsAvailable < numberOfProducts);
+
+            productsInSaleNote.add(selectedProduct);
+            totalValue += selectedProduct.getCost() * numberOfProducts;
+
+            System.out.println("Do you want to add more products? (1. Yes / 2. No)");
+            option = scan.nextInt();
             scan.nextLine();
-            deduceProduct(products, idAux, numberOfProducts);
-        } while (productsAvailable < numberOfProducts);
+        } while (option != 2);
 
-        float costUnit = selectedProduct.getCost();
-        boolean isNorth = selectedClient.isIsNorth();
-        boolean isMajority = selectedClient.isIsMajority();
-        if (isNorth == true) {
-            costUnit += 0.05f;
-        }
-        if (isMajority == false) {
-            costUnit += 0.20f;
-        }
-
-        float totalValue = costUnit * numberOfProducts;
-        SaleNote saleNote = new SaleNote(selectedClient, date, selectedProduct, totalValue);
+        SaleNote saleNote = new SaleNote(selectedClient, date, productsInSaleNote, totalValue);
         System.out.println("Sale Note created successfully!");
         return saleNote;
     }
@@ -111,7 +85,7 @@ public class SaleNote {
                 if (finalAmount >= 0) {
                     currentProduct.setAmount(finalAmount);
                 } else {
-                    System.out.println("No exiten productos suficientes");
+                    System.out.println("Not enough products available");
                 }
             }
         }
@@ -131,11 +105,11 @@ public class SaleNote {
         int optionSaleNote = 0;
         do {
             System.out.println("///////////SaleNotes///////////");
-            System.out.println("1.Crear una nota de venta");
-            System.out.println("2.Mostrar las notas de venta");
-            System.out.println("3.Regresar al menu principal");
-            optionSaleNote = scan.nextInt();
-            scan.nextLine();
+            System.out.println("1. Create a sale note");
+            System.out.println("2. Show sale notes");
+            System.out.println("3. Return to the main menu");
+            optionSaleNote = getScan().nextInt();
+            getScan().nextLine();
 
             switch (optionSaleNote) {
                 case 1:
@@ -143,7 +117,7 @@ public class SaleNote {
                     jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
                     break;
                 case 2:
-                    System.out.println("SaleNOTES" + saleNotes);
+                    System.out.println("Sale Notes" + saleNotes);
                     break;
                 case 3:
                     break;
@@ -151,5 +125,75 @@ public class SaleNote {
                     System.out.println("Invalid option. Please try again.");
             }
         } while (optionSaleNote != 3);
+    }
+
+    /**
+     * @return the scan
+     */
+    public static Scanner getScan() {
+        return scan;
+    }
+
+    /**
+     * @param aScan the scan to set
+     */
+    public static void setScan(Scanner aScan) {
+        scan = aScan;
+    }
+
+    /**
+     * @return the client
+     */
+    public Client getClient() {
+        return client;
+    }
+
+    /**
+     * @param client the client to set
+     */
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    /**
+     * @return the listOfProducts
+     */
+    public ArrayList<Product> getListOfProducts() {
+        return listOfProducts;
+    }
+
+    /**
+     * @param listOfProducts the listOfProducts to set
+     */
+    public void setListOfProducts(ArrayList<Product> listOfProducts) {
+        this.listOfProducts = listOfProducts;
+    }
+
+    /**
+     * @return the totalValue
+     */
+    public float getTotalValue() {
+        return totalValue;
+    }
+
+    /**
+     * @param totalValue the totalValue to set
+     */
+    public void setTotalValue(float totalValue) {
+        this.totalValue = totalValue;
     }
 }
