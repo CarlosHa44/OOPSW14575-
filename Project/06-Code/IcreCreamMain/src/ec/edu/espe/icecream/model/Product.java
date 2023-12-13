@@ -31,9 +31,9 @@ public class Product {
         int optionInventory = 0;
         do {
             System.out.println("///////////Inventary////////");
-            System.out.println("1.Añadir un nuevo producto");
-            System.out.println("2.Mostrar los productos del inventario");
-            System.out.println("3.Regresar al menu principal");
+            System.out.println("1.Add a new product");
+            System.out.println("2.Show inventory products");
+            System.out.println("3.Return to main menu");
             optionInventory = scan.nextInt();
             scan.nextLine();
             switch (optionInventory) {

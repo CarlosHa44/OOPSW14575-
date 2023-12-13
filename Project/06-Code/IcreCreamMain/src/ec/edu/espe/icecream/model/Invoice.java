@@ -36,9 +36,9 @@ public class Invoice {
         int optionInvoice = 0;
         do {
             System.out.println("//////////Invoice/////////");
-            System.out.println("1.Añadir una nueva factura");
-            System.out.println("2.Mostrar una factura");
-            System.out.println("3.Regresar al menu principal");
+            System.out.println("1.Add a new invoice");
+            System.out.println("2.Show an invoice");
+            System.out.println("3.Return to main menu");
             optionInvoice = scan.nextInt();
             scan.nextLine();
             switch (optionInvoice) {

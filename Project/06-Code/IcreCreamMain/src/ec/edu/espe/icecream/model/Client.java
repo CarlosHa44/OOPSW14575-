@@ -4,6 +4,7 @@ import static ec.edu.espe.icecream.model.Invoice.scan;
 import com.google.gson.reflect.TypeToken;
 import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -39,50 +40,66 @@ public class Client {
     public static Client addClient(ArrayList<Client> clients) {
         Scanner scan = new Scanner(System.in);
         int newID = generateID(clients);
-        System.out.println("Ingrese el nombre del cliente");
-        String name = scan.nextLine();
-        System.out.println("Ingrese el email del cliente");
-        String email = scan.nextLine();
-        System.out.println("Ingrese el número de teléfono del cliente");
-        String cellphoneNumber = scan.nextLine();
-        System.out.println("¿El cliente está en el norte? (true/false)");
-        boolean isNorth = scan.nextBoolean();
-        System.out.println("¿El cliente es mayoritario? (true/false)");
-        boolean isMajority = scan.nextBoolean();
+        String name = "";
+        String email = "";
+        String cellphoneNumber = "";
+        boolean isNorth = false;
+        boolean isMajority = false;
+        boolean inputValid;
 
+        do {
+            try {
+                System.out.println("Enter the customer name");
+                name = scan.nextLine();
+                System.out.println("Enter the customer's email");
+                email = scan.nextLine();
+                System.out.println("Enter the customer's phone number");
+                cellphoneNumber = scan.nextLine();
+                System.out.println("¿The client is in the north? (true/false)");
+                isNorth = scan.nextBoolean();
+                System.out.println("¿The client is the majority? (true/false)");
+                isMajority = scan.nextBoolean();
+                inputValid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("An error occurred");
+                inputValid = false;
+                scan.nextLine();
+            }
+        } while (!inputValid);
+        scan.nextLine();
         return new Client(newID, name, email, cellphoneNumber, isNorth, isMajority);
     }
 
     public static void editClient(ArrayList<Client> clients) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese el id del cliente a editar");
+        System.out.println("Enter the customer id to edit");
         int idToEdit = scan.nextInt();
         scan.nextLine();
 
         for (Client client : clients) {
             if (client.getId() == idToEdit) {
-                System.out.println("Ingrese el nuevo nombre");
+                System.out.println("Enter the new name");
                 String newName = scan.nextLine();
                 client.setName(newName);
-                System.out.println("Ingrese el nuevo email");
+                System.out.println("Enter the new email");
                 String newEmail = scan.nextLine();
                 client.setEmail(newEmail);
-                System.out.println("Ingrese el nuevo numero del telefono del cliente");
+                System.out.println("Enter the customer's new phone number");
                 String newPhone = scan.nextLine();
                 client.setCellphoneNumber(newPhone);
-                System.out.println("Ingrese si el cliente esta en el norte? (true/false)");
+                System.out.println("Enter if the customer is in the north? (true/false)");
                 boolean newNorth = scan.nextBoolean();
                 client.setIsNorth(newNorth);
-                System.out.println("¿El cliente es mayoritario edad? (true/false)");
+                System.out.println("¿The client is of majority age? (true/false)");
                 boolean newIsMajority = scan.nextBoolean();
                 client.setIsMajority(newIsMajority);
 
-                System.out.println("Cliente editado exitosamente.");
+                System.out.println("Client edited successfully.");
                 return;
             }
         }
 
-        System.out.println("Cliente no encontrado.");
+        System.out.println("Client not found.");
     }
 
     public static void menuClient(ArrayList<Client> clients) {
@@ -92,10 +109,10 @@ public class Client {
         int optionClient = 0;
         do {
             System.out.println("//////////CLIENT/////////");
-            System.out.println("1.Ingresar Clientes");
-            System.out.println("2.Editar Cleintes");
-            System.out.println("3.Mostrar Clientes");
-            System.out.println("4.Regresar al menu principal");
+            System.out.println("1.Enter Clients");
+            System.out.println("2.Edit Clients");
+            System.out.println("3.Show Clients");
+            System.out.println("4.Return to main menu");
             optionClient = scan.nextInt();
             scan.nextLine();
             switch (optionClient) {
