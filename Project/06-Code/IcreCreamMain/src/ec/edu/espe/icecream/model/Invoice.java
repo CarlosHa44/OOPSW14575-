@@ -2,6 +2,7 @@ package ec.edu.espe.icecream.model;
 
 import java.util.Date;
 import com.google.gson.reflect.TypeToken;
+import static ec.edu.espe.icecream.utils.Dates.validatedate;
 import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -97,7 +98,7 @@ public class Invoice {
     public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
         Product productAux;
         int idInvoice = getActualId(invoices);
-        Date dateAux = new Date();
+        Date dateAux = validatedate();
         System.out.println("Ingrese el Id del producto a agregar");
         int idAux = scan.nextInt();
         scan.nextLine();

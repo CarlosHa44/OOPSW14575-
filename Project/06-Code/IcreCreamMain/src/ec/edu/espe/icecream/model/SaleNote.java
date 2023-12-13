@@ -1,9 +1,8 @@
 package ec.edu.espe.icecream.model;
 
 import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import com.google.gson.reflect.TypeToken;
+import static ec.edu.espe.icecream.utils.Dates.validatedate;
 import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -71,16 +70,7 @@ public class SaleNote {
         System.out.println("Available clients: " + clients);
         int clientIndex = scan.nextInt();
         Client selectedClient = clients.get(clientIndex - 1);
-        System.out.println("Enter the date (in format yyyy-MM-dd):");
-        String dateString = scan.next();
-        Date date;
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            date = dateFormat.parse(dateString);
-        } catch (ParseException e) {
-            System.out.println("Error parsing date. Please enter a valid date format.");
-            return null;
-        }
+        Date date=validatedate();
         System.out.println("2.Select a product(Type the id):");
         System.out.println("Available products: " + products);
         int productIndex = scan.nextInt();
