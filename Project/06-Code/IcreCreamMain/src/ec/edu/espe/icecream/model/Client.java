@@ -19,7 +19,6 @@ public class Client {
     private String cellphoneNumber;
     private boolean isNorth;
     private boolean isMajority;
-    private static int lastID = 0;
     
     public Client(int id, String name, String email, String cellphoneNumber, boolean isNorth, boolean isMajority) {
         this.id = id;
@@ -117,14 +116,7 @@ public class Client {
     }
     @Override
     public String toString() {
-        return "\nClient{" + 
-                "id=" + getId() + 
-                ", name=" + getName() + 
-                ", email=" + getEmail() + 
-                ", cellphoneNumber=" + getCellphoneNumber() + 
-                ", isNorth=" + isIsNorth() + 
-                ", isMajority=" + isIsMajority() + 
-                '}';
+        return "id=" + getId() + ", name=" + getName() + ", email=" + getEmail() + ", cellphoneNumber=" + getCellphoneNumber() + ", isNorth=" + isIsNorth() + ", isMajority=" + isIsMajority();
     }
 
     /**

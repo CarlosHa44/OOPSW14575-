@@ -1,19 +1,9 @@
 package ec.edu.espe.icecream.model;
 
-import com.google.gson.reflect.TypeToken;
-import static ec.edu.espe.icecream.model.Invoice.scan;
-import ec.edu.espe.icecream.utils.UseJson;
-import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
 import com.google.gson.reflect.TypeToken;
-import ec.edu.espe.icecream.model.Client;
-import ec.edu.espe.icecream.model.Inventory;
-import ec.edu.espe.icecream.model.Invoice;
-import ec.edu.espe.icecream.model.Product;
-import ec.edu.espe.icecream.model.SaleNote;
 import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,7 +14,7 @@ import java.util.Scanner;
  */
 public class SaleNote {
 
-    private static Scanner scan = new Scanner(System.in);
+    private static final Scanner scan = new Scanner(System.in);
 
     private Client client;
     private Date date;

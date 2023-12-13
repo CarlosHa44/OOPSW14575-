@@ -5,7 +5,7 @@ import java.util.Scanner;
  * @author mateo
  */
 public class Authenticator {
-            private static final String allowedUsername = "WiliamGranda";
+    private static final String allowedUsername = "WiliamGranda";
     private static final String storedHashedPassword = "5b5cbe834b5ba800aa8adcaeece7a60d79de982fe48d16e7fe98a8b4a08d1cb7"; // "Glacial"
 
     public static boolean authenticateUser(Scanner scanner) {

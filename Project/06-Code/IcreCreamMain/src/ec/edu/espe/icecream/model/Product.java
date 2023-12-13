@@ -39,7 +39,7 @@ public class Product {
                                     jsonUtilProducts.writeFile("productdata.json", products);
                                     break;
                                 case 2:
-                                    System.out.println("array" + products);
+                                    System.out.println("Products" + products);
                                     break;
                                 case 3:
                                     break;
@@ -49,7 +49,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "\n\tid=" + getId() + "\n\tamount=" + getAmount() + "\n\tname=" + getName() + "\n\tcost=" + getCost();
+        return "\n\tid=" + getId() + "amount=" + getAmount() + "name=" + getName();
     }
 
 

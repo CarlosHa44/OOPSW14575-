@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Carlos Hernandez
+ * @author Carlos Hernandez,Mateo Iza
  */
 public class IceCreamSystem {
 
@@ -51,7 +51,6 @@ public class IceCreamSystem {
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
-
             } while (option != 6);
         } else {
             System.out.println("Authentication failed. Exiting the Ice Cream System. Goodbye!");
