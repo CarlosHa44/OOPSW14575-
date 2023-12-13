@@ -62,21 +62,15 @@ public class SaleNote {
 
     @Override
     public String toString() {
-        return "SaleNote{"
-                + "client=" + client
-                + ", date=" + date
-                + ", numberOfProducts=" + numberOfProducts
-                + ", totalValue=" + totalValue
-                + '}';
+        return "\nclient=" + client + ", date=" + date + ", numberOfProducts=" + numberOfProducts + ", totalValue=" + totalValue;
 
     }
 
     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products) {
-        System.out.println("//////////Create Sale Note/////////");
-        System.out.println("Select a client:");
+        System.out.println("1.Select a client(Type the id):");
         System.out.println("Available clients: " + clients);
         int clientIndex = scan.nextInt();
-        Client selectedClient = clients.get(clientIndex-1);
+        Client selectedClient = clients.get(clientIndex - 1);
         System.out.println("Enter the date (in format yyyy-MM-dd):");
         String dateString = scan.next();
         Date date;
@@ -87,38 +81,52 @@ public class SaleNote {
             System.out.println("Error parsing date. Please enter a valid date format.");
             return null;
         }
-        System.out.println("Select a product:");
+        System.out.println("2.Select a product(Type the id):");
         System.out.println("Available products: " + products);
         int productIndex = scan.nextInt();
-        Product selectedProduct = products.get(productIndex-1);
-        int idAux=selectedProduct.getId();
-        System.out.println("Enter the number of products:");
-        int numberOfProducts = scan.nextInt();
-        scan.nextLine();
-        deduceProduct(products,idAux,numberOfProducts);
-        float totalValue = selectedProduct.getCost() * numberOfProducts;
+        Product selectedProduct = products.get(productIndex - 1);
+        int idAux = selectedProduct.getId();
 
+        int productsAvailable = selectedProduct.getAmount();
+        int numberOfProducts;
+        do {
+            System.out.println("Enter the number of products:");
+            numberOfProducts = scan.nextInt();
+            scan.nextLine();
+            deduceProduct(products, idAux, numberOfProducts);
+        } while (productsAvailable < numberOfProducts);
+
+        float costUnit = selectedProduct.getCost();
+        boolean isNorth = selectedClient.isIsNorth();
+        boolean isMajority = selectedClient.isIsMajority();
+        if (isNorth == true) {
+            costUnit += 0.05f;
+        }
+        if (isMajority == false) {
+            costUnit += 0.20f;
+        }
+
+        float totalValue = costUnit * numberOfProducts;
         SaleNote saleNote = new SaleNote(selectedClient, date, selectedProduct, totalValue);
-
         System.out.println("Sale Note created successfully!");
-
         return saleNote;
     }
 
-    public static void deduceProduct(ArrayList<Product> products,int id,int numberOfProducts){
-        for(Product currentProduct:products){
-            int idProduct=currentProduct.getId();
-            if(idProduct==id){
-                int currentAmount=currentProduct.getAmount();
-                int finalAmount=currentAmount-numberOfProducts;
-                    if(finalAmount>=0){
-                     currentProduct.setAmount(finalAmount);
-                    }else{
-                        System.out.println("No exiten productos suficientes");
-                    }
+    public static void deduceProduct(ArrayList<Product> products, int id, int numberOfProducts) {
+        for (Product currentProduct : products) {
+            int idProduct = currentProduct.getId();
+            if (idProduct == id) {
+                int currentAmount = currentProduct.getAmount();
+                int finalAmount = currentAmount - numberOfProducts;
+                if (finalAmount >= 0) {
+                    currentProduct.setAmount(finalAmount);
+                } else {
+                    System.out.println("No exiten productos suficientes");
+                }
             }
         }
     }
+
     public static void menuSaleNote(ArrayList<Product> products, ArrayList<Client> clients) {
         UseJson<SaleNote> jsonUtilSaleNotes = new UseJson<>();
         ArrayList<SaleNote> saleNotes = jsonUtilSaleNotes.readFile("salenotedata.json", new TypeToken<ArrayList<SaleNote>>() {
@@ -129,27 +137,29 @@ public class SaleNote {
         }.getType());
         UseJson<Product> jsonUtilProducts = new UseJson<>();
         products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
-        }.getType());    
+        }.getType());
         int optionSaleNote = 0;
-            do {
-                System.out.println("///////////SaleNotes///////////");
-                System.out.println("1.Crear una nota de venta");
-                System.out.println("2.Mostrar las notas de venta");
-                System.out.println("3.Regresar al menu principal");
-                optionSaleNote = scan.nextInt();
-                scan.nextLine();
-                  
-                    switch (optionSaleNote) {
-                        case 1:
-                            saleNotes.add(SaleNote.createSaleNote(clients, products));
-                            jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
-                            break;
-                        case 2:
-                            System.out.println("Array" + saleNotes);
-                            break;
-                        case 3:
-                            break;
-                    }
-            } while (optionSaleNote != 3);
+        do {
+            System.out.println("///////////SaleNotes///////////");
+            System.out.println("1.Crear una nota de venta");
+            System.out.println("2.Mostrar las notas de venta");
+            System.out.println("3.Regresar al menu principal");
+            optionSaleNote = scan.nextInt();
+            scan.nextLine();
+
+            switch (optionSaleNote) {
+                case 1:
+                    saleNotes.add(SaleNote.createSaleNote(clients, products));
+                    jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
+                    break;
+                case 2:
+                    System.out.println("SaleNOTES" + saleNotes);
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        } while (optionSaleNote != 3);
     }
 }

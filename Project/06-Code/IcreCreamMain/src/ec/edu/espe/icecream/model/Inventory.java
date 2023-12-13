@@ -42,20 +42,6 @@ public class Inventory {
         return new Product(idaux, amountaux, nameaux, costaux);
     }
 
-
-    public static void deleteProduct(ArrayList<Product> products) {
-        System.out.println("Ingrese el id a eliminar");
-        int idDelete = scan.nextInt();
-        scan.nextLine();
-        for (Product currentProduct : products) {
-            int idProduct = currentProduct.getId();
-            String nameProduct = currentProduct.getName();
-            if (idProduct == idDelete) {
-                System.out.println("Su producto es-->" + nameProduct);
-                products.remove(currentProduct);
-            }
-        }
-    }
     public static int getActualId(ArrayList<Product> products){
         int idProduct=0;
         for (Product currentProduct : products){

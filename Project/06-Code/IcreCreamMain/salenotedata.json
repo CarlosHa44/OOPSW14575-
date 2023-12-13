@@ -16,5 +16,23 @@
       "cost": 0.45
     },
     "totalValue": 47.699997
+  },
+  {
+    "client": {
+      "id": 6,
+      "name": "Jaqueline",
+      "email": "jaqueline.ramiez2@gamil.com",
+      "cellphoneNumber": "0995872711",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Jan 5, 2004, 12:00:00 AM",
+    "numberOfProducts": {
+      "id": 9,
+      "amount": 25,
+      "name": "Ron",
+      "cost": 0.4
+    },
+    "totalValue": 2.25
   }
 ]

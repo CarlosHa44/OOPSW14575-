@@ -1,5 +1,5 @@
-
 package ec.edu.espe.icecream.model;
+
 import java.util.Date;
 import com.google.gson.reflect.TypeToken;
 import ec.edu.espe.icecream.utils.UseJson;
@@ -11,7 +11,8 @@ import java.util.Scanner;
  * @author Carlos
  */
 public class Invoice {
-static Scanner scan = new Scanner(System.in);
+
+    static Scanner scan = new Scanner(System.in);
     private int id;
     private Date dateI;
     private float value;
@@ -31,28 +32,31 @@ static Scanner scan = new Scanner(System.in);
         UseJson<Product> jsonUtilProducts = new UseJson<>();
         products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
         }.getType());
-         int optionInvoice = 0;
-          do {
+        int optionInvoice = 0;
+        do {
             System.out.println("//////////Invoice/////////");
             System.out.println("1.Añadir una nueva factura");
-            System.out.println("2.Buscar una factura");
+            System.out.println("2.Mostrar una factura");
             System.out.println("3.Regresar al menu principal");
             optionInvoice = scan.nextInt();
             scan.nextLine();
-                switch (optionInvoice) {
-                    case 1:
-                        invoices.add(Invoice.addInvoice(invoices, products));
-                        jsonUtilProducts.writeFile("productdata.json", products);
-                        jsonUtilInvoice.writeFile("invoicedata.json", invoices);
+            switch (optionInvoice) {
+                case 1:
+                    invoices.add(Invoice.addInvoice(invoices, products));
+                    jsonUtilProducts.writeFile("productdata.json", products);
+                    jsonUtilInvoice.writeFile("invoicedata.json", invoices);
                     break;
-                    case 2:
-                        System.out.println("array" + invoices);
+                case 2:
+                    System.out.println("array" + invoices);
                     break;
-                    case 3:
+                case 3:
                     break;
-                        }
-                    } while (optionInvoice != 3);
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        } while (optionInvoice != 3);
     }
+
     @Override
     public String toString() {
         return "\n\tid=" + getId() + "\n\t dateI=" + getDateI() + "\n\t value=" + getValue() + "\n\t boxes=" + getBoxes();
@@ -89,57 +93,59 @@ static Scanner scan = new Scanner(System.in);
     public void setBoxes(Product boxes) {
         this.boxes = boxes;
     }
-    public static Invoice addInvoice(ArrayList<Invoice> invoices,ArrayList<Product> products){
+
+    public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
         Product productAux;
-        int idInvoice=getActualId(invoices);
-        Date dateAux=new Date();
+        int idInvoice = getActualId(invoices);
+        Date dateAux = new Date();
         System.out.println("Ingrese el Id del producto a agregar");
-        int idAux=scan.nextInt();
+        int idAux = scan.nextInt();
         scan.nextLine();
-        productAux=getProduct(products,idAux);
-        int currentAmount=productAux.getAmount();
+        productAux = getProduct(products, idAux);
+        int currentAmount = productAux.getAmount();
         addAmount(products, idAux, currentAmount);
         System.out.println("Ingrese el precio unitario mayorista");
-        float unitCost=scan.nextFloat();
+        float unitCost = scan.nextFloat();
         scan.nextLine();
-        float value=currentAmount*unitCost;
-        return new Invoice(idInvoice, dateAux, value, productAux); 
+        float value = currentAmount * unitCost;
+        return new Invoice(idInvoice, dateAux, value, productAux);
     }
-    
-    public static void addAmount(ArrayList<Product> products,int id,int amount) {
+
+    public static void addAmount(ArrayList<Product> products, int id, int amount) {
         for (Product currentProduct : products) {
             int idProduct = currentProduct.getId();
-                if (idProduct == id) {
-                    int actualAmount=currentProduct.getAmount();
-                    currentProduct.setAmount(actualAmount + amount);
-                }
+            if (idProduct == id) {
+                int actualAmount = currentProduct.getAmount();
+                currentProduct.setAmount(actualAmount + amount);
+            }
         }
     }
-    public static Product getProduct(ArrayList<Product> products,int id){
+
+    public static Product getProduct(ArrayList<Product> products, int id) {
         Product productAux;
         for (Product currentProduct : products) {
             int idProduct = currentProduct.getId();
-                if (idProduct == id) {
-                    String nameProduct = currentProduct.getName();
-                    int actualAmount=currentProduct.getAmount();
-                    System.out.println("Su producto es-->" + nameProduct);
-                    System.out.println("Ingrese la cantidad que desea ingresar");
-                    int amountProduct = scan.nextInt();
-                    scan.nextLine();
-                    productAux=currentProduct;
-                    currentProduct.setAmount(actualAmount + amountProduct);
-                    return productAux;
-                }
+            if (idProduct == id) {
+                String nameProduct = currentProduct.getName();
+                int actualAmount = currentProduct.getAmount();
+                System.out.println("Su producto es-->" + nameProduct);
+                System.out.println("Ingrese la cantidad que desea ingresar");
+                int amountProduct = scan.nextInt();
+                scan.nextLine();
+                productAux = currentProduct;
+                currentProduct.setAmount(actualAmount + amountProduct);
+                return productAux;
+            }
         }
         System.out.println("Id no encontrado");
         return null;
     }
-    
-    public static int getActualId(ArrayList<Invoice> invoices){
-        int actualId=0;
-        for(Invoice invoiceCurrent:invoices){
-            actualId=invoiceCurrent.getId();
+
+    public static int getActualId(ArrayList<Invoice> invoices) {
+        int actualId = 0;
+        for (Invoice invoiceCurrent : invoices) {
+            actualId = invoiceCurrent.getId();
         }
-        return actualId+1;
+        return actualId + 1;
     }
 }
