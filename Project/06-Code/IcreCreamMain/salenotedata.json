@@ -52,5 +52,23 @@
       "cost": 0.65
     },
     "totalValue": 29.249998
+  },
+  {
+    "client": {
+      "id": 9,
+      "name": "Marcos",
+      "email": "marcos.cocha6589@gmail.com",
+      "cellphoneNumber": "0963363521",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Jan 5, 2024, 12:00:00 AM",
+    "numberOfProducts": {
+      "id": 31,
+      "amount": 2,
+      "name": "Jose Alberto",
+      "cost": 0.56
+    },
+    "totalValue": 3.66
   }
 ]

@@ -172,11 +172,5 @@
     "amount": 35,
     "name": "Maracuya",
     "cost": 0.3
-  },
-  {
-    "id": 30,
-    "amount": 2,
-    "name": "Helado",
-    "cost": 12.0
   }
 ]
