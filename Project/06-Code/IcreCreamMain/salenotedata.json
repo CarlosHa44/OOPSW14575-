@@ -84,5 +84,31 @@
       }
     ],
     "totalValue": 1.5
+  },
+  {
+    "client": {
+      "id": 7,
+      "name": "Carlos",
+      "email": "carlos.hidalgo234@gmail.com",
+      "cellphoneNumber": "0985868412",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Apr 12, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 29,
+        "amount": 31,
+        "name": "Maracuya",
+        "cost": 0.3
+      },
+      {
+        "id": 28,
+        "amount": 30,
+        "name": "Mango",
+        "cost": 0.3
+      }
+    ],
+    "totalValue": 3.15
   }
 ]

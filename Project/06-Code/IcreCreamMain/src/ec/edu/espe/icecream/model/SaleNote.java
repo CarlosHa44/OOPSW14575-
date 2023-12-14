@@ -15,7 +15,7 @@ public class SaleNote {
 
     private static Scanner scan = new Scanner(System.in);
 
-private Client client;
+    private Client client;
     private Date date;
     private ArrayList<Product> listOfProducts;
     private float totalValue;
@@ -32,8 +32,6 @@ private Client client;
         return "SaleNote{" + "client=" + client + ", date=" + date + ", listOfProducts=" + listOfProducts + ", totalValue=" + totalValue + '}';
     }
 
-
-    
     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products) {
         System.out.println("1. Select a client (Type the id):");
         System.out.println("Available clients: " + clients);
@@ -62,9 +60,19 @@ private Client client;
                 scan.nextLine();
                 deduceProduct(products, idAux, numberOfProducts);
             } while (productsAvailable < numberOfProducts);
+            
+            float costUnit = selectedProduct.getCost();
+            boolean isNorth = selectedClient.isIsNorth();
+            boolean isMajority = selectedClient.isIsMajority();
+            if (isNorth == true) {
+                costUnit += 0.05f;
+            }
+            if (isMajority == false) {
+                costUnit += 0.20f;
+            }
 
             productsInSaleNote.add(selectedProduct);
-            totalValue += selectedProduct.getCost() * numberOfProducts;
+            totalValue += costUnit * numberOfProducts;
 
             System.out.println("Do you want to add more products? (1. Yes / 2. No)");
             option = scan.nextInt();
