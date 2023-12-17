@@ -2,6 +2,7 @@ package ec.edu.espe.icecream.view;
 import ec.edu.espe.icecream.model.Client;
 import ec.edu.espe.icecream.model.Invoice;
 import ec.edu.espe.icecream.model.Product;
+import ec.edu.espe.icecream.model.ReportOfBusiness;
 import ec.edu.espe.icecream.model.SaleNote;
 import ec.edu.espe.icecream.utils.Authenticator;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class IceCreamSystem {
     ArrayList<Product> products = new ArrayList<>();
     ArrayList<Invoice> invoices = new ArrayList<>();
     ArrayList<Client> clients = new ArrayList<>();
+    ArrayList<ReportOfBusiness> reports = new ArrayList<>();
 
     // Autenticación del usuario
     if (Authenticator.authenticateUser(scan)) {
@@ -49,7 +51,7 @@ public class IceCreamSystem {
                     SaleNote.menuSaleNote(products, clients);
                     break;
                 case 5:
-                    // Implementa la lógica para el informe comercial
+                    ReportOfBusiness.menuReportBusinness(reports);
                     break;
                 case 6:
                     System.out.println("Exiting the Ice Cream System. Goodbye!");
@@ -66,12 +68,12 @@ public class IceCreamSystem {
     
 
     public static void showMainMenu() {
-        System.out.println("///////Ice Cream System/////////");
-        System.out.println("1.Inventory");
-        System.out.println("2.Invoice");
-        System.out.println("3.Clients");
-        System.out.println("4.SaleNote");
-        System.out.println("5.Business report");
-        System.out.println("6. Exit");
+        System.out.println("|///////Ice Cream System/////////|");
+        System.out.println("|1.Inventory                     |");
+        System.out.println("|2.Invoice                       |");
+        System.out.println("|3.Clients                       |");
+        System.out.println("|4.SaleNote                      |");
+        System.out.println("|5.Business report               |");
+        System.out.println("|6. Exit                         |");
     }
 }

@@ -29,9 +29,9 @@ public class Invoice {
     
     public static void menuInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
     UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
-    invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>() {}.getType());
+    invoices = jsonUtilInvoice.readFile("Invoicedata.json", new TypeToken<ArrayList<Invoice>>() {}.getType());
     UseJson<Product> jsonUtilProducts = new UseJson<>();
-    products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {}.getType());
+    products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {}.getType());
     
     int optionInvoice;
     while (true) {
@@ -53,8 +53,8 @@ public class Invoice {
         switch (optionInvoice) {
             case 1:
                 invoices.add(Invoice.addInvoice(invoices, products));
-                jsonUtilProducts.writeFile("productdata.json", products);
-                jsonUtilInvoice.writeFile("invoicedata.json", invoices);
+                jsonUtilProducts.writeFile("Productdata.json", products);
+                jsonUtilInvoice.writeFile("Invoicedata.json", invoices);
                 break;
             case 2:
                 System.out.println("array" + invoices);

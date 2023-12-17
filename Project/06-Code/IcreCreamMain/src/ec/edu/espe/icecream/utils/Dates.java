@@ -26,7 +26,7 @@ public class Dates {
                 month = -1;
             }
         } while (month <= 0 || month > 12);
-        switch (month) {
+        switch (month-1) {
             case 1:
             case 3:
             case 5:
@@ -49,7 +49,7 @@ public class Dates {
                 break;
         }
         
-        return new Date(2023 - 1900, month, day);
+        return new Date(2023 - 1900, month-1, day);
     }
 
     public static int dayValidator(int month, int dayspermonth) {

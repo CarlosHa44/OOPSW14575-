@@ -79,7 +79,7 @@
   },
   {
     "id": 14,
-    "amount": 32,
+    "amount": 30,
     "name": "Maxibon",
     "cost": 0.5
   },
@@ -103,7 +103,7 @@
   },
   {
     "id": 18,
-    "amount": 70,
+    "amount": 58,
     "name": "Milky",
     "cost": 0.2
   },
@@ -133,7 +133,7 @@
   },
   {
     "id": 23,
-    "amount": 70,
+    "amount": 65,
     "name": "Paleta de agua",
     "cost": 0.15
   },

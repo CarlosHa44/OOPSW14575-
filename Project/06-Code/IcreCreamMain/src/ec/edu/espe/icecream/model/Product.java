@@ -26,7 +26,7 @@ public class Product {
 
     public static void menuProduct(ArrayList<Product> products) {
         UseJson<Product> jsonUtilProducts = new UseJson<>();
-        products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
+        products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {
         }.getType());
 
         int optionInventory;
@@ -48,7 +48,7 @@ public class Product {
             switch (optionInventory) {
                 case 1:
                     products.add(Inventory.addProduct(products));
-                    jsonUtilProducts.writeFile("productdata.json", products);
+                    jsonUtilProducts.writeFile("Productdata.json", products);
                     break;
                 case 2:
                     System.out.println("Products" + products);
@@ -63,7 +63,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "\n\tid=" + getId() + "--amount=" + getAmount() + "--name=" + getName() + "--Cost=" + getCost();
+        return "id=" + getId() + "\tamount=" + getAmount() + "\tname=" + getName() + "\tCost=" + getCost()+"\n";
     }
 
     public int getId() {

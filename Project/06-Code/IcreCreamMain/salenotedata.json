@@ -1,41 +1,6 @@
 [
   {
-    "client": {
-      "id": 1,
-      "name": "Juan",
-      "email": "mateoiza64@gmail.com",
-      "cellphoneNumber": "0998229477",
-      "isNorth": false,
-      "isMajority": true
-    },
-    "date": "Sep 6, 2006, 12:00:00 AM",
-    "totalValue": 47.699997
-  },
-  {
-    "client": {
-      "id": 6,
-      "name": "Jaqueline",
-      "email": "jaqueline.ramiez2@gamil.com",
-      "cellphoneNumber": "0995872711",
-      "isNorth": true,
-      "isMajority": true
-    },
-    "date": "Jan 5, 2004, 12:00:00 AM",
-    "totalValue": 2.25
-  },
-  {
-    "client": {
-      "id": 4,
-      "name": "Jixon",
-      "email": "jixon34@gmail.com",
-      "cellphoneNumber": "09994141283",
-      "isNorth": false,
-      "isMajority": true
-    },
-    "date": "Jan 12, 2024, 12:00:00 AM",
-    "totalValue": 29.249998
-  },
-  {
+    "id": 1,
     "client": {
       "id": 9,
       "name": "Marcos",
@@ -44,48 +9,82 @@
       "isNorth": true,
       "isMajority": true
     },
-    "date": "Jan 5, 2024, 12:00:00 AM",
-    "totalValue": 3.66
+    "date": "Jun 4, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 26,
+        "amount": 39,
+        "name": "Crio Genio",
+        "cost": 0.25
+      }
+    ],
+    "totalValue": 0.90000004
   },
   {
+    "id": 2,
     "client": {
-      "id": 10,
-      "name": "Luis",
-      "email": "luis@gmail.com",
-      "cellphoneNumber": "0998224788",
+      "id": 4,
+      "name": "Jixon",
+      "email": "jixon34@gmail.com",
+      "cellphoneNumber": "09994141283",
       "isNorth": false,
       "isMajority": true
     },
-    "date": "Mar 10, 2023, 12:00:00 AM",
-    "totalValue": 3.6000001
-  },
-  {
-    "client": {
-      "id": 7,
-      "name": "Carlos",
-      "email": "carlos.hidalgo234@gmail.com",
-      "cellphoneNumber": "0985868412",
-      "isNorth": true,
-      "isMajority": true
-    },
-    "date": "Jan 13, 2024, 12:00:00 AM",
+    "date": "Jan 17, 2024, 12:00:00 AM",
     "listOfProducts": [
       {
         "id": 23,
-        "amount": 68,
+        "amount": 58,
         "name": "Paleta de agua",
         "cost": 0.15
-      },
-      {
-        "id": 22,
-        "amount": 36,
-        "name": "Gemelo L\\CH",
-        "cost": 0.3
       }
     ],
-    "totalValue": 1.5
+    "totalValue": 1.8000001
   },
   {
+    "id": 3,
+    "client": {
+      "id": 9,
+      "name": "Marcos",
+      "email": "marcos.cocha6589@gmail.com",
+      "cellphoneNumber": "0963363521",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Jan 15, 2024, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 20,
+        "amount": 42,
+        "name": "Tung Tunga",
+        "cost": 0.25
+      }
+    ],
+    "totalValue": 6.9
+  },
+  {
+    "id": 4,
+    "client": {
+      "id": 9,
+      "name": "Marcos",
+      "email": "marcos.cocha6589@gmail.com",
+      "cellphoneNumber": "0963363521",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Jan 15, 2024, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 23,
+        "amount": 65,
+        "name": "Paleta de agua",
+        "cost": 0.15
+      }
+    ],
+    "totalValue": 1.0
+  },
+  {
+    "id": 5,
     "client": {
       "id": 7,
       "name": "Carlos",
@@ -94,21 +93,36 @@
       "isNorth": true,
       "isMajority": true
     },
-    "date": "Apr 12, 2023, 12:00:00 AM",
+    "date": "Jan 14, 2024, 12:00:00 AM",
     "listOfProducts": [
       {
-        "id": 29,
-        "amount": 31,
-        "name": "Maracuya",
-        "cost": 0.3
-      },
-      {
-        "id": 28,
-        "amount": 30,
-        "name": "Mango",
-        "cost": 0.3
+        "id": 18,
+        "amount": 58,
+        "name": "Milky",
+        "cost": 0.2
       }
     ],
-    "totalValue": 3.15
+    "totalValue": 3.0
+  },
+  {
+    "id": 6,
+    "client": {
+      "id": 4,
+      "name": "Jixon",
+      "email": "jixon34@gmail.com",
+      "cellphoneNumber": "09994141283",
+      "isNorth": false,
+      "isMajority": true
+    },
+    "date": "Feb 15, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 14,
+        "amount": 30,
+        "name": "Maxibon",
+        "cost": 0.5
+      }
+    ],
+    "totalValue": 1.0
   }
 ]

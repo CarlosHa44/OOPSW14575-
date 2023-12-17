@@ -14,13 +14,14 @@ import ec.edu.espe.icecream.utils.UseJson;
 public class SaleNote {
 
     private static Scanner scan = new Scanner(System.in);
-
+    private int id;
     private Client client;
     private Date date;
     private ArrayList<Product> listOfProducts;
     private float totalValue;
 
-    public SaleNote(Client client, Date date, ArrayList<Product> listOfProducts, float totalValue) {
+    public SaleNote(int id, Client client, Date date, ArrayList<Product> listOfProducts, float totalValue) {
+        this.id = id;
         this.client = client;
         this.date = date;
         this.listOfProducts = listOfProducts;
@@ -29,25 +30,43 @@ public class SaleNote {
 
     @Override
     public String toString() {
-        return "SaleNote{" + "client=" + client + ", date=" + date + ", listOfProducts=" + listOfProducts + ", totalValue=" + totalValue + '}';
+        return "SaleNote{" + "id=" + id + ", client=" + client + ", date=" + date + ", listOfProducts=" + listOfProducts + ", totalValue=" + totalValue + '}';
     }
 
-    public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products) {
+    public static int getActualId(ArrayList<SaleNote> saleNotes) {
+        int actualId = 0;
+        for (SaleNote saleNoteCurrent : saleNotes) {
+            actualId = saleNoteCurrent.getId();
+        }
+        return actualId + 1;
+    }
+
+    public static void showSaleNote(SaleNote saleNote) {
+        System.out.println("\n////////Nota de venta//////////// ");
+        System.out.println("Nota de Venta: " + saleNote.getId());
+        System.out.println("Client: " + saleNote.client.getName() + "\tEmail:" + saleNote.client.getEmail());
+        System.out.println("Cellphone:" + saleNote.client.getCellphoneNumber()+"Date:"+saleNote.date.toString());
+        System.out.println("////Listado de Productos/////");
+        System.out.println(saleNote.listOfProducts);
+        System.out.println("Precio Final:" + saleNote.totalValue);
+    }
+
+    public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products, ArrayList<SaleNote> saleNotes) {
+        int idSaleNote = getActualId(saleNotes);
         System.out.println("1. Select a client (Type the id):");
         System.out.println("Available clients: " + clients);
-        int clientIndex = scan.nextInt();
+        int clientIndex = getScan().nextInt();
         Client selectedClient = clients.get(clientIndex - 1);
 
         Date date = validatedate();
 
         ArrayList<Product> productsInSaleNote = new ArrayList<>();
         float totalValue = 0;
-
-        int option = 0;
+        int option=0;
         do {
             System.out.println("2. Select a product (Type the id):");
             System.out.println("Available products: " + products);
-            int productIndex = scan.nextInt();
+            int productIndex = getScan().nextInt();
             Product selectedProduct = products.get(productIndex - 1);
 
             int idAux = selectedProduct.getId();
@@ -56,8 +75,8 @@ public class SaleNote {
             int numberOfProducts;
             do {
                 System.out.println("Enter the number of products:");
-                numberOfProducts = scan.nextInt();
-                scan.nextLine();
+                numberOfProducts = getScan().nextInt();
+                getScan().nextLine();
                 deduceProduct(products, idAux, numberOfProducts);
             } while (productsAvailable < numberOfProducts);
 
@@ -75,12 +94,13 @@ public class SaleNote {
             totalValue += costUnit * numberOfProducts;
 
             System.out.println("Do you want to add more products? (1. Yes / 2. No)");
-            option = scan.nextInt();
-            scan.nextLine();
+            option = getScan().nextInt();
+            getScan().nextLine();
         } while (option != 2);
 
-        SaleNote saleNote = new SaleNote(selectedClient, date, productsInSaleNote, totalValue);
+        SaleNote saleNote = new SaleNote(idSaleNote, selectedClient, date, productsInSaleNote, totalValue);
         System.out.println("Sale Note created successfully!");
+        showSaleNote(saleNote);
         return saleNote;
     }
 
@@ -109,7 +129,7 @@ public class SaleNote {
         }.getType());
 
         UseJson<Product> jsonUtilProducts = new UseJson<>();
-        products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
+        products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {
         }.getType());
 
         int optionSaleNote;
@@ -121,20 +141,24 @@ public class SaleNote {
 
             if (getScan().hasNextInt()) {
                 optionSaleNote = getScan().nextInt();
-                getScan().nextLine();  
+                getScan().nextLine();
             } else {
                 System.out.println("Invalid input. Please enter a number.");
-                getScan().nextLine();  
-                continue;  
+                getScan().nextLine();
+                continue;
             }
 
             switch (optionSaleNote) {
                 case 1:
-                    saleNotes.add(SaleNote.createSaleNote(clients, products));
+                    saleNotes.add(SaleNote.createSaleNote(clients, products, saleNotes));
                     jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
+                    jsonUtilProducts.writeFile("Productdata.json", products);
                     break;
                 case 2:
-                    System.out.println("Sale Notes" + saleNotes);
+                    System.out.println("Listado");
+                    for(SaleNote currentSaleNote:saleNotes){
+                       showSaleNote(currentSaleNote);
+                    }
                     break;
                 case 3:
                     return;
@@ -156,6 +180,20 @@ public class SaleNote {
      */
     public static void setScan(Scanner aScan) {
         scan = aScan;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -213,4 +251,5 @@ public class SaleNote {
     public void setTotalValue(float totalValue) {
         this.totalValue = totalValue;
     }
+
 }

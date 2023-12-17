@@ -73,7 +73,7 @@ public class ReportOfBusiness {
         }.getType());
 
         UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
-        ArrayList<Invoice> invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>() {
+        ArrayList<Invoice> invoices = jsonUtilInvoice.readFile("Invoicedata.json", new TypeToken<ArrayList<Invoice>>() {
         }.getType());
 
         int optionReport;
