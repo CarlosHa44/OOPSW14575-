@@ -15,47 +15,55 @@ import java.util.Scanner;
 public class IceCreamSystem {
 
     static Scanner scan = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
-        ArrayList<Product> products = new ArrayList<>();
-        ArrayList<Invoice> invoices = new ArrayList<>();
-        ArrayList<Client> clients = new ArrayList<>();
+    ArrayList<Product> products = new ArrayList<>();
+    ArrayList<Invoice> invoices = new ArrayList<>();
+    ArrayList<Client> clients = new ArrayList<>();
 
-        // Autenticación del usuario
-        if (Authenticator.authenticateUser(scan)) {
-            int option = 0;
-            do {
-                showMainMenu();
+    // Autenticación del usuario
+    if (Authenticator.authenticateUser(scan)) {
+        int option;
+        while (true) {
+            showMainMenu();
+            if (scan.hasNextInt()) {
                 option = scan.nextInt();
-                scan.nextLine();
+                scan.nextLine(); 
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scan.nextLine(); 
+                continue; 
+            }
 
-                switch (option) {
-                    case 1:
-                        Product.menuProduct(products);
-                        break;
-                    case 2:
-                        Invoice.menuInvoice(invoices, products);
-                        break;
-                    case 3:
-                        Client.menuClient(clients);
-                        break;
-                    case 4:
-                        SaleNote.menuSaleNote(products, clients);
-                        break;
-                    case 5:
-                        // Implementa la lógica para el informe comercial
-                        break;
-                    case 6:
-                        System.out.println("Exiting the Ice Cream System. Goodbye!");
-                        break;
-                    default:
-                        System.out.println("Invalid option. Please try again.");
-                }
-            } while (option != 6);
-        } else {
-            System.out.println("Authentication failed. Exiting the Ice Cream System. Goodbye!");
+            switch (option) {
+                case 1:
+                    Product.menuProduct(products);
+                    break;
+                case 2:
+                    Invoice.menuInvoice(invoices, products);
+                    break;
+                case 3:
+                    Client.menuClient(clients);
+                    break;
+                case 4:
+                    SaleNote.menuSaleNote(products, clients);
+                    break;
+                case 5:
+                    // Implementa la lógica para el informe comercial
+                    break;
+                case 6:
+                    System.out.println("Exiting the Ice Cream System. Goodbye!");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
         }
+    } else {
+        System.out.println("Authentication failed. Exiting the Ice Cream System. Goodbye!");
     }
+}
+    
+    
 
     public static void showMainMenu() {
         System.out.println("///////Ice Cream System/////////");
