@@ -25,38 +25,47 @@ public class Invoice {
         this.value = value;
         this.boxes = boxes;
     }
-
+    
+    
     public static void menuInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
-        UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
-        invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>() {
-        }.getType());
-        UseJson<Product> jsonUtilProducts = new UseJson<>();
-        products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
-        }.getType());
-        int optionInvoice = 0;
-        do {
-            System.out.println("//////////Invoice/////////");
-            System.out.println("1.Add a new invoice");
-            System.out.println("2.Show an invoice");
-            System.out.println("3.Return to main menu");
+    UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
+    invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>() {}.getType());
+    UseJson<Product> jsonUtilProducts = new UseJson<>();
+    products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {}.getType());
+    
+    int optionInvoice;
+    while (true) {
+        System.out.println("//////////Invoice/////////");
+        System.out.println("1.Add a new invoice");
+        System.out.println("2.Show an invoice");
+        System.out.println("3.Return to the main menu");
+
+        // Verificar si la entrada es un número
+        if (scan.hasNextInt()) {
             optionInvoice = scan.nextInt();
-            scan.nextLine();
-            switch (optionInvoice) {
-                case 1:
-                    invoices.add(Invoice.addInvoice(invoices, products));
-                    jsonUtilProducts.writeFile("productdata.json", products);
-                    jsonUtilInvoice.writeFile("invoicedata.json", invoices);
-                    break;
-                case 2:
-                    System.out.println("array" + invoices);
-                    break;
-                case 3:
-                    break;
-                default:
-                    System.out.println("Invalid option. Please try again.");
-            }
-        } while (optionInvoice != 3);
+            scan.nextLine(); 
+        } else {
+            System.out.println("Invalid input. Please enter a number.");
+            scan.nextLine();  
+            continue;  
+        }
+
+        switch (optionInvoice) {
+            case 1:
+                invoices.add(Invoice.addInvoice(invoices, products));
+                jsonUtilProducts.writeFile("productdata.json", products);
+                jsonUtilInvoice.writeFile("invoicedata.json", invoices);
+                break;
+            case 2:
+                System.out.println("array" + invoices);
+                break;
+            case 3:
+                return;
+            default:
+                System.out.println("Invalid option. Please try again.");
+        }
     }
+}
 
     @Override
     public String toString() {

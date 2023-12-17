@@ -9,8 +9,6 @@ import java.util.Scanner;
  * @author Carlos
  */
 public class Inventory {
-
-    static Scanner scan = new Scanner(System.in);
     private int id;
 
     public Inventory(int id) {

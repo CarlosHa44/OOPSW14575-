@@ -28,14 +28,23 @@ public class Product {
         UseJson<Product> jsonUtilProducts = new UseJson<>();
         products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
         }.getType());
-        int optionInventory = 0;
-        do {
-            System.out.println("///////////Inventary////////");
+
+        int optionInventory;
+        while (true) {
+            System.out.println("///////////Inventory////////");
             System.out.println("1.Add a new product");
             System.out.println("2.Show inventory products");
-            System.out.println("3.Return to main menu");
-            optionInventory = scan.nextInt();
-            scan.nextLine();
+            System.out.println("3.Return to the main menu");
+
+            if (scan.hasNextInt()) {
+                optionInventory = scan.nextInt();
+                scan.nextLine();  
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scan.nextLine();  
+                continue;  
+            }
+
             switch (optionInventory) {
                 case 1:
                     products.add(Inventory.addProduct(products));
@@ -45,11 +54,11 @@ public class Product {
                     System.out.println("Products" + products);
                     break;
                 case 3:
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid option. Please try again.");
             }
-        } while (optionInventory != 3);
+        }
     }
 
     @Override

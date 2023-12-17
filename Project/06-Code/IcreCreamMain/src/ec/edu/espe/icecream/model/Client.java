@@ -106,15 +106,24 @@ public class Client {
         UseJson<Client> jsonUtilClients = new UseJson<>();
         clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {
         }.getType());
-        int optionClient = 0;
-        do {
+
+        int optionClient;
+        while (true) {
             System.out.println("//////////CLIENT/////////");
             System.out.println("1.Enter Clients");
             System.out.println("2.Edit Clients");
             System.out.println("3.Show Clients");
-            System.out.println("4.Return to main menu");
-            optionClient = scan.nextInt();
-            scan.nextLine();
+            System.out.println("4.Return to the main menu");
+
+            if (scan.hasNextInt()) {
+                optionClient = scan.nextInt();
+                scan.nextLine();  
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scan.nextLine();  
+                continue;  
+            }
+
             switch (optionClient) {
                 case 1:
                     clients.add(Client.addClient(clients));
@@ -128,11 +137,11 @@ public class Client {
                     System.out.println("array" + clients);
                     break;
                 case 4:
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid option. Please try again.");
             }
-        } while (optionClient != 4);
+        }
     }
 
     @Override

@@ -60,7 +60,7 @@ public class SaleNote {
                 scan.nextLine();
                 deduceProduct(products, idAux, numberOfProducts);
             } while (productsAvailable < numberOfProducts);
-            
+
             float costUnit = selectedProduct.getCost();
             boolean isNorth = selectedClient.isIsNorth();
             boolean isMajority = selectedClient.isIsMajority();
@@ -107,17 +107,26 @@ public class SaleNote {
         UseJson<Client> jsonUtilClients = new UseJson<>();
         clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {
         }.getType());
+
         UseJson<Product> jsonUtilProducts = new UseJson<>();
         products = jsonUtilProducts.readFile("productdata.json", new TypeToken<ArrayList<Product>>() {
         }.getType());
-        int optionSaleNote = 0;
-        do {
+
+        int optionSaleNote;
+        while (true) {
             System.out.println("///////////SaleNotes///////////");
             System.out.println("1. Create a sale note");
             System.out.println("2. Show sale notes");
             System.out.println("3. Return to the main menu");
-            optionSaleNote = getScan().nextInt();
-            getScan().nextLine();
+
+            if (getScan().hasNextInt()) {
+                optionSaleNote = getScan().nextInt();
+                getScan().nextLine();  
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                getScan().nextLine();  
+                continue;  
+            }
 
             switch (optionSaleNote) {
                 case 1:
@@ -128,11 +137,11 @@ public class SaleNote {
                     System.out.println("Sale Notes" + saleNotes);
                     break;
                 case 3:
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid option. Please try again.");
             }
-        } while (optionSaleNote != 3);
+        }
     }
 
     /**

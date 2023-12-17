@@ -22,8 +22,8 @@ public class ReportOfBusiness {
         this.profits = profits;
     }
 
-    public static float createEntrys(ArrayList<SaleNote> saleNotes,int yearReport,int monthReport) {
-        float entry=0;
+    public static float createEntrys(ArrayList<SaleNote> saleNotes, int yearReport, int monthReport) {
+        float entry = 0;
         int monthReportLimit = monthReport + 1;
         Date dateYearReport = new Date(yearReport - 1900, monthReport, 0);
         Date dateLimit = new Date(yearReport - 1900, monthReportLimit, 0);
@@ -36,7 +36,7 @@ public class ReportOfBusiness {
         return entry;
     }
 
-    public static float createSales(ArrayList<Invoice> invoices,int yearReport,int monthReport) {
+    public static float createSales(ArrayList<Invoice> invoices, int yearReport, int monthReport) {
         float sales = 0;
         int monthReportLimit = monthReport + 1;
         Date dateYearReport = new Date(yearReport - 1900, monthReport, 0);
@@ -49,42 +49,49 @@ public class ReportOfBusiness {
         }
         return sales;
     }
-    
-    public static ReportOfBusiness createAReport(ArrayList<ReportOfBusiness> reports,ArrayList<SaleNote> saleNotes,ArrayList<Invoice> invoices){
+
+    public static ReportOfBusiness createAReport(ArrayList<ReportOfBusiness> reports, ArrayList<SaleNote> saleNotes, ArrayList<Invoice> invoices) {
         System.out.println("Type the year that you want to see the report(In numbers)=");
         int yearReport = scan.nextInt();
         scan.nextLine();
         System.out.println("Type the month that you want to see the report(In numbers)=");
         int monthReport = scan.nextInt();
         scan.nextLine();
-        float entry=createEntrys(saleNotes, yearReport, monthReport);
-        float sale=createSales(invoices, yearReport, monthReport);
-        float profit=entry-sale;
-        return new ReportOfBusiness(entry, sale,profit);
+        float entry = createEntrys(saleNotes, yearReport, monthReport);
+        float sale = createSales(invoices, yearReport, monthReport);
+        float profit = entry - sale;
+        return new ReportOfBusiness(entry, sale, profit);
     }
 
-    
     public static void menuReportBusinness(ArrayList<ReportOfBusiness> reports) {
         UseJson<ReportOfBusiness> jsonUtilReport = new UseJson<>();
         reports = jsonUtilReport.readFile("reportdata.json", new TypeToken<ArrayList<ReportOfBusiness>>() {
         }.getType());
-        
+
         UseJson<SaleNote> jsonUtilSaleNotes = new UseJson<>();
         ArrayList<SaleNote> saleNotes = jsonUtilSaleNotes.readFile("salenotedata.json", new TypeToken<ArrayList<SaleNote>>() {
         }.getType());
-        
+
         UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
         ArrayList<Invoice> invoices = jsonUtilInvoice.readFile("invoicedata.json", new TypeToken<ArrayList<Invoice>>() {
         }.getType());
-        
-        int optionReport = 0;
-        do {
+
+        int optionReport;
+        while (true) {
             System.out.println("///////////Report////////");
             System.out.println("1.Get a new Report");
             System.out.println("2.Show the Reports");
-            System.out.println("3.Regresar al menu principal");
-            optionReport = scan.nextInt();
-            scan.nextLine();
+            System.out.println("3.Return to the main menu");
+
+            if (scan.hasNextInt()) {
+                optionReport = scan.nextInt();
+                scan.nextLine();  
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scan.nextLine();  
+                continue;  
+            }
+
             switch (optionReport) {
                 case 1:
                     reports.add(createAReport(reports, saleNotes, invoices));
@@ -94,11 +101,11 @@ public class ReportOfBusiness {
                     System.out.println("Products" + reports);
                     break;
                 case 3:
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid option. Please try again.");
             }
-        } while (optionReport != 3);
+        }
     }
 
     /**
@@ -147,7 +154,5 @@ public class ReportOfBusiness {
     public String toString() {
         return "ReportOfBusiness" + "-entry=" + entry + ", sale=" + sale + ", profits=" + profits + '\n';
     }
-
-
 
 }
