@@ -59,7 +59,7 @@ public class SaleNote {
             for (Client client : clients) {
                 System.out.println(client);
             }
-        int clientIndex = getScan().nextInt();
+                int clientIndex = getScan().nextInt();
         Client selectedClient = clients.get(clientIndex - 1);
 
         Date date = validatedate();
@@ -69,7 +69,11 @@ public class SaleNote {
         int option=0;
         do {
             System.out.println("2. Select a product (Type the id):");
-            System.out.println("Available products: " + products);
+            System.out.println("ID    Amount      Name             Cost");
+            System.out.println("----------------------------------------------");
+            for (Product product : products) {
+                System.out.println(product);
+            }
             int productIndex = getScan().nextInt();
             Product selectedProduct = products.get(productIndex - 1);
 
@@ -83,18 +87,21 @@ public class SaleNote {
                 getScan().nextLine();
                 deduceProduct(products, idAux, numberOfProducts);
             } while (productsAvailable < numberOfProducts);
-
+            Product productView=new Product(selectedProduct.getId(),selectedProduct.getAmount() , selectedProduct.getName(), selectedProduct.getCost());  
+            productView.setAmount(numberOfProducts);
             float costUnit = selectedProduct.getCost();
             boolean isNorth = selectedClient.isIsNorth();
             boolean isMajority = selectedClient.isIsMajority();
             if (isNorth == true) {
                 costUnit += 0.05f;
+                productView.setCost(costUnit);
             }
             if (isMajority == false) {
                 costUnit += 0.20f;
+                productView.setCost(costUnit);
             }
 
-            productsInSaleNote.add(selectedProduct);
+            productsInSaleNote.add(productView);
             totalValue += costUnit * numberOfProducts;
 
             System.out.println("Do you want to add more products? (1. Yes / 2. No)");
@@ -106,6 +113,7 @@ public class SaleNote {
         System.out.println("Sale Note created successfully!");
         showSaleNote(saleNote);
         return saleNote;
+
     }
 
     public static void deduceProduct(ArrayList<Product> products, int id, int numberOfProducts) {

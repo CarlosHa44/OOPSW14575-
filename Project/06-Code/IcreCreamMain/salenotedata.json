@@ -124,5 +124,59 @@
       }
     ],
     "totalValue": 1.0
+  },
+  {
+    "id": 7,
+    "client": {
+      "id": 7,
+      "name": "Carlos",
+      "email": "carlos.hidalgo234@gmail.com",
+      "cellphoneNumber": "0985868412",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Dec 5, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 26,
+        "amount": 3,
+        "name": "Crio Genio",
+        "cost": 0.3
+      }
+    ],
+    "totalValue": 0.90000004
+  },
+  {
+    "id": 8,
+    "client": {
+      "id": 7,
+      "name": "Carlos",
+      "email": "carlos.hidalgo234@gmail.com",
+      "cellphoneNumber": "0985868412",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Dec 4, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 28,
+        "amount": 4,
+        "name": "Mango",
+        "cost": 0.35000002
+      },
+      {
+        "id": 18,
+        "amount": 4,
+        "name": "Milky",
+        "cost": 0.25
+      },
+      {
+        "id": 27,
+        "amount": 5,
+        "name": "Pasion",
+        "cost": 0.35000002
+      }
+    ],
+    "totalValue": 4.15
   }
 ]

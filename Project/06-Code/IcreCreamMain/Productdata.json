@@ -103,7 +103,7 @@
   },
   {
     "id": 18,
-    "amount": 58,
+    "amount": 54,
     "name": "Milky",
     "cost": 0.2
   },
@@ -122,19 +122,19 @@
   {
     "id": 21,
     "amount": 40,
-    "name": "Gemelo L\\N ",
+    "name": "GemeloLN ",
     "cost": 0.3
   },
   {
     "id": 22,
     "amount": 40,
-    "name": "Gemelo L\\CH",
+    "name": "GemeloLCH",
     "cost": 0.3
   },
   {
     "id": 23,
     "amount": 65,
-    "name": "Paleta de agua",
+    "name": "Paleta",
     "cost": 0.15
   },
   {
@@ -151,19 +151,19 @@
   },
   {
     "id": 26,
-    "amount": 42,
+    "amount": 39,
     "name": "Crio Genio",
     "cost": 0.25
   },
   {
     "id": 27,
-    "amount": 35,
+    "amount": 30,
     "name": "Pasion",
     "cost": 0.3
   },
   {
     "id": 28,
-    "amount": 35,
+    "amount": 31,
     "name": "Mango",
     "cost": 0.3
   },
