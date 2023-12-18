@@ -134,7 +134,11 @@ public class Client {
                     jsonUtilClients.writeFile("clientdata.json", clients);
                     break;
                 case 3:
-                    System.out.println("array" + clients);
+                    System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
+                    System.out.println("-----------------------------------------------------------------------------------------");
+                        for (Client client : clients) {
+                            System.out.println(client);
+                        }
                     break;
                 case 4:
                     return;
@@ -146,7 +150,8 @@ public class Client {
 
     @Override
     public String toString() {
-        return "\nid=" + getId() + ", name=" + getName() + ", email=" + getEmail() + ", cellphoneNumber=" + getCellphoneNumber() + ", isNorth=" + isIsNorth() + ", isMajority=" + isIsMajority();
+        return String.format("%-5d %-15s %-30s %-16s %-10b %b",
+                getId(), getName(), getEmail(), getCellphoneNumber(), isIsNorth(), isIsMajority());
     }
 
     /**

@@ -51,7 +51,11 @@ public class Product {
                     jsonUtilProducts.writeFile("Productdata.json", products);
                     break;
                 case 2:
-                    System.out.println("Products" + products);
+                    System.out.println("ID    Amount      Name             Cost");
+                    System.out.println("----------------------------------------------");
+                        for (Product product : products) {
+                            System.out.println(product);
+                        }
                     break;
                 case 3:
                     return;
@@ -63,7 +67,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "id=" + getId() + "\tamount=" + getAmount() + "\tname=" + getName() + "\tCost=" + getCost()+"\n";
+        return String.format("%-5d %-10s %-18s %-12f",
+                getId(), getAmount(), getName(), getCost());
     }
 
     public int getId() {

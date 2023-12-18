@@ -45,7 +45,7 @@ public class SaleNote {
         System.out.println("\n////////Nota de venta//////////// ");
         System.out.println("Nota de Venta: " + saleNote.getId());
         System.out.println("Client: " + saleNote.client.getName() + "\tEmail:" + saleNote.client.getEmail());
-        System.out.println("Cellphone:" + saleNote.client.getCellphoneNumber()+"Date:"+saleNote.date.toString());
+        System.out.println("Cellphone:" + saleNote.client.getCellphoneNumber()+"\tDate: "+saleNote.date.toString());
         System.out.println("////Listado de Productos/////");
         System.out.println(saleNote.listOfProducts);
         System.out.println("Precio Final:" + saleNote.totalValue);
@@ -54,7 +54,11 @@ public class SaleNote {
     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products, ArrayList<SaleNote> saleNotes) {
         int idSaleNote = getActualId(saleNotes);
         System.out.println("1. Select a client (Type the id):");
-        System.out.println("Available clients: " + clients);
+        System.out.println("ID    Name            Email                         CellphoneNumber  isNorth  isMajority");
+        System.out.println("----------------------------------------------------------------------------------------");
+            for (Client client : clients) {
+                System.out.println(client);
+            }
         int clientIndex = getScan().nextInt();
         Client selectedClient = clients.get(clientIndex - 1);
 

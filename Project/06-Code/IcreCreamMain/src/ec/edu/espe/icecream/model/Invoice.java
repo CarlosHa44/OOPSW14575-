@@ -57,7 +57,11 @@ public class Invoice {
                 jsonUtilInvoice.writeFile("Invoicedata.json", invoices);
                 break;
             case 2:
-                System.out.println("array" + invoices);
+                System.out.println("ID    Date                                Value     ID     Amount     Name              Cost");
+                System.out.println("-------------------------------------------------------------------------------------------------");
+                        for (Invoice invoice : invoices) {
+                            System.out.println(invoice);
+                        }
                 break;
             case 3:
                 return;
@@ -69,7 +73,8 @@ public class Invoice {
 
     @Override
     public String toString() {
-        return "\n\tid=" + getId() + "\n\t dateI=" + getDateI() + "\n\t value=" + getValue() + "\n\t boxes=" + getBoxes();
+        return String.format("%-5d %-35s %-10.2f %s",
+            getId(), getDateI(), getValue(), getBoxes());
     }
 
     public int getId() {
@@ -108,6 +113,11 @@ public class Invoice {
         Product productAux;
         int idInvoice = getActualId(invoices);
         Date dateAux = validatedate();
+        System.out.println("ID    Amount      Name             Cost");
+        System.out.println("----------------------------------------------");
+            for (Product product : products) {
+                System.out.println(product);
+            }
         System.out.println("Ingrese el Id del producto a agregar");
         int idAux = scan.nextInt();
         scan.nextLine();
@@ -132,23 +142,23 @@ public class Invoice {
     }
 
     public static Product getProduct(ArrayList<Product> products, int id) {
-        Product productAux;
+            Product productAux;
         for (Product currentProduct : products) {
-            int idProduct = currentProduct.getId();
-            if (idProduct == id) {
-                String nameProduct = currentProduct.getName();
-                int actualAmount = currentProduct.getAmount();
-                System.out.println("Su producto es-->" + nameProduct);
-                System.out.println("Ingrese la cantidad que desea ingresar");
-                int amountProduct = scan.nextInt();
-                scan.nextLine();
-                productAux = currentProduct;
-                currentProduct.setAmount(actualAmount + amountProduct);
-                return productAux;
-            }
+        int idProduct = currentProduct.getId();
+        if (idProduct == id) {
+            String nameProduct = currentProduct.getName();
+            int actualAmount = currentProduct.getAmount();
+            System.out.printf("Su producto es -->" + nameProduct);
+            System.out.println("\nIngrese la cantidad que desea ingresar ");
+            int amountProduct = scan.nextInt();
+            scan.nextLine();
+            productAux = currentProduct;
+            currentProduct.setAmount(actualAmount + amountProduct);
+            return productAux;
         }
-        System.out.println("Id no encontrado");
-        return null;
+    }
+    System.out.println("ID not found");
+    return null;
     }
 
     public static int getActualId(ArrayList<Invoice> invoices) {
