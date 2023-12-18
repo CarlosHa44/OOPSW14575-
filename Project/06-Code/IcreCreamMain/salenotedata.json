@@ -178,5 +178,26 @@
       }
     ],
     "totalValue": 4.15
+  },
+  {
+    "id": 9,
+    "client": {
+      "id": 9,
+      "name": "Marcos",
+      "email": "marcos.cocha6589@gmail.com",
+      "cellphoneNumber": "0963363521",
+      "isNorth": true,
+      "isMajority": true
+    },
+    "date": "Dec 5, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 29,
+        "amount": 2,
+        "name": "Maracuya",
+        "cost": 0.35000002
+      }
+    ],
+    "totalValue": 0.70000005
   }
 ]

@@ -53,9 +53,7 @@ public class Product {
                 case 2:
                     System.out.println("ID    Amount      Name             Cost");
                     System.out.println("----------------------------------------------");
-                        for (Product product : products) {
-                            System.out.println(product);
-                        }
+                    System.out.println(products);
                     break;
                 case 3:
                     return;
@@ -67,9 +65,10 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("%-5d %-10s %-18s %-12f",
-                getId(), getAmount(), getName(), getCost());
+        return "id=" + id + "\tamount=" + amount + "\tname=" + name + "\tcost=" + cost + "\n";
     }
+
+
 
     public int getId() {
         return id;

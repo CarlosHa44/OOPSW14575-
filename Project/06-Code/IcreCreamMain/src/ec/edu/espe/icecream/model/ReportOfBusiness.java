@@ -27,10 +27,10 @@ public class ReportOfBusiness {
         int monthReportLimit = monthReport + 1;
         Date dateYearReport = new Date(yearReport - 1900, monthReport, 0);
         Date dateLimit = new Date(yearReport - 1900, monthReportLimit, 0);
-        for (SaleNote currentSale : saleNotes) {
-            Date dateOfSale = currentSale.getDate();
+        for (SaleNote currentEntry : saleNotes) {
+            Date dateOfSale = currentEntry.getDate();
             if (dateOfSale.after(dateYearReport) && dateOfSale.before(dateLimit)) {
-                entry += currentSale.getTotalValue();
+                entry += currentEntry.getTotalValue();
             }
         }
         return entry;

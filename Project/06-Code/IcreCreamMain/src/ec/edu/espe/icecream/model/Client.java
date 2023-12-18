@@ -1,7 +1,7 @@
 package ec.edu.espe.icecream.model;
 
-import static ec.edu.espe.icecream.model.Invoice.scan;
 import com.google.gson.reflect.TypeToken;
+import static ec.edu.espe.icecream.model.SaleNote.getScan;
 import ec.edu.espe.icecream.utils.UseJson;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -115,12 +115,12 @@ public class Client {
             System.out.println("3.Show Clients");
             System.out.println("4.Return to the main menu");
 
-            if (scan.hasNextInt()) {
-                optionClient = scan.nextInt();
-                scan.nextLine();  
+            if (getScan().hasNextInt()) {
+                optionClient = getScan().nextInt();
+                getScan().nextLine();  
             } else {
                 System.out.println("Invalid input. Please enter a number.");
-                scan.nextLine();  
+                getScan().nextLine();  
                 continue;  
             }
 

@@ -145,13 +145,13 @@
   },
   {
     "id": 25,
-    "amount": 32,
+    "amount": 37,
     "name": "Batu",
     "cost": 0.38
   },
   {
     "id": 26,
-    "amount": 39,
+    "amount": 40,
     "name": "Crio Genio",
     "cost": 0.25
   },
@@ -163,13 +163,13 @@
   },
   {
     "id": 28,
-    "amount": 31,
+    "amount": 40,
     "name": "Mango",
     "cost": 0.3
   },
   {
     "id": 29,
-    "amount": 35,
+    "amount": 38,
     "name": "Maracuya",
     "cost": 0.3
   }

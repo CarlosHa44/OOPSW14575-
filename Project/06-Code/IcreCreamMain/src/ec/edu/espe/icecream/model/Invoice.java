@@ -13,68 +13,62 @@ import java.util.Scanner;
  */
 public class Invoice {
 
-    static Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
     private int id;
     private Date dateI;
     private float value;
-    private Product boxes;
+    private ArrayList<Product> boxes;
 
-    public Invoice(int id, Date dateI, float value, Product boxes) {
+    public Invoice(int id, Date dateI, float value, ArrayList<Product> boxes) {
         this.id = id;
         this.dateI = dateI;
         this.value = value;
         this.boxes = boxes;
     }
-    
-    
+
     public static void menuInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
-    UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
-    invoices = jsonUtilInvoice.readFile("Invoicedata.json", new TypeToken<ArrayList<Invoice>>() {}.getType());
-    UseJson<Product> jsonUtilProducts = new UseJson<>();
-    products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {}.getType());
-    
-    int optionInvoice;
-    while (true) {
-        System.out.println("//////////Invoice/////////");
-        System.out.println("1.Add a new invoice");
-        System.out.println("2.Show an invoice");
-        System.out.println("3.Return to the main menu");
+        UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
+        invoices = jsonUtilInvoice.readFile("Invoicedata.json", new TypeToken<ArrayList<Invoice>>() {
+        }.getType());
+        UseJson<Product> jsonUtilProducts = new UseJson<>();
+        products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {
+        }.getType());
 
-        // Verificar si la entrada es un número
-        if (scan.hasNextInt()) {
-            optionInvoice = scan.nextInt();
-            scan.nextLine(); 
-        } else {
-            System.out.println("Invalid input. Please enter a number.");
-            scan.nextLine();  
-            continue;  
+        int optionInvoice;
+        while (true) {
+            System.out.println("//////////Invoice/////////");
+            System.out.println("1.Add a new invoice");
+            System.out.println("2.Show an invoice");
+            System.out.println("3.Return to the main menu");
+
+            // Verificar si la entrada es un número
+            if (getScan().hasNextInt()) {
+                optionInvoice = getScan().nextInt();
+                getScan().nextLine();
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                getScan().nextLine();
+                continue;
+            }
+
+            switch (optionInvoice) {
+                case 1:
+                    invoices.add(Invoice.addInvoice(invoices, products));
+                    jsonUtilProducts.writeFile("Productdata.json", products);
+                    jsonUtilInvoice.writeFile("Invoicedata.json", invoices);
+                    break;
+                case 2:
+                    System.out.println("Listado");
+                    for(Invoice currentInvoice:invoices){
+                       showInvoice(currentInvoice);
+                    }
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
         }
-
-        switch (optionInvoice) {
-            case 1:
-                invoices.add(Invoice.addInvoice(invoices, products));
-                jsonUtilProducts.writeFile("Productdata.json", products);
-                jsonUtilInvoice.writeFile("Invoicedata.json", invoices);
-                break;
-            case 2:
-                System.out.println("ID    Date                                Value     ID     Amount     Name              Cost");
-                System.out.println("-------------------------------------------------------------------------------------------------");
-                        for (Invoice invoice : invoices) {
-                            System.out.println(invoice);
-                        }
-                break;
-            case 3:
-                return;
-            default:
-                System.out.println("Invalid option. Please try again.");
-        }
-    }
-}
-
-    @Override
-    public String toString() {
-        return String.format("%-5d %-35s %-10.2f %s",
-            getId(), getDateI(), getValue(), getBoxes());
     }
 
     public int getId() {
@@ -101,34 +95,27 @@ public class Invoice {
         this.value = value;
     }
 
-    public Product getBoxes() {
+    public ArrayList<Product> getBoxes() {
         return boxes;
     }
 
-    public void setBoxes(Product boxes) {
+    public void setBoxes(ArrayList<Product> boxes) {
         this.boxes = boxes;
     }
 
-    public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
-        Product productAux;
-        int idInvoice = getActualId(invoices);
-        Date dateAux = validatedate();
-        System.out.println("ID    Amount      Name             Cost");
-        System.out.println("----------------------------------------------");
-            for (Product product : products) {
-                System.out.println(product);
-            }
-        System.out.println("Ingrese el Id del producto a agregar");
-        int idAux = scan.nextInt();
-        scan.nextLine();
-        productAux = getProduct(products, idAux);
-        int currentAmount = productAux.getAmount();
-        addAmount(products, idAux, currentAmount);
-        System.out.println("Ingrese el precio unitario mayorista");
-        float unitCost = scan.nextFloat();
-        scan.nextLine();
-        float value = currentAmount * unitCost;
-        return new Invoice(idInvoice, dateAux, value, productAux);
+    public static Scanner getScan() {
+        return scan;
+    }
+
+    public static void setScan(Scanner aScan) {
+        scan = aScan;
+    }
+    public static void showInvoice(Invoice Invoice) {
+        System.out.println("\n////////Factura//////////// ");
+        System.out.println("Nota de Venta: " + Invoice.getId()+ "\tDate:"+Invoice.getDateI());
+        System.out.println("////Listado de Productos/////");
+        System.out.println(Invoice.boxes);
+        System.out.println("Precio Final:" + Invoice.value);
     }
 
     public static void addAmount(ArrayList<Product> products, int id, int amount) {
@@ -141,31 +128,48 @@ public class Invoice {
         }
     }
 
-    public static Product getProduct(ArrayList<Product> products, int id) {
-            Product productAux;
-        for (Product currentProduct : products) {
-        int idProduct = currentProduct.getId();
-        if (idProduct == id) {
-            String nameProduct = currentProduct.getName();
-            int actualAmount = currentProduct.getAmount();
-            System.out.printf("Su producto es -->" + nameProduct);
-            System.out.println("\nIngrese la cantidad que desea ingresar ");
-            int amountProduct = scan.nextInt();
-            scan.nextLine();
-            productAux = currentProduct;
-            currentProduct.setAmount(actualAmount + amountProduct);
-            return productAux;
-        }
-    }
-    System.out.println("ID not found");
-    return null;
-    }
-
     public static int getActualId(ArrayList<Invoice> invoices) {
         int actualId = 0;
         for (Invoice invoiceCurrent : invoices) {
             actualId = invoiceCurrent.getId();
         }
         return actualId + 1;
+    }
+     public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
+        int idInvoice = getActualId(invoices);
+        Date date = validatedate();
+        ArrayList<Product> productsInvoice = new ArrayList<>();
+        int option;
+        float totalValue=0;
+        do {
+            System.out.println("2. Select a product (Type the id):");
+            System.out.println("ID    Amount      Name             Cost");
+            System.out.println("----------------------------------------------");
+            for (Product product : products) {
+                System.out.println(product);
+            }
+            int productIndex = getScan().nextInt();
+            Product selectedProduct = products.get(productIndex - 1);
+            int idAux = selectedProduct.getId();
+            int numberOfProducts;
+            System.out.println("Enter the number of products:");
+            numberOfProducts = getScan().nextInt();
+            getScan().nextLine();
+            addAmount(products, idAux, numberOfProducts);
+            System.out.println("Ingrese el precio unitario mayorista");
+            float unitCost = getScan().nextFloat();
+            getScan().nextLine();
+            Product productView=new Product(selectedProduct.getId(),selectedProduct.getAmount() , selectedProduct.getName(), selectedProduct.getCost());
+            productView.setAmount(numberOfProducts);
+            productView.setCost(unitCost);
+            productsInvoice.add(productView);
+            totalValue+=unitCost*numberOfProducts;
+            System.out.println("Do you want to add more products? (1. Yes / 2. No)");
+            option = getScan().nextInt();
+            getScan().nextLine();
+        } while (option != 2);
+        Invoice invoice=new Invoice(idInvoice, date, totalValue,productsInvoice);
+        showInvoice(invoice);
+        return invoice;
     }
 }
