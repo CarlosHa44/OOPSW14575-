@@ -85,9 +85,8 @@ public class SaleNote {
             System.out.println("2. Select a product (Type the id):");
             System.out.println("ID    Amount      Name             Cost");
             System.out.println("----------------------------------------------");
-            for (Product product : products) {
-                System.out.println(product);
-            }
+            System.out.println(products);
+            
 
             int productIndex;
             while (true) {
