@@ -45,7 +45,7 @@ public class SaleNote {
         System.out.println("\n////////Nota de venta//////////// ");
         System.out.println("Nota de Venta: " + saleNote.getId());
         System.out.println("Client: " + saleNote.client.getName() + "\tEmail:" + saleNote.client.getEmail());
-        System.out.println("Cellphone:" + saleNote.client.getCellphoneNumber()+"\tDate: "+saleNote.date.toString());
+        System.out.println("Cellphone:" + saleNote.client.getCellphoneNumber() + "\tDate: " + saleNote.date.toString());
         System.out.println("////Listado de Productos/////");
         System.out.println(saleNote.listOfProducts);
         System.out.println("Precio Final:" + saleNote.totalValue);
@@ -53,50 +53,84 @@ public class SaleNote {
 
     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products, ArrayList<SaleNote> saleNotes) {
         int idSaleNote = getActualId(saleNotes);
+
+        // Selección del cliente
         System.out.println("1. Select a client (Type the id):");
         System.out.println("ID    Name            Email                         CellphoneNumber  isNorth  isMajority");
         System.out.println("----------------------------------------------------------------------------------------");
-            for (Client client : clients) {
-                System.out.println(client);
+        for (Client client : clients) {
+            System.out.println(client);
+        }
+
+        int clientIndex;
+        while (true) {
+            try {
+                System.out.println("Enter the client index:");
+                clientIndex = Integer.parseInt(getScan().nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
             }
-                int clientIndex = getScan().nextInt();
+        }
+
         Client selectedClient = clients.get(clientIndex - 1);
 
         Date date = validatedate();
-
         ArrayList<Product> productsInSaleNote = new ArrayList<>();
         float totalValue = 0;
-        int option=0;
+        int option = 0;
+
         do {
+            // Selección del producto
             System.out.println("2. Select a product (Type the id):");
             System.out.println("ID    Amount      Name             Cost");
             System.out.println("----------------------------------------------");
             for (Product product : products) {
                 System.out.println(product);
             }
-            int productIndex = getScan().nextInt();
+
+            int productIndex;
+            while (true) {
+                try {
+                    System.out.println("Enter the product index:");
+                    productIndex = Integer.parseInt(getScan().nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            }
+
             Product selectedProduct = products.get(productIndex - 1);
-
             int idAux = selectedProduct.getId();
-
             int productsAvailable = selectedProduct.getAmount();
             int numberOfProducts;
+
             do {
-                System.out.println("Enter the number of products:");
-                numberOfProducts = getScan().nextInt();
-                getScan().nextLine();
+                while (true) {
+                    try {
+                        System.out.println("Enter the number of products:");
+                        numberOfProducts = Integer.parseInt(getScan().nextLine());
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid number.");
+                    }
+                }
                 deduceProduct(products, idAux, numberOfProducts);
             } while (productsAvailable < numberOfProducts);
-            Product productView=new Product(selectedProduct.getId(),selectedProduct.getAmount() , selectedProduct.getName(), selectedProduct.getCost());  
+
+            // Creación del producto en la venta
+            Product productView = new Product(selectedProduct.getId(), selectedProduct.getAmount(), selectedProduct.getName(), selectedProduct.getCost());
             productView.setAmount(numberOfProducts);
             float costUnit = selectedProduct.getCost();
             boolean isNorth = selectedClient.isIsNorth();
             boolean isMajority = selectedClient.isIsMajority();
-            if (isNorth == true) {
+
+            // Aplicación de descuentos según las condiciones
+            if (isNorth) {
                 costUnit += 0.05f;
                 productView.setCost(costUnit);
             }
-            if (isMajority == false) {
+            if (!isMajority) {
                 costUnit += 0.20f;
                 productView.setCost(costUnit);
             }
@@ -105,15 +139,21 @@ public class SaleNote {
             totalValue += costUnit * numberOfProducts;
 
             System.out.println("Do you want to add more products? (1. Yes / 2. No)");
-            option = getScan().nextInt();
-            getScan().nextLine();
+
+            while (true) {
+                try {
+                    option = Integer.parseInt(getScan().nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            }
         } while (option != 2);
 
         SaleNote saleNote = new SaleNote(idSaleNote, selectedClient, date, productsInSaleNote, totalValue);
         System.out.println("Sale Note created successfully!");
         showSaleNote(saleNote);
         return saleNote;
-
     }
 
     public static void deduceProduct(ArrayList<Product> products, int id, int numberOfProducts) {
@@ -168,8 +208,8 @@ public class SaleNote {
                     break;
                 case 2:
                     System.out.println("Listado");
-                    for(SaleNote currentSaleNote:saleNotes){
-                       showSaleNote(currentSaleNote);
+                    for (SaleNote currentSaleNote : saleNotes) {
+                        showSaleNote(currentSaleNote);
                     }
                     break;
                 case 3:

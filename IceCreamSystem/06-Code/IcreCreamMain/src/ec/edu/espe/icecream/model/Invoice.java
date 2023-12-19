@@ -59,8 +59,8 @@ public class Invoice {
                     break;
                 case 2:
                     System.out.println("Listado");
-                    for(Invoice currentInvoice:invoices){
-                       showInvoice(currentInvoice);
+                    for (Invoice currentInvoice : invoices) {
+                        showInvoice(currentInvoice);
                     }
                     break;
                 case 3:
@@ -110,9 +110,10 @@ public class Invoice {
     public static void setScan(Scanner aScan) {
         scan = aScan;
     }
+
     public static void showInvoice(Invoice Invoice) {
         System.out.println("\n////////Factura//////////// ");
-        System.out.println("Nota de Venta: " + Invoice.getId()+ "\tDate:"+Invoice.getDateI());
+        System.out.println("Nota de Venta: " + Invoice.getId() + "\tDate:" + Invoice.getDateI());
         System.out.println("////Listado de Productos/////");
         System.out.println(Invoice.boxes);
         System.out.println("Precio Final:" + Invoice.value);
@@ -135,12 +136,14 @@ public class Invoice {
         }
         return actualId + 1;
     }
-     public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
+
+    public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
         int idInvoice = getActualId(invoices);
         Date date = validatedate();
         ArrayList<Product> productsInvoice = new ArrayList<>();
         int option;
-        float totalValue=0;
+        float totalValue = 0;
+
         do {
             System.out.println("2. Select a product (Type the id):");
             System.out.println("ID    Amount      Name             Cost");
@@ -148,27 +151,63 @@ public class Invoice {
             for (Product product : products) {
                 System.out.println(product);
             }
-            int productIndex = getScan().nextInt();
+
+            int productIndex;
+            while (true) {
+                try {
+                    System.out.println("Enter the product index:");
+                    productIndex = Integer.parseInt(getScan().nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            }
+
             Product selectedProduct = products.get(productIndex - 1);
             int idAux = selectedProduct.getId();
             int numberOfProducts;
-            System.out.println("Enter the number of products:");
-            numberOfProducts = getScan().nextInt();
-            getScan().nextLine();
+
+            while (true) {
+                try {
+                    System.out.println("Enter the number of products:");
+                    numberOfProducts = Integer.parseInt(getScan().nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            }
+
             addAmount(products, idAux, numberOfProducts);
-            System.out.println("Ingrese el precio unitario mayorista");
-            float unitCost = getScan().nextFloat();
-            getScan().nextLine();
-            Product productView=new Product(selectedProduct.getId(),selectedProduct.getAmount() , selectedProduct.getName(), selectedProduct.getCost());
-            productView.setAmount(numberOfProducts);
-            productView.setCost(unitCost);
+            float unitCost;
+
+            while (true) {
+                try {
+                    System.out.println("Enter the unit cost:");
+                    unitCost = Float.parseFloat(getScan().nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            }
+
+            Product productView = new Product(selectedProduct.getId(), numberOfProducts, selectedProduct.getName(), unitCost);
             productsInvoice.add(productView);
-            totalValue+=unitCost*numberOfProducts;
+            totalValue += unitCost * numberOfProducts;
+
             System.out.println("Do you want to add more products? (1. Yes / 2. No)");
-            option = getScan().nextInt();
-            getScan().nextLine();
+
+            while (true) {
+                try {
+                    option = Integer.parseInt(getScan().nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            }
+
         } while (option != 2);
-        Invoice invoice=new Invoice(idInvoice, date, totalValue,productsInvoice);
+
+        Invoice invoice = new Invoice(idInvoice, date, totalValue, productsInvoice);
         showInvoice(invoice);
         return invoice;
     }
