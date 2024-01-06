@@ -1,7 +1,10 @@
 package ec.edu.espe.icecream.model;
 
 import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.icecream.utils.UseCsv;
 import ec.edu.espe.icecream.utils.UseJson;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,6 +31,9 @@ public class Product {
         UseJson<Product> jsonUtilProducts = new UseJson<>();
         products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {
         }.getType());
+        UseCsv csvUtil = new UseCsv();
+
+        
 
         int optionInventory;
         while (true) {
@@ -38,22 +44,26 @@ public class Product {
 
             if (scan.hasNextInt()) {
                 optionInventory = scan.nextInt();
-                scan.nextLine();  
+                scan.nextLine();
             } else {
                 System.out.println("Invalid input. Please enter a number.");
-                scan.nextLine();  
-                continue;  
+                scan.nextLine();
+                continue;
             }
 
             switch (optionInventory) {
                 case 1:
                     products.add(Inventory.addProduct(products));
                     jsonUtilProducts.writeFile("Productdata.json", products);
+                    csvUtil.saveToCSV(products, "Productdata.csv");
+
                     break;
                 case 2:
                     System.out.println("ID    Amount      Name             Cost");
                     System.out.println("----------------------------------------------");
                     System.out.println(products);
+                    csvUtil.saveToCSV(products, "Productdata.csv");
+
                     break;
                 case 3:
                     return;
@@ -67,8 +77,6 @@ public class Product {
     public String toString() {
         return "id=" + id + "\tamount=" + amount + "\tname=" + name + "\tcost=" + cost + "\n";
     }
-
-
 
     public int getId() {
         return id;

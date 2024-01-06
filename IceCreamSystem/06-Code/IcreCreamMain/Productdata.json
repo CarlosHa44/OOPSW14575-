@@ -172,5 +172,53 @@
     "amount": 38,
     "name": "Maracuya",
     "cost": 0.3
+  },
+  {
+    "id": 30,
+    "amount": 12,
+    "name": "marmoleado",
+    "cost": 0.25
+  },
+  {
+    "id": 31,
+    "amount": 134,
+    "name": "Ola ola",
+    "cost": 0.57
+  },
+  {
+    "id": 32,
+    "amount": 1,
+    "name": "OLA OLA",
+    "cost": 0.5
+  },
+  {
+    "id": 33,
+    "amount": 12,
+    "name": "Milky",
+    "cost": 0.2
+  },
+  {
+    "id": 34,
+    "amount": 123,
+    "name": "Mora",
+    "cost": 0.4
+  },
+  {
+    "id": 35,
+    "amount": 125,
+    "name": "Sabores",
+    "cost": 0.5
+  },
+  {
+    "id": 36,
+    "amount": 123,
+    "name": "Sabores",
+    "cost": 0.5
+  },
+  {
+    "id": 37,
+    "amount": 400,
+    "name": "Cheese",
+    "cost": 2.5
   }
 ]
