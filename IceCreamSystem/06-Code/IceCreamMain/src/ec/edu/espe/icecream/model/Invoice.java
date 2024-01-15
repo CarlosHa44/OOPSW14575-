@@ -156,34 +156,37 @@ public class Invoice {
             boolean inputvalidation;
             while (true) {
                 try {
-                    do{
-                    System.out.println("Enter the product index:");
-                    productIndex = Integer.parseInt(getScan().nextLine());
-                    if(productIndex > products.size() ){
-                        inputvalidation = false;
-                        System.out.println("Please enter the product correct id");
-                    }else{
-                        inputvalidation = true;
-                        
-                    }
-                    }while(!inputvalidation);
-                  break;  
-                
+                    do {
+                        System.out.println("Enter the product index:");
+                        productIndex = Integer.parseInt(getScan().nextLine());
+                        if (productIndex > products.size()) {
+                            inputvalidation = false;
+                            System.out.println("Please enter the product correct id");
+                        } else {
+                            inputvalidation = true;
+
+                        }
+                    } while (!inputvalidation);
+                    break;
+
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input. Please enter a valid number.");
                 }
             }
-            
+
             Product selectedProduct = products.get(productIndex - 1);
             int idAux = selectedProduct.getId();
             int numberOfProducts;
-            
 
             while (true) {
                 try {
                     System.out.println("Enter the number of products:");
                     numberOfProducts = Integer.parseInt(getScan().nextLine());
-                    break;
+                    if (numberOfProducts > 0 && numberOfProducts <= selectedProduct.getAmount()) {
+                        break;
+                    } else {
+                        System.out.println("Invalid input. Please enter a valid number of products.");
+                    }
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input. Please enter a valid number.");
                 }
@@ -196,7 +199,13 @@ public class Invoice {
                 try {
                     System.out.println("Enter the unit cost:");
                     unitCost = Float.parseFloat(getScan().nextLine());
-                    break;
+                    if (unitCost > 0 && unitCost == selectedProduct.getCost()) {
+                        break;
+                    } else {
+                        System.out.println("Invalid input. Please enter a valid cost of products.");
+
+                    }
+
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input. Please enter a valid number.");
                 }
@@ -211,7 +220,11 @@ public class Invoice {
             while (true) {
                 try {
                     option = Integer.parseInt(getScan().nextLine());
-                    break;
+                    if (option >= 1 && option <=2 ){
+                        break;
+                    }else{
+                        System.out.println("Please enter a valid number");
+                    }
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input. Please enter a valid number.");
                 }

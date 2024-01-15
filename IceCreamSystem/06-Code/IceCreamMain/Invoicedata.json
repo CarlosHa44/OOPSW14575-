@@ -43,5 +43,37 @@
         "cost": 0.21
       }
     ]
+  },
+  {
+    "id": 4,
+    "dateI": "Feb 3, 2023, 12:00:00 AM",
+    "value": 0.5,
+    "boxes": [
+      {
+        "id": 32,
+        "amount": 1,
+        "name": "OLA OLA",
+        "cost": 0.5
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "dateI": "Feb 3, 2023, 12:00:00 AM",
+    "value": 6.5,
+    "boxes": [
+      {
+        "id": 32,
+        "amount": 1,
+        "name": "OLA OLA",
+        "cost": 0.5
+      },
+      {
+        "id": 27,
+        "amount": 20,
+        "name": "Pasion",
+        "cost": 0.3
+      }
+    ]
   }
 ]
