@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
-
+/**
+ *
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
+ */
 public class UseJson<T> {
 
     public ArrayList<T> readFile(String fileAddress, Type type) {

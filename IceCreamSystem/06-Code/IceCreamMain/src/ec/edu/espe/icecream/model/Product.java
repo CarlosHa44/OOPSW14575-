@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Carlos
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class Product {
 

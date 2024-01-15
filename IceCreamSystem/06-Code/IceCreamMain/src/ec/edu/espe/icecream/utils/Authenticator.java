@@ -2,7 +2,7 @@ package ec.edu.espe.icecream.utils;
 import java.util.Scanner;
 /**
  *
- * @author mateo
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class Authenticator {
     private static final String allowedUsername = "WiliamGranda";

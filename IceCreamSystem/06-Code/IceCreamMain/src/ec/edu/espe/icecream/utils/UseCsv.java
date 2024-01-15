@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Juan Granda
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class UseCsv {
     public static void saveToCSV(ArrayList<Product> products, String fileName) {

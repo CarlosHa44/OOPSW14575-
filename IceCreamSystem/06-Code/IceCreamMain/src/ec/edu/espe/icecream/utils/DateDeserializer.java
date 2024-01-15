@@ -7,6 +7,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+/**
+ *
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
+ */
 
 public class DateDeserializer implements JsonDeserializer<Date> {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy, hh:mm:ss a", Locale.ENGLISH);
