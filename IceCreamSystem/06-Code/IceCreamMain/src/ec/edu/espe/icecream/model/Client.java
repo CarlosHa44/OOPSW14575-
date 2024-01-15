@@ -72,8 +72,31 @@ public class Client {
 
     public static void editClient(ArrayList<Client> clients) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the customer id to edit");
-        int idToEdit = scan.nextInt();
+        System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
+        System.out.println("-----------------------------------------------------------------------------------------");
+        for (Client client : clients) {
+            System.out.println(client);
+        }
+        int idToEdit;
+        boolean inputvalidation;
+        
+        while (true) {
+                try {
+                    do {
+                        System.out.println("Enter the customer id to edit:");
+                        idToEdit = Integer.parseInt(getScan().nextLine());
+                        if (idToEdit > clients.size()) {
+                            inputvalidation = false;
+                            System.out.println("Please, Enter the customer id to edit");
+                        } else {
+                            inputvalidation = true;
+                        }
+                    } while (!inputvalidation);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Enter the customer id to edit");
+                }
+            }
         scan.nextLine();
 
         for (Client client : clients) {
@@ -117,11 +140,11 @@ public class Client {
 
             if (getScan().hasNextInt()) {
                 optionClient = getScan().nextInt();
-                getScan().nextLine();  
+                getScan().nextLine();
             } else {
                 System.out.println("Invalid input. Please enter a number.");
-                getScan().nextLine();  
-                continue;  
+                getScan().nextLine();
+                continue;
             }
 
             switch (optionClient) {
@@ -136,9 +159,9 @@ public class Client {
                 case 3:
                     System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
                     System.out.println("-----------------------------------------------------------------------------------------");
-                        for (Client client : clients) {
-                            System.out.println(client);
-                        }
+                    for (Client client : clients) {
+                        System.out.println(client);
+                    }
                     break;
                 case 4:
                     return;
@@ -150,7 +173,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return String.format("%-5d %-15s %-30s %-16s %-10b %b",
+        return String.format("\n%-5d %-15s %-30s %-16s %-10b %b",
                 getId(), getName(), getEmail(), getCellphoneNumber(), isIsNorth(), isIsMajority());
     }
 
