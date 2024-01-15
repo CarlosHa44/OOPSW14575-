@@ -3,14 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/model/Inventory.java</file>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/view/IceCreamSystem.java</file>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/model/Client.java</file>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/utils/Dates.java</file>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/utils/Authenticator.java</file>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/model/Product.java</file>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/utils/UseCsv.java</file>
-            <file>file:/C:/Users/WILLIAM/Desktop/Juan%20Granda/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/utils/UseJson.java</file>
+            <file>file:/C:/Users/Lenovo/espeprojectjosue/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/model/Inventory.java</file>
+            <file>file:/C:/Users/Lenovo/espeprojectjosue/OOPSW14575-ERROR404/IceCreamSystem/06-Code/IcreCreamMain/src/ec/edu/espe/icecream/model/Invoice.java</file>
         </group>
     </open-files>
 </project-private>
