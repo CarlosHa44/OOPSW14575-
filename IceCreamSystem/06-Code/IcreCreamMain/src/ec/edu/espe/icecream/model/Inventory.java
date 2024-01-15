@@ -9,6 +9,7 @@ import java.util.Scanner;
  * @author Carlos
  */
 public class Inventory {
+
     private int id;
 
     public Inventory(int id) {
@@ -40,17 +41,33 @@ public class Inventory {
                 System.out.println("Enter the number of products you want to add");
                 amountaux = scan.nextInt();
                 scan.nextLine();
-                System.out.println("Enter the product name");
-                nameaux = scan.nextLine();
-                System.out.println("Enter the cost of the product");
-                costaux = scan.nextFloat();
-                if (costaux < 0.0) {
-                    System.out.println("An error occurred");
-                    inputValid = false;
-                } else {
-                    inputValid = true;
-                    scan.nextLine();
-                }
+                do {
+                    System.out.println("Enter the product name");
+                    nameaux = scan.nextLine();
+                    if (!nameaux.matches("[a-zA-Z]+")) {
+                        System.out.println("Please enter only letters for the product name.");
+                        inputValid = false;
+                    } else {
+                        inputValid = true;
+                    }
+                } while (!inputValid);
+                do {
+                    System.out.println("Enter the cost of the product");
+                    if (scan.hasNextFloat()) {
+                        costaux = scan.nextFloat();
+                        if (costaux < 0.0) {
+                            System.out.println("Error: Cost cannot be negative. Please enter a valid cost.");
+                            inputValid = false;
+                        } else {
+                            inputValid = true;
+                            scan.nextLine();
+                        }
+                    } else {
+                        System.out.println("Error: Please enter a valid number.");
+                        inputValid = false;
+                        scan.next();
+                    }
+                } while (!inputValid);
             } catch (InputMismatchException e) {
                 System.out.println("An error occurred");
                 inputValid = false;
