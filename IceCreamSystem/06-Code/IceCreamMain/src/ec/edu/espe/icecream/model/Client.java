@@ -49,8 +49,17 @@ public class Client {
 
         do {
             try {
-                System.out.println("Enter the customer name");
-                name = scan.nextLine();
+
+                do {
+                    System.out.println("Enter the new name");
+                    name = scan.nextLine();
+                    if (!name.matches("[a-zA-Z]+")) {
+                        System.out.println("Please, Enter the customer name.");
+                        inputValid = false;
+                    } else {
+                        inputValid = true;
+                    }
+                } while (!inputValid);
                 System.out.println("Enter the customer's email");
                 email = scan.nextLine();
                 System.out.println("Enter the customer's phone number");
@@ -72,6 +81,7 @@ public class Client {
 
     public static void editClient(ArrayList<Client> clients) {
         Scanner scan = new Scanner(System.in);
+        String newName;
         System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
         System.out.println("-----------------------------------------------------------------------------------------");
         for (Client client : clients) {
@@ -97,12 +107,18 @@ public class Client {
                     System.out.println("Invalid input. Enter the customer id to edit");
                 }
             }
-        scan.nextLine();
-
-        for (Client client : clients) {
+      for (Client client : clients) {
             if (client.getId() == idToEdit) {
-                System.out.println("Enter the new name");
-                String newName = scan.nextLine();
+                do {
+                    System.out.println("Enter the new name");
+                    newName = scan.nextLine();
+                    if (!newName.matches("[a-zA-Z]+")) {
+                        System.out.println("Please, Enter the customer name.");
+                        inputvalidation = false;
+                    } else {
+                        inputvalidation = true;
+                    }
+                } while (!inputvalidation);
                 client.setName(newName);
                 System.out.println("Enter the new email");
                 String newEmail = scan.nextLine();
