@@ -1,11 +1,11 @@
-package ec.edu.espe.icecream.model;
+package ec.edu.espe.icecreamdeve.model;
 
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import static ec.edu.espe.icecream.utils.Dates.validatedate;
-import ec.edu.espe.icecream.utils.UseJson;
+import static ec.edu.espe.icecreamdeve.utils.Dates.validatedate;
+import ec.edu.espe.icecreamdeve.utils.UseJson;
 
 /**
  *

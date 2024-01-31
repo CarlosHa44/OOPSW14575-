@@ -1,8 +1,8 @@
-package ec.edu.espe.icecream.model;
+package ec.edu.espe.icecreamdeve.model;
 
 import com.google.gson.reflect.TypeToken;
-import static ec.edu.espe.icecream.model.Product.scan;
-import ec.edu.espe.icecream.utils.UseJson;
+import static ec.edu.espe.icecreamdeve.model.Product.scan;
+import ec.edu.espe.icecreamdeve.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Date;
 

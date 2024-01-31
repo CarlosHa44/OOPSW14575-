@@ -1,10 +1,11 @@
-package ec.edu.espe.icecream.view;
-import ec.edu.espe.icecream.model.Client;
-import ec.edu.espe.icecream.model.Invoice;
-import ec.edu.espe.icecream.model.Product;
-import ec.edu.espe.icecream.model.ReportOfBusiness;
-import ec.edu.espe.icecream.model.SaleNote;
-import ec.edu.espe.icecream.utils.Authenticator;
+package ec.edu.espe.icecreamdeve.view;
+import ec.edu.espe.icecreamdeve.model.Client;
+import ec.edu.espe.icecreamdeve.model.Invoice;
+import ec.edu.espe.icecreamdeve.model.Product;
+import ec.edu.espe.icecreamdeve.model.ReportOfBusiness;
+import ec.edu.espe.icecreamdeve.model.SaleNote;
+import ec.edu.espe.icecreamdeve.utils.Authenticator;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class IceCreamSystem {
     static Scanner scan = new Scanner(System.in);
     
     public static void main(String[] args) {
+    MDBManage conecction=new MDBManage();
     ArrayList<Product> products = new ArrayList<>();
     ArrayList<Invoice> invoices = new ArrayList<>();
     ArrayList<Client> clients = new ArrayList<>();

@@ -1,4 +1,4 @@
-package ec.edu.espe.icecream.model;
+package ec.edu.espe.icecreamdeve.model;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -74,7 +74,8 @@ public class Inventory {
                 scan.nextLine();
             }
         } while (!inputValid);
-        return new Product(idaux, amountaux, nameaux, costaux);
+        Product newProduct = new Product(idaux, amountaux, nameaux, costaux);
+        return newProduct;
     }
 
     public static int getActualId(ArrayList<Product> products) {

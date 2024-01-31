@@ -1,4 +1,4 @@
-package ec.edu.espe.icecream.utils;
+package ec.edu.espe.icecreamdeve.utils;
 
 import com.google.gson.*;
 

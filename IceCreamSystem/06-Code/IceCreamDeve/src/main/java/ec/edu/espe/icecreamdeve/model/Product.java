@@ -1,8 +1,7 @@
-package ec.edu.espe.icecream.model;
+package ec.edu.espe.icecreamdeve.model;
 
 import com.google.gson.reflect.TypeToken;
-import ec.edu.espe.icecream.utils.UseCsv;
-import ec.edu.espe.icecream.utils.UseJson;
+import ec.edu.espe.icecreamdeve.utils.UseJson;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,10 +30,7 @@ public class Product {
         UseJson<Product> jsonUtilProducts = new UseJson<>();
         products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {
         }.getType());
-        UseCsv csvUtil = new UseCsv();
-
         
-
         int optionInventory;
         while (true) {
             System.out.println("///////////Inventory////////");
@@ -55,14 +51,12 @@ public class Product {
                 case 1:
                     products.add(Inventory.addProduct(products));
                     jsonUtilProducts.writeFile("Productdata.json", products);
-                    csvUtil.saveToCSV(products, "Productdata.csv");
 
                     break;
                 case 2:
                     System.out.println("ID    Amount      Name             Cost");
                     System.out.println("----------------------------------------------");
                     System.out.println(products);
-                    csvUtil.saveToCSV(products, "Productdata.csv");
 
                     break;
                 case 3:
