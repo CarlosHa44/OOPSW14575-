@@ -2,8 +2,6 @@ package ec.edu.espe.icecreamdeve.model;
 
 import com.google.gson.reflect.TypeToken;
 import ec.edu.espe.icecreamdeve.utils.UseJson;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -67,6 +65,9 @@ public class Product {
         }
     }
 
+    
+    public Product(){}
+    
     @Override
     public String toString() {
         return "id=" + id + "\tamount=" + amount + "\tname=" + name + "\tcost=" + cost + "\n";

@@ -220,5 +220,17 @@
     "amount": 400,
     "name": "Cheese",
     "cost": 2.5
+  },
+  {
+    "id": 38,
+    "amount": 6,
+    "name": "ASDA",
+    "cost": 5.0
+  },
+  {
+    "id": 39,
+    "amount": 5,
+    "name": "Testing",
+    "cost": 2.0
   }
 ]

@@ -1,8 +1,10 @@
 package ec.edu.espe.icecreamdeve.model;
 
+import com.mongodb.client.MongoCollection;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
 
 /**
  *
@@ -11,6 +13,7 @@ import java.util.Scanner;
 public class Inventory {
 
     private int id;
+    
 
     public Inventory(int id) {
         this.id = id;
@@ -31,6 +34,7 @@ public class Inventory {
 
     public static Product addProduct(ArrayList<Product> products) {
         Scanner scan = new Scanner(System.in);
+        
         int idaux = getActualId(products);
         int amountaux = 0;
         String nameaux = "";
@@ -75,6 +79,10 @@ public class Inventory {
             }
         } while (!inputValid);
         Product newProduct = new Product(idaux, amountaux, nameaux, costaux);
+        Class classType=Product.class;
+        String collection= "Products";
+        MongoCollection<Product> contactDB=MDBManage.getFromCollection(collection, classType);
+        contactDB.insertOne(newProduct);
         return newProduct;
     }
 
