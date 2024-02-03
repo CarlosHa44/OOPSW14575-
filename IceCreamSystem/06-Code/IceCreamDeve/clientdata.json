@@ -10,9 +10,9 @@
   {
     "id": 2,
     "name": "Carlos",
-    "email": "carlosha@gmail.com",
-    "cellphoneNumber": "0991802942",
-    "isNorth": true,
+    "email": "carlos@gmil.com ",
+    "cellphoneNumber": "03254785662",
+    "isNorth": false,
     "isMajority": false
   },
   {
@@ -22,14 +22,6 @@
     "cellphoneNumber": "0987271121",
     "isNorth": false,
     "isMajority": false
-  },
-  {
-    "id": 4,
-    "name": "Jixon",
-    "email": "jixon34@gmail.com",
-    "cellphoneNumber": "09994141283",
-    "isNorth": false,
-    "isMajority": true
   },
   {
     "id": 5,
@@ -57,11 +49,11 @@
   },
   {
     "id": 8,
-    "name": "Oscar",
-    "email": "oscar.arcos648@gmail.com",
-    "cellphoneNumber": "0987654546",
+    "name": "Albino",
+    "email": "albino@gmail.com",
+    "cellphoneNumber": "09785251452",
     "isNorth": true,
-    "isMajority": true
+    "isMajority": false
   },
   {
     "id": 9,
@@ -106,10 +98,10 @@
   {
     "id": 14,
     "name": "Estefany",
-    "email": "estefany@gmail.com",
-    "cellphoneNumber": "098745126",
+    "email": "estefany@hotmail.com",
+    "cellphoneNumber": "0985528533",
     "isNorth": false,
-    "isMajority": true
+    "isMajority": false
   },
   {
     "id": 15,
@@ -124,6 +116,22 @@
     "name": "Estefany",
     "email": "estefany@gmail.com",
     "cellphoneNumber": "0988451236",
+    "isNorth": true,
+    "isMajority": false
+  },
+  {
+    "id": 17,
+    "name": "Dario",
+    "email": "mateoiza@gmail.com",
+    "cellphoneNumber": "0998745",
+    "isNorth": true,
+    "isMajority": false
+  },
+  {
+    "id": 18,
+    "name": "Mario",
+    "email": "mario@gmail.com",
+    "cellphoneNumber": "0987451264",
     "isNorth": true,
     "isMajority": false
   }

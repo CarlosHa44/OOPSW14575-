@@ -188,6 +188,7 @@ public class SaleNote {
             System.out.println("///////////SaleNotes///////////");
             System.out.println("1. Create a sale note");
             System.out.println("2. Show sale notes");
+            System.out.println("3. Delete sale notes");
             System.out.println("3. Return to the main menu");
 
             if (getScan().hasNextInt()) {
@@ -212,6 +213,14 @@ public class SaleNote {
                     }
                     break;
                 case 3:
+                    System.out.println("Listado");
+                    for (SaleNote currentSaleNote : saleNotes) {
+                        showSaleNote(currentSaleNote);
+                    }
+               break;
+                case 4:
+                 //Codigo para eliminar SaleNotes   
+                  
                     return;
                 default:
                     System.out.println("Invalid option. Please try again.");

@@ -85,66 +85,85 @@ public class Client {
         
     }
 
-    public static void editClient(ArrayList<Client> clients) {
-        Scanner scan = new Scanner(System.in);
-        String newName;
-        System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
-        System.out.println("-----------------------------------------------------------------------------------------");
+
+        public static void editClient(Client client, ArrayList<Client> clients) {
+           Scanner scan = new Scanner(System.in);
+           String newName;
+
+           System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
+           System.out.println("-----------------------------------------------------------------------------------------");
+           for (Client c : clients) {
+               System.out.println(c);
+           }
+
+           int idToEdit;
+           boolean inputValidation;
+
+           while (true) {
+               try {
+                   do {
+                       System.out.println("Enter the customer ID to edit1:");
+                       idToEdit = Integer.parseInt(getScan().nextLine());
+                       if (idToEdit > clients.size()) {
+                           inputValidation = false;
+                           System.out.println("Please, Enter the customer ID to edit");
+                       } else {
+                           inputValidation = true;
+                       }
+                   } while (!inputValidation);
+                   break;
+               } catch (NumberFormatException e) {
+                   System.out.println("Invalid input. Enter the customer ID to edit");
+               }
+           }
+
+           Client selectedClient = findClientById(clients, idToEdit);
+           if (selectedClient != null) {
+               do {
+                   System.out.println("Enter the new name");
+                   newName = scan.nextLine();
+                   if (!newName.matches("[a-zA-Z]+")) {
+                       System.out.println("Please, Enter the customer name.");
+                       inputValidation = false;
+                   } else {
+                       inputValidation = true;
+                   }
+               } while (!inputValidation);
+
+               selectedClient.setName(newName);
+               System.out.println("Enter the new email");
+               String newEmail = scan.nextLine();
+               selectedClient.setEmail(newEmail);
+               System.out.println("Enter the customer's new phone number"); 
+               String newPhone = scan.nextLine();
+               selectedClient.setCellphoneNumber(newPhone);
+               System.out.println("Enter if the customer is in the north? (true/false)");
+               boolean newNorth = Boolean.parseBoolean(scan.nextLine());
+               selectedClient.setIsNorth(newNorth);
+               System.out.println("¿The client is of majority age? (true/false)");
+               boolean newIsMajority = Boolean.parseBoolean(scan.nextLine());
+               selectedClient.setIsMajority(newIsMajority);
+
+               // Llama a la función de MDBManage para editar en MongoDB y la lista local
+               MDBManage.editClientMG(selectedClient, clients);
+
+               System.out.println("Client edited successfully.");
+           } else {
+               System.out.println("Client not found.");
+           }
+       }
+
+
+
+
+    // Otro método para buscar un cliente por ID
+    private static Client findClientById(ArrayList<Client> clients, int id) {
         for (Client client : clients) {
-            System.out.println(client);
-        }
-        int idToEdit;
-        boolean inputvalidation;
-        
-        while (true) {
-                try {
-                    do {
-                        System.out.println("Enter the customer id to edit:");
-                        idToEdit = Integer.parseInt(getScan().nextLine());
-                        if (idToEdit > clients.size()) {
-                            inputvalidation = false;
-                            System.out.println("Please, Enter the customer id to edit");
-                        } else {
-                            inputvalidation = true;
-                        }
-                    } while (!inputvalidation);
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid input. Enter the customer id to edit");
-                }
-            }
-      for (Client client : clients) {
-            if (client.getId() == idToEdit) {
-                do {
-                    System.out.println("Enter the new name");
-                    newName = scan.nextLine();
-                    if (!newName.matches("[a-zA-Z]+")) {
-                        System.out.println("Please, Enter the customer name.");
-                        inputvalidation = false;
-                    } else {
-                        inputvalidation = true;
-                    }
-                } while (!inputvalidation);
-                client.setName(newName);
-                System.out.println("Enter the new email");
-                String newEmail = scan.nextLine();
-                client.setEmail(newEmail);
-                System.out.println("Enter the customer's new phone number");
-                String newPhone = scan.nextLine();
-                client.setCellphoneNumber(newPhone);
-                System.out.println("Enter if the customer is in the north? (true/false)");
-                boolean newNorth = scan.nextBoolean();
-                client.setIsNorth(newNorth);
-                System.out.println("¿The client is of majority age? (true/false)");
-                boolean newIsMajority = scan.nextBoolean();
-                client.setIsMajority(newIsMajority);
-
-                System.out.println("Client edited successfully.");
-                return;
+            if (client.getId() == id) {
+                return client;
             }
         }
-
-        System.out.println("Client not found.");
+        return null;
     }
 
     public static void menuClient(ArrayList<Client> clients) {
@@ -158,7 +177,8 @@ public class Client {
             System.out.println("1.Enter Clients");
             System.out.println("2.Edit Clients");
             System.out.println("3.Show Clients");
-            System.out.println("4.Return to the main menu");
+            System.out.println("4.Delete Clients");
+            System.out.println("5.Return to the main menu");
 
             if (getScan().hasNextInt()) {
                 optionClient = getScan().nextInt();
@@ -176,8 +196,22 @@ public class Client {
                     jsonUtilClients.writeFile("clientdata.json", clients);
                     break;
                 case 2:
-                    Client.editClient(clients);
-                    jsonUtilClients.writeFile("clientdata.json", clients);
+                     System.out.println("Enter the customer ID to edit:");
+                     int idToEdit = Integer.parseInt(getScan().nextLine());
+
+                     // Llamar al método findClientById para obtener el cliente seleccionado
+                     Client selectedClient = Client.findClientById(clients, idToEdit);
+                     if (selectedClient != null) {
+                         try {
+                             Client.editClient(selectedClient, clients);
+                             jsonUtilClients.writeFile("clientdata.json", clients);
+                             System.out.println("Client edited successfully.");
+                         } catch (Exception e) {
+                             System.out.println("An error occurred while editing the client: " + e.getMessage());
+                         }
+                     } else {
+                         System.out.println("Client not found.");
+                     }
                     break;
                 case 3:
                     System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
@@ -187,6 +221,22 @@ public class Client {
                     }
                     break;
                 case 4:
+                    System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
+                    System.out.println("-----------------------------------------------------------------------------------------");
+                    for (Client c : clients) {
+                         System.out.println(c);
+                    }
+
+                   System.out.println("Enter the customer ID to delete:");
+                   int idToDelete = Integer.parseInt(getScan().nextLine());
+
+                   // Llamar al método deleteClient para eliminar el cliente seleccionado
+                   MDBManage.deleteClient(idToDelete, clients);
+                   jsonUtilClients.writeFile("clientdata.json", clients);
+                   System.out.println("Client deleted successfully.");
+                    
+                break;
+                case 5:
                     return;
                 default:
                     System.out.println("Invalid option. Please try again.");
