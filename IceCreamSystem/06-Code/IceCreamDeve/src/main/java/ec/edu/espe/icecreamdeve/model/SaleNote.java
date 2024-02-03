@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import static ec.edu.espe.icecreamdeve.utils.Dates.validatedate;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import ec.edu.espe.icecreamdeve.utils.UseJson;
 
 /**
@@ -51,10 +52,10 @@ public class SaleNote {
         System.out.println("Precio Final:" + saleNote.totalValue);
     }
 
-    public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products, ArrayList<SaleNote> saleNotes) {
+     public static SaleNote createSaleNote(ArrayList<Client> clients, ArrayList<Product> products, ArrayList<SaleNote> saleNotes) {
         int idSaleNote = getActualId(saleNotes);
 
-        // Selección del cliente
+        
         System.out.println("1. Select a client (Type the id):");
         System.out.println("ID    Name            Email                         CellphoneNumber  isNorth  isMajority");
         System.out.println("----------------------------------------------------------------------------------------");
@@ -81,12 +82,11 @@ public class SaleNote {
         int option = 0;
 
         do {
-            // Selección del producto
+            
             System.out.println("2. Select a product (Type the id):");
             System.out.println("ID    Amount      Name             Cost");
             System.out.println("----------------------------------------------");
             System.out.println(products);
-            
 
             int productIndex;
             while (true) {
@@ -117,7 +117,7 @@ public class SaleNote {
                 deduceProduct(products, idAux, numberOfProducts);
             } while (productsAvailable < numberOfProducts);
 
-            // Creación del producto en la venta
+           
             Product productView = new Product(selectedProduct.getId(), selectedProduct.getAmount(), selectedProduct.getName(), selectedProduct.getCost());
             productView.setAmount(numberOfProducts);
             float costUnit = selectedProduct.getCost();
@@ -152,6 +152,10 @@ public class SaleNote {
         SaleNote saleNote = new SaleNote(idSaleNote, selectedClient, date, productsInSaleNote, totalValue);
         System.out.println("Sale Note created successfully!");
         showSaleNote(saleNote);
+
+        
+        MDBManage.registerSaleNote(saleNote, saleNotes);
+
         return saleNote;
     }
 
@@ -172,16 +176,13 @@ public class SaleNote {
 
     public static void menuSaleNote(ArrayList<Product> products, ArrayList<Client> clients) {
         UseJson<SaleNote> jsonUtilSaleNotes = new UseJson<>();
-        ArrayList<SaleNote> saleNotes = jsonUtilSaleNotes.readFile("salenotedata.json", new TypeToken<ArrayList<SaleNote>>() {
-        }.getType());
+        ArrayList<SaleNote> saleNotes = jsonUtilSaleNotes.readFile("salenotedata.json", new TypeToken<ArrayList<SaleNote>>() {}.getType());
 
         UseJson<Client> jsonUtilClients = new UseJson<>();
-        clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {
-        }.getType());
+        clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {}.getType());
 
         UseJson<Product> jsonUtilProducts = new UseJson<>();
-        products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {
-        }.getType());
+        products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {}.getType());
 
         int optionSaleNote;
         while (true) {
@@ -189,7 +190,7 @@ public class SaleNote {
             System.out.println("1. Create a sale note");
             System.out.println("2. Show sale notes");
             System.out.println("3. Delete sale notes");
-            System.out.println("3. Return to the main menu");
+            System.out.println("4. Return to the main menu");
 
             if (getScan().hasNextInt()) {
                 optionSaleNote = getScan().nextInt();
@@ -209,24 +210,41 @@ public class SaleNote {
                 case 2:
                     System.out.println("Listado");
                     for (SaleNote currentSaleNote : saleNotes) {
-                        showSaleNote(currentSaleNote);
+                        SaleNote.showSaleNote(currentSaleNote);
                     }
                     break;
                 case 3:
-                    System.out.println("Listado");
-                    for (SaleNote currentSaleNote : saleNotes) {
-                        showSaleNote(currentSaleNote);
-                    }
-               break;
+                    SaleNote.deleteSaleNote(saleNotes);
+                    jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
+                    break;
                 case 4:
-                 //Codigo para eliminar SaleNotes   
-                  
                     return;
                 default:
                     System.out.println("Invalid option. Please try again.");
             }
         }
     }
+    public static void deleteSaleNote(ArrayList<SaleNote> saleNotes) {
+    System.out.println("List of Sale Notes:");
+    for (SaleNote currentSaleNote : saleNotes) {
+        SaleNote.showSaleNote(currentSaleNote);
+    }
+
+    int idToDelete;
+    while (true) {
+        try {
+            System.out.println("Enter the Sale Note ID to delete:");
+            idToDelete = Integer.parseInt(getScan().nextLine());
+            break;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+    }
+
+   
+    MDBManage.deleteSaleNote(idToDelete, saleNotes);
+}
+
 
     /**
      * @return the scan

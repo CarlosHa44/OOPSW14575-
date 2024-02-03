@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
 import com.mongodb.client.result.UpdateResult;
+import ec.edu.espe.icecreamdeve.model.SaleNote;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
@@ -67,10 +68,10 @@ public abstract class MDBManage {
         MongoDatabase database = mongoClient.getDatabase(DATABASE);
         MongoCollection<Document> collection = database.getCollection("Client");
 
-        // Utiliza el campo "id" como identificador
+        
         Document filter = new Document("id", client.getId());
 
-        // Convierte el objeto Client a Document para reemplazar el documento completo
+        
         Document updatedDocument = new Document("id", client.getId())
                 .append("Name", client.getName())
                 .append("Email", client.getEmail())
@@ -78,7 +79,7 @@ public abstract class MDBManage {
                 .append("Is North", client.getIsNorth())
                 .append("Is Majority", client.getIsMajority());
 
-        // Reemplaza todo el documento en lugar de actualizar campos específicos
+        
         UpdateResult result = collection.replaceOne(filter, updatedDocument);
 
         if (result.getModifiedCount() > 0) {
@@ -87,12 +88,12 @@ public abstract class MDBManage {
             System.out.println("Client not found or no changes were made in MongoDB.");
         }
 
-        // Actualizar también en la lista local
+        
         updateClientInList(client, clients);
     }
 
 
-    // Agrega este método para actualizar el cliente en la lista local
+    
     private static void updateClientInList(Client updatedClient, ArrayList<Client> clients) {
         for (int i = 0; i < clients.size(); i++) {
             if (clients.get(i).getId() == updatedClient.getId()) {
@@ -113,7 +114,7 @@ public abstract class MDBManage {
         if (result.getDeletedCount() > 0) {
             System.out.println("Client deleted successfully from MongoDB.");
 
-            // También eliminamos el cliente de la lista local
+            
             Client deletedClient = findClientById(clients, id);
             if (deletedClient != null) {
                 clients.remove(deletedClient);
@@ -133,6 +134,47 @@ public abstract class MDBManage {
         }
         return null;
     }
+     public static void registerSaleNote(SaleNote saleNote, ArrayList<SaleNote> saleNotes) {
+        MongoCollection<SaleNote> collection = getFromCollection("SaleNote", SaleNote.class);
+
+       
+        collection.insertOne(saleNote);
+
+       
+        saleNotes.add(saleNote);
+    }
+
+    public static void deleteSaleNote(int id, ArrayList<SaleNote> saleNotes) {
+        MongoCollection<SaleNote> collection = getFromCollection("SaleNote", SaleNote.class);
+
+        Document filter = new Document("id", id);
+        DeleteResult result = collection.deleteOne(filter);
+
+        if (result.getDeletedCount() > 0) {
+            System.out.println("Sale Note deleted successfully from MongoDB.");
+
+           
+            SaleNote deletedSaleNote = findSaleNoteById(saleNotes, id);
+            if (deletedSaleNote != null) {
+                saleNotes.remove(deletedSaleNote);
+                System.out.println("Sale Note deleted successfully from the local list.");
+            } else {
+                System.out.println("Error: Sale Note not found in the local list.");
+            }
+        } else {
+            System.out.println("Sale Note not found in MongoDB or no changes were made.");
+        }
+    }
+
+    private static SaleNote findSaleNoteById(ArrayList<SaleNote> saleNotes, int id) {
+        for (SaleNote saleNote : saleNotes) {
+            if (saleNote.getId() == id) {
+                return saleNote;
+            }
+        }
+        return null;
+    }
+
         public static <T> MongoCollection<T> getFromCollection(String collectionName, Class<T> type) {
             MongoDatabase db = connectToDataBase();
             return db.getCollection(collectionName, type);

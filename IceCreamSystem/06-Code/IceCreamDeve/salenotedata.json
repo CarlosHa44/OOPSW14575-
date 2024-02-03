@@ -199,5 +199,47 @@
       }
     ],
     "totalValue": 0.70000005
+  },
+  {
+    "id": 10,
+    "client": {
+      "id": 2,
+      "name": "Carlos",
+      "email": "carlos@gmil.com ",
+      "cellphoneNumber": "03254785662",
+      "isNorth": false,
+      "isMajority": false
+    },
+    "date": "Dec 4, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 7,
+        "amount": 45,
+        "name": "Galleta",
+        "cost": 0.6
+      }
+    ],
+    "totalValue": 27.000002
+  },
+  {
+    "id": 10,
+    "client": {
+      "id": 2,
+      "name": "Carlos",
+      "email": "carlos@gmil.com ",
+      "cellphoneNumber": "03254785662",
+      "isNorth": false,
+      "isMajority": false
+    },
+    "date": "Dec 4, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 7,
+        "amount": 45,
+        "name": "Galleta",
+        "cost": 0.6
+      }
+    ],
+    "totalValue": 27.000002
   }
 ]
