@@ -79,10 +79,7 @@ public class Inventory {
             }
         } while (!inputValid);
         Product newProduct = new Product(idaux, amountaux, nameaux, costaux);
-        Class classType=Product.class;
-        String collection= "Products";
-        MongoCollection<Product> contactDB=MDBManage.getFromCollection(collection, classType);
-        contactDB.insertOne(newProduct);
+        newProduct.register(newProduct);
         return newProduct;
     }
 

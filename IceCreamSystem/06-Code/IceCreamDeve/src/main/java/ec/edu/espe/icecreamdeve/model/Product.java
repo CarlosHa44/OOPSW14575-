@@ -1,6 +1,8 @@
 package ec.edu.espe.icecreamdeve.model;
 
 import com.google.gson.reflect.TypeToken;
+import com.mongodb.client.MongoCollection;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import ec.edu.espe.icecreamdeve.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
-public class Product {
+public class Product extends MDBManage{
 
     private int id;
     private int amount;
@@ -68,6 +70,14 @@ public class Product {
     
     public Product(){}
     
+
+    public void register(Product productToMongo){
+        Class classType=Product.class;
+        String collection= "Products";
+        MongoCollection<Product> contactDB=MDBManage.getFromCollection(collection, classType);
+        contactDB.insertOne(productToMongo);
+    }
+    
     @Override
     public String toString() {
         return "id=" + id + "\tamount=" + amount + "\tname=" + name + "\tcost=" + cost + "\n";
@@ -104,4 +114,13 @@ public class Product {
     public void setCost(float cost) {
         this.cost = cost;
     }
+
+    @Override
+    public void register(Object object) {
+        Class classType=Product.class;
+        String collection= "Products";
+        MongoCollection<Product> contactDB=MDBManage.getFromCollection(collection, classType);
+        contactDB.insertOne((Product) object);
+    }
+
 }

@@ -18,7 +18,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  *
  * @author Carlos
  */
-public class MDBManage {
+public abstract class MDBManage {
 
     public static MongoDatabase connectToDataBase(){
         String connectionString="mongodb+srv://carlos:carlosha@cluster0.5w2v3gl.mongodb.net/";
@@ -45,5 +45,7 @@ public class MDBManage {
        MongoCollection<T> collectionDB=db.getCollection(collectionName, type);       
        return collectionDB;
     }
+    
+    public abstract void register(Object objeto);
     
 }
