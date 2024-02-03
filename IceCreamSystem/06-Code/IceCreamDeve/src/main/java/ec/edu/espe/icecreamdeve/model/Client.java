@@ -2,6 +2,8 @@ package ec.edu.espe.icecreamdeve.model;
 
 import com.google.gson.reflect.TypeToken;
 import static ec.edu.espe.icecreamdeve.model.SaleNote.getScan;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
+import static ec.edu.espe.icecreamdeve.utils.MDBManage.connectToDataBase;
 import ec.edu.espe.icecreamdeve.utils.UseJson;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -76,7 +78,11 @@ public class Client {
             }
         } while (!inputValid);
         scan.nextLine();
-        return new Client(newID, name, email, cellphoneNumber, isNorth, isMajority);
+        Client newClient = new Client(newID, name, email, cellphoneNumber, isNorth, isMajority);
+        MDBManage.registerClient(newClient);
+      
+        return  newClient;
+        
     }
 
     public static void editClient(ArrayList<Client> clients) {
@@ -166,6 +172,7 @@ public class Client {
             switch (optionClient) {
                 case 1:
                     clients.add(Client.addClient(clients));
+                    System.out.println("Client added successfully!");
                     jsonUtilClients.writeFile("clientdata.json", clients);
                     break;
                 case 2:
@@ -228,20 +235,41 @@ public class Client {
         this.cellphoneNumber = cellphoneNumber;
     }
 
+    /**
+     * @return the isNorth
+     */
     public boolean isIsNorth() {
         return isNorth;
     }
 
+    /**
+     * @param isNorth the isNorth to set
+     */
     public void setIsNorth(boolean isNorth) {
         this.isNorth = isNorth;
     }
 
+    /**
+     * @return the isMajority
+     */
     public boolean isIsMajority() {
         return isMajority;
     }
 
+    /**
+     * @param isMajority the isMajority to set
+     */
     public void setIsMajority(boolean isMajority) {
         this.isMajority = isMajority;
     }
+    
+    public boolean getIsNorth() {
+        return isNorth;
+    }
+
+    public boolean getIsMajority() {
+        return isMajority;
+    }
+
 
 }

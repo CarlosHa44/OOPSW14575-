@@ -78,5 +78,53 @@
     "cellphoneNumber": "0998224788",
     "isNorth": false,
     "isMajority": true
+  },
+  {
+    "id": 11,
+    "name": "juan",
+    "email": "mateoiza64@gmial.com",
+    "cellphoneNumber": "099825475",
+    "isNorth": true,
+    "isMajority": false
+  },
+  {
+    "id": 12,
+    "name": "mateo",
+    "email": "mateoiza64@gmil.com",
+    "cellphoneNumber": "0594894646",
+    "isNorth": true,
+    "isMajority": false
+  },
+  {
+    "id": 13,
+    "name": "Domenica",
+    "email": "domenica2@gmail.com",
+    "cellphoneNumber": "05464545",
+    "isNorth": true,
+    "isMajority": false
+  },
+  {
+    "id": 14,
+    "name": "Estefany",
+    "email": "estefany@gmail.com",
+    "cellphoneNumber": "098745126",
+    "isNorth": false,
+    "isMajority": true
+  },
+  {
+    "id": 15,
+    "name": "Mario",
+    "email": "matjei@gmail.com",
+    "cellphoneNumber": "05475552",
+    "isNorth": true,
+    "isMajority": false
+  },
+  {
+    "id": 16,
+    "name": "Estefany",
+    "email": "estefany@gmail.com",
+    "cellphoneNumber": "0988451236",
+    "isNorth": true,
+    "isMajority": false
   }
 ]
