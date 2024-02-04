@@ -9,17 +9,19 @@ package ec.edu.espe.icecreamdeve.view;
  * @author JosuéG
  */
 public class FrmProductsMenu extends javax.swing.JFrame {
-        private int id;
-        private int amount;
-        private String name;
-        private float cost;
-        
-    
+
+    private int id;
+    private int amount;
+    private String name;
+    private float cost;
+
     /**
      * Creates new form FrmProductsMenu
      */
     public FrmProductsMenu() {
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -121,11 +123,11 @@ public class FrmProductsMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_itmAddproductActionPerformed
 
     private void itmShowproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmShowproductActionPerformed
-       FrmShowProducts frmShowProduct = new FrmShowProducts();
-       this.setVisible(false);
-       frmShowProduct.setVisible(true);
+        FrmShowProducts frmShowProduct = new FrmShowProducts();
+        this.setVisible(false);
+        frmShowProduct.setVisible(true);
     }//GEN-LAST:event_itmShowproductActionPerformed
-         
+
     /**
      * @param args the command line arguments
      */

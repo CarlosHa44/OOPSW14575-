@@ -1,4 +1,3 @@
-
 package ec.edu.espe.icecreamdeve.view;
 
 import com.mongodb.client.FindIterable;
@@ -12,13 +11,14 @@ import org.bson.Document;
  * @author JosuéG
  */
 public class FrmShowProducts extends javax.swing.JFrame {
-   
+
     /**
      * Creates new form FrmShowProducts
      */
     public FrmShowProducts() {
         initComponents();
         ReadProducts();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -30,10 +30,8 @@ public class FrmShowProducts extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblShowproduct.getModel();
         model.setRowCount(0);
 
-       
         MongoCollection<Document> collection = MDBManage.getFromCollection("Products", Document.class);
 
-       
         FindIterable<Document> iterable = collection.find();
 
         // Agregar cada producto a la tabla
@@ -43,10 +41,11 @@ public class FrmShowProducts extends javax.swing.JFrame {
             int amount = document.getInteger("amount");
             String name = document.getString("name");
             double costDouble = document.getDouble("cost");
-            float cost = (float) costDouble; 
+            float cost = (float) costDouble;
             model.addRow(new Object[]{id, amount, cost, name});
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -101,13 +100,13 @@ public class FrmShowProducts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-       FrmProductsMenu  frmProductmenu = new FrmProductsMenu();
-       this.setVisible(false);
-       frmProductmenu.setVisible(true);
-       
-       
+        FrmProductsMenu frmProductmenu = new FrmProductsMenu();
+        this.setVisible(false);
+        frmProductmenu.setVisible(true);
+
+
     }//GEN-LAST:event_btnMenuActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
