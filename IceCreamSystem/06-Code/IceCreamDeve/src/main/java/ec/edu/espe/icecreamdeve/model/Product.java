@@ -1,11 +1,14 @@
     package ec.edu.espe.icecreamdeve.model;
 
     import com.google.gson.reflect.TypeToken;
+import com.mongodb.client.FindIterable;
     import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
     import ec.edu.espe.icecreamdeve.utils.MDBManage;
     import ec.edu.espe.icecreamdeve.utils.UseJson;
     import java.util.ArrayList;
     import java.util.Scanner;
+import org.bson.Document;
 
     /**
      *
@@ -71,13 +74,6 @@
         public Product(){}
 
 
-        public void register(Product productToMongo){
-            Class classType=Product.class;
-            String collection= "Products";
-            MongoCollection<Product> contactDB=MDBManage.getFromCollection(collection, classType);
-            contactDB.insertOne(productToMongo);
-        }
-
         @Override
         public String toString() {
             return "id=" + id + "\tamount=" + amount + "\tname=" + name + "\tcost=" + cost + "\n";
@@ -119,8 +115,17 @@
         public void register(Object object) {
             Class classType=Product.class;
             String collection= "Products";
-            MongoCollection<Product> contactDB=MDBManage.getFromCollection(collection, classType);
-            contactDB.insertOne((Product) object);
+            MongoCollection<Product> productDB=MDBManage.getFromCollection(collection, classType);
+            productDB.insertOne((Product) object);
+        }
+        
+        public void findAllProducts(){
+            Class classType=Product.class;
+            String collection= "Products";
+            MongoCollection<Product> productDB=MDBManage.getFromCollection(collection, classType);
+            ArrayList<Product> productList = new ArrayList<>();
+            productDB.find().into(productList);
+            System.out.println(productList);
         }
 
     }

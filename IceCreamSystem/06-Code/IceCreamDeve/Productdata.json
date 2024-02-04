@@ -133,7 +133,7 @@
   },
   {
     "id": 23,
-    "amount": 65,
+    "amount": 69,
     "name": "Paleta",
     "cost": 0.15
   },
@@ -244,5 +244,17 @@
     "amount": 9,
     "name": "Testinggg",
     "cost": 3.0
+  },
+  {
+    "id": 42,
+    "amount": 86,
+    "name": "paila",
+    "cost": 0.75
+  },
+  {
+    "id": 43,
+    "amount": 85,
+    "name": "owu",
+    "cost": 45.0
   }
 ]

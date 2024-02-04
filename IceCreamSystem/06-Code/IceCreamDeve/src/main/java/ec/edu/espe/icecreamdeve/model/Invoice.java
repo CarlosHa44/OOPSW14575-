@@ -2,7 +2,9 @@ package ec.edu.espe.icecreamdeve.model;
 
 import java.util.Date;
 import com.google.gson.reflect.TypeToken;
+import com.mongodb.client.MongoCollection;
 import static ec.edu.espe.icecreamdeve.utils.Dates.validatedate;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import ec.edu.espe.icecreamdeve.utils.UseJson;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
-public class Invoice {
+public class Invoice extends MDBManage {
 
     private static Scanner scan = new Scanner(System.in);
     private int id;
@@ -25,6 +27,8 @@ public class Invoice {
         this.value = value;
         this.boxes = boxes;
     }
+    
+    public Invoice(){}
 
     public static void menuInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
         UseJson<Invoice> jsonUtilInvoice = new UseJson<>();
@@ -136,6 +140,14 @@ public class Invoice {
         }
         return actualId + 1;
     }
+     
+    @Override
+    public void register(Object object) {
+            Class classType=Invoice.class;
+            String collection= "Invoices";
+            MongoCollection<Invoice> invoiceDB=MDBManage.getFromCollection(collection, classType);
+            invoiceDB.insertOne((Invoice) object);
+    }
 
     public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
         int idInvoice = getActualId(invoices);
@@ -233,7 +245,11 @@ public class Invoice {
         } while (option != 2);
 
         Invoice invoice = new Invoice(idInvoice, date, totalValue, productsInvoice);
+        invoice.register(invoice);
+        
         showInvoice(invoice);
         return invoice;
     }
+
+
 }

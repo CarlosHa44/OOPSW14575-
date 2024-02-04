@@ -6,16 +6,13 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.ServerApi;
 import com.mongodb.ServerApiVersion;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
-import com.mongodb.client.result.UpdateResult;
 import ec.edu.espe.icecreamdeve.model.Client;
 import java.util.ArrayList;
-import java.util.List;
 import org.bson.Document;
 import com.mongodb.client.result.UpdateResult;
 import ec.edu.espe.icecreamdeve.model.SaleNote;
@@ -179,7 +176,7 @@ public abstract class MDBManage {
             MongoDatabase db = connectToDataBase();
             return db.getCollection(collectionName, type);
         }
-    public abstract void register(Object objeto);
+    public abstract void register(Object object);
     
 }
 

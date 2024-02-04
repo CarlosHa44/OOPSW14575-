@@ -1,10 +1,8 @@
 package ec.edu.espe.icecreamdeve.model;
 
-import com.mongodb.client.MongoCollection;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import ec.edu.espe.icecreamdeve.utils.MDBManage;
 
 /**
  *
@@ -80,6 +78,7 @@ public class Inventory {
         } while (!inputValid);
         Product newProduct = new Product(idaux, amountaux, nameaux, costaux);
         newProduct.register(newProduct);
+        newProduct.findAllProducts();
         return newProduct;
     }
 
