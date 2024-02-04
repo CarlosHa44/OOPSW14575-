@@ -2,6 +2,8 @@
 package ec.edu.espe.icecreamdeve.view;
 
 import com.mongodb.client.MongoCollection;
+import ec.edu.espe.icecreamdeve.controller.ProductController;
+import ec.edu.espe.icecreamdeve.model.Product;
 import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import javax.swing.JOptionPane;
 import org.bson.Document;
@@ -169,19 +171,13 @@ public class FrmAddProducts extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnMenuActionPerformed
     private void addProduct() {
-        int id = Integer.parseInt(txtId.getText());
+        ProductController controller = new ProductController();
+        int id =controller.getActualId(controller.findAllProducts());
         int amount = Integer.parseInt(txtAmount.getText());
         String name = txtName.getText();
-        double cost = Double.parseDouble(txtCost.getText());
-
-        MongoCollection<Document> collection = MDBManage.getFromCollection("Products", Document.class);
-
-        Document productDocument = new Document("id", id)
-                .append("amount", amount)
-                .append("cost", cost)
-                .append("name", name);
-        collection.insertOne(productDocument);
-
+        float cost = Float.parseFloat(txtCost.getText());
+        Product newProduct=new Product(id, amount, name, cost);
+        controller.register(newProduct);
     }
 
     /**

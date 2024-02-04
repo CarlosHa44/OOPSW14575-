@@ -77,8 +77,7 @@ public class Inventory {
             }
         } while (!inputValid);
         Product newProduct = new Product(idaux, amountaux, nameaux, costaux);
-        newProduct.register(newProduct);
-        newProduct.findAllProducts();
+        
         return newProduct;
     }
 

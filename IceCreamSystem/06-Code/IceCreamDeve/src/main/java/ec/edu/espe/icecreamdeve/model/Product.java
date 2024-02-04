@@ -1,20 +1,12 @@
     package ec.edu.espe.icecreamdeve.model;
 
-    import com.google.gson.reflect.TypeToken;
-import com.mongodb.client.FindIterable;
-    import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-    import ec.edu.espe.icecreamdeve.utils.MDBManage;
-    import ec.edu.espe.icecreamdeve.utils.UseJson;
-    import java.util.ArrayList;
     import java.util.Scanner;
-import org.bson.Document;
 
     /**
      *
      * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
      */
-    public class Product extends MDBManage{
+    public class Product{
 
         private int id;
         private int amount;
@@ -28,48 +20,6 @@ import org.bson.Document;
             this.cost = cost;
         }
         static Scanner scan = new Scanner(System.in);
-
-        public static void menuProduct(ArrayList<Product> products) {
-            UseJson<Product> jsonUtilProducts = new UseJson<>();
-            products = jsonUtilProducts.readFile("Productdata.json", new TypeToken<ArrayList<Product>>() {
-            }.getType());
-
-            int optionInventory;
-            while (true) {
-                System.out.println("///////////Inventory////////");
-                System.out.println("1.Add a new product");
-                System.out.println("2.Show inventory products");
-                System.out.println("3.Return to the main menu");
-
-                if (scan.hasNextInt()) {
-                    optionInventory = scan.nextInt();
-                    scan.nextLine();
-                } else {
-                    System.out.println("Invalid input. Please enter a number.");
-                    scan.nextLine();
-                    continue;
-                }
-
-                switch (optionInventory) {
-                    case 1:
-                        products.add(Inventory.addProduct(products));
-                        jsonUtilProducts.writeFile("Productdata.json", products);
-
-                        break;
-                    case 2:
-                        System.out.println("ID    Amount      Name             Cost");
-                        System.out.println("----------------------------------------------");
-                        System.out.println(products);
-
-                        break;
-                    case 3:
-                        return;
-                    default:
-                        System.out.println("Invalid option. Please try again.");
-                }
-            }
-        }
-
 
         public Product(){}
 
@@ -110,22 +60,4 @@ import org.bson.Document;
         public void setCost(float cost) {
             this.cost = cost;
         }
-
-        @Override
-        public void register(Object object) {
-            Class classType=Product.class;
-            String collection= "Products";
-            MongoCollection<Product> productDB=MDBManage.getFromCollection(collection, classType);
-            productDB.insertOne((Product) object);
-        }
-        
-        public void findAllProducts(){
-            Class classType=Product.class;
-            String collection= "Products";
-            MongoCollection<Product> productDB=MDBManage.getFromCollection(collection, classType);
-            ArrayList<Product> productList = new ArrayList<>();
-            productDB.find().into(productList);
-            System.out.println(productList);
-        }
-
     }

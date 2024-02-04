@@ -1,5 +1,7 @@
 package ec.edu.espe.icecreamdeve.view;
 import ec.edu.espe.icecreamdeve.controller.ClientController;
+import ec.edu.espe.icecreamdeve.controller.InvoiceController;
+import ec.edu.espe.icecreamdeve.controller.ProductController;
 import ec.edu.espe.icecreamdeve.controller.SaleNoteController;
 import ec.edu.espe.icecreamdeve.model.Client;
 import ec.edu.espe.icecreamdeve.model.Invoice;
@@ -40,10 +42,10 @@ public class IceCreamSystem {
 
             switch (option) {
                 case 1:
-                    Product.menuProduct(products);
+                    ProductController.menuProduct(products);
                     break;
                 case 2:
-                    Invoice.menuInvoice(invoices, products);
+                    InvoiceController.menuInvoice(invoices, products);
                     break;
                 case 3:
                     ClientController.menuClient(clients);
