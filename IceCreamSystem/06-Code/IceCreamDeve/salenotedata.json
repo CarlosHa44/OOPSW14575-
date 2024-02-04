@@ -241,5 +241,59 @@
       }
     ],
     "totalValue": 27.000002
+  },
+  {
+    "id": 11,
+    "client": {
+      "id": 2,
+      "name": "Carlos",
+      "email": "carlos@gmil.com ",
+      "cellphoneNumber": "03254785662",
+      "isNorth": false,
+      "isMajority": false
+    },
+    "date": "Jul 22, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 4,
+        "amount": 2,
+        "name": "Chicle",
+        "cost": 0.6
+      },
+      {
+        "id": 20,
+        "amount": 2,
+        "name": "Tung Tunga",
+        "cost": 0.45
+      }
+    ],
+    "totalValue": 2.1
+  },
+  {
+    "id": 11,
+    "client": {
+      "id": 2,
+      "name": "Carlos",
+      "email": "carlos@gmil.com ",
+      "cellphoneNumber": "03254785662",
+      "isNorth": false,
+      "isMajority": false
+    },
+    "date": "Jul 22, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 4,
+        "amount": 2,
+        "name": "Chicle",
+        "cost": 0.6
+      },
+      {
+        "id": 20,
+        "amount": 2,
+        "name": "Tung Tunga",
+        "cost": 0.45
+      }
+    ],
+    "totalValue": 2.1
   }
 ]

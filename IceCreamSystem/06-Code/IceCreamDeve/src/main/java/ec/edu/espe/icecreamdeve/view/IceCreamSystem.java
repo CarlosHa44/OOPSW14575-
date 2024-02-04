@@ -1,9 +1,10 @@
 package ec.edu.espe.icecreamdeve.view;
+import ec.edu.espe.icecreamdeve.controller.ClientController;
+import ec.edu.espe.icecreamdeve.controller.SaleNoteController;
 import ec.edu.espe.icecreamdeve.model.Client;
 import ec.edu.espe.icecreamdeve.model.Invoice;
 import ec.edu.espe.icecreamdeve.model.Product;
 import ec.edu.espe.icecreamdeve.model.ReportOfBusiness;
-import ec.edu.espe.icecreamdeve.model.SaleNote;
 import ec.edu.espe.icecreamdeve.utils.Authenticator;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -45,10 +46,10 @@ public class IceCreamSystem {
                     Invoice.menuInvoice(invoices, products);
                     break;
                 case 3:
-                    Client.menuClient(clients);
+                    ClientController.menuClient(clients);
                     break;
                 case 4:
-                    SaleNote.menuSaleNote(products, clients);
+                    SaleNoteController.menuSaleNote(products, clients);
                     break;
                 case 5:
                     ReportOfBusiness.menuReportBusinness(reports);

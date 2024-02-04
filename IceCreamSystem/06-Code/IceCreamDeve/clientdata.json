@@ -134,5 +134,13 @@
     "cellphoneNumber": "0987451264",
     "isNorth": true,
     "isMajority": false
+  },
+  {
+    "id": 19,
+    "name": "Delia",
+    "email": "delia@gmail.com",
+    "cellphoneNumber": "098325478",
+    "isNorth": false,
+    "isMajority": true
   }
 ]

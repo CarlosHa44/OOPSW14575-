@@ -19,7 +19,7 @@
   },
   {
     "id": 4,
-    "amount": 30,
+    "amount": 28,
     "name": "Chicle",
     "cost": 0.4
   },
@@ -115,7 +115,7 @@
   },
   {
     "id": 20,
-    "amount": 65,
+    "amount": 63,
     "name": "Tung Tunga",
     "cost": 0.25
   },
