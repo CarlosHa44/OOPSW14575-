@@ -295,5 +295,47 @@
       }
     ],
     "totalValue": 2.1
+  },
+  {
+    "id": 12,
+    "client": {
+      "id": 1,
+      "name": "Juan",
+      "email": "mateoiza64@gmail.com",
+      "cellphoneNumber": "0998229477",
+      "isNorth": false,
+      "isMajority": true
+    },
+    "date": "Apr 2, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 27,
+        "amount": 2,
+        "name": "Pasion",
+        "cost": 0.3
+      }
+    ],
+    "totalValue": 0.6
+  },
+  {
+    "id": 12,
+    "client": {
+      "id": 1,
+      "name": "Juan",
+      "email": "mateoiza64@gmail.com",
+      "cellphoneNumber": "0998229477",
+      "isNorth": false,
+      "isMajority": true
+    },
+    "date": "Apr 2, 2023, 12:00:00 AM",
+    "listOfProducts": [
+      {
+        "id": 27,
+        "amount": 2,
+        "name": "Pasion",
+        "cost": 0.3
+      }
+    ],
+    "totalValue": 0.6
   }
 ]
