@@ -248,7 +248,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductsActionPerformed
 
     private void btnClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmMenuClient productMenu=new FrmMenuClient();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClientActionPerformed

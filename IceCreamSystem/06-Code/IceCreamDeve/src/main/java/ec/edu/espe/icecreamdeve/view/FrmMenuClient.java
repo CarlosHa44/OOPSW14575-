@@ -1,5 +1,5 @@
 
-package ec.edu.espe.icecreamdeve.Imagenes;
+package ec.edu.espe.icecreamdeve.view;
 
 import ec.edu.espe.icecreamdeve.view.FrmAddClient;
 
@@ -14,7 +14,7 @@ public class FrmMenuClient extends javax.swing.JFrame {
      */
     public FrmMenuClient() {
         initComponents();
-         setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -164,6 +164,11 @@ public class FrmMenuClient extends javax.swing.JFrame {
 
         btnAtrasMenuClient.setBackground(new java.awt.Color(204, 204, 204));
         btnAtrasMenuClient.setText("Atrás");
+        btnAtrasMenuClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasMenuClientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,15 +204,19 @@ public class FrmMenuClient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClientActionPerformed
-        FrmAddClient frmAddClient = new FrmAddClient();
-                frmAddClient.setVisible(true);
-                dispose();
+       
     }//GEN-LAST:event_btnAddClientActionPerformed
 
     private void btnEditClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditClientActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnEditClientActionPerformed
+
+    private void btnAtrasMenuClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasMenuClientActionPerformed
+        FrmMainMenu mainMenu=new FrmMainMenu();
+        this.setVisible(false);
+        mainMenu.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtrasMenuClientActionPerformed
 
     /**
      * @param args the command line arguments
