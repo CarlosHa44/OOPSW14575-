@@ -216,7 +216,8 @@ public class FrmLoggin extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.setVisible(false);
-// TODO add your handling code here:
+        this.dispose();
+        System.exit(0);
 
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -227,8 +228,8 @@ public class FrmLoggin extends javax.swing.JFrame {
         int attempts = 3;
         do {
             if (txtUsuario.getText().equals(allowedUsername) && password.equals(storedHashedPassword)) {
-                FrmProductsMenu ProductsMenu = new FrmProductsMenu();
-                ProductsMenu.setVisible(true);
+                FrmMainMenu mainMenu = new FrmMainMenu();
+                mainMenu.setVisible(true);
                 dispose();
                 break;
             } else {
