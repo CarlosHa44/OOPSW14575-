@@ -33,15 +33,24 @@ public class InvoiceController extends MDBManage {
         System.out.println("Precio Final:" + Invoice.getValue());
     }
 
-    public static int getActualId(ArrayList<Invoice> invoices) {
+    public int getActualIdInvoice(ArrayList<Invoice> invoices) {
         int actualId = 0;
         for (Invoice invoiceCurrent : invoices) {
             actualId = invoiceCurrent.getId();
         }
         return actualId + 1;
     }
+    
+    public ArrayList<Invoice> findAllProducts() {
+        Class classType = Invoice.class;
+        String collection = "Products";
+        MongoCollection<Invoice> invoiceDB = MDBManage.getFromCollection(collection, classType);
+        ArrayList<Invoice> productList = new ArrayList<>();
+        invoiceDB.find().into(productList);
+        return productList;
+    }
 
-    public static void addAmount(ArrayList<Product> products, int id, int amount) {
+    public void addAmount(ArrayList<Product> products, int id, int amount) {
         for (Product currentProduct : products) {
             int idProduct = currentProduct.getId();
             if (idProduct == id) {
@@ -52,7 +61,8 @@ public class InvoiceController extends MDBManage {
     }
     
      public static Invoice addInvoice(ArrayList<Invoice> invoices, ArrayList<Product> products) {
-        int idInvoice = getActualId(invoices);
+        InvoiceController controller=new InvoiceController();
+        int idInvoice = controller.getActualIdInvoice(invoices);
         Date date = validatedate();
         ArrayList<Product> productsInvoice = new ArrayList<>();
         int option;
@@ -106,7 +116,7 @@ public class InvoiceController extends MDBManage {
                 }
             }
 
-            addAmount(products, idAux, numberOfProducts);
+            controller.addAmount(products, idAux, numberOfProducts);
             float unitCost;
 
             while (true) {

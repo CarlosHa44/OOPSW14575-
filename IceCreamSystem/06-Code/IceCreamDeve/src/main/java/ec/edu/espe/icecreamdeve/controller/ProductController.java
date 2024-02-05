@@ -16,13 +16,7 @@ import java.util.Scanner;
  */
 public class ProductController extends MDBManage {
     static Scanner scan = new Scanner(System.in);
-    public static int getActualIdInovice(ArrayList<Invoice> invoices) {
-        int actualId = 0;
-        for (Invoice invoiceCurrent : invoices) {
-            actualId = invoiceCurrent.getId();
-        }
-        return actualId + 1;
-    }
+    
     @Override
     public void register(Object object) {
         Class classType = Product.class;
