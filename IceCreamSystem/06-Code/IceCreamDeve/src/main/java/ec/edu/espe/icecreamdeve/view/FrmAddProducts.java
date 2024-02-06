@@ -4,9 +4,8 @@ package ec.edu.espe.icecreamdeve.view;
 import com.mongodb.client.MongoCollection;
 import ec.edu.espe.icecreamdeve.controller.ProductController;
 import ec.edu.espe.icecreamdeve.model.Product;
-import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import javax.swing.JOptionPane;
-import org.bson.Document;
+
 
 /**
  *
@@ -731,11 +730,16 @@ public class FrmAddProducts extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+     if (validateFields()) {
+        
         addProduct();
-      
-        JOptionPane.showMessageDialog(this, "New product added successfully.");
+    } else {
+       
+        JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+        
     }//GEN-LAST:event_btnAddProductActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -854,16 +858,60 @@ public class FrmAddProducts extends javax.swing.JFrame {
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoice3ActionPerformed
-    private void addProduct() {
+   private void addProduct() {
+    
+    if (validateFields()) {
+        
         ProductController controller = new ProductController();
-        int id =controller.getActualId(controller.findAllProducts());
+        
+       
+        int id = controller.getActualId(controller.findAllProducts()) ;
+        
+        
         int amount = Integer.parseInt(txtAmount.getText());
         String name = txtName.getText();
         float cost = Float.parseFloat(txtCost.getText());
-        Product newProduct=new Product(id, amount, name, cost);
+        
+       
+        Product newProduct = new Product(id, amount, name, cost);
+        
+        
         controller.register(newProduct);
+        
+       
+        JOptionPane.showMessageDialog(null, "Producto agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+       
+        JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+    
 
+            
+   private boolean validateFields() {
+    
+    String amountText = txtAmount.getText();
+    if (!amountText.matches("\\d+")) {
+        return false;
+    }
+    
+    
+    String name = txtName.getText();
+    if (!name.matches("[a-zA-Z]+")) {
+        return false;
+    }
+    
+    
+    String costText = txtCost.getText();
+    if (!costText.matches("\\d*\\.?\\d+")) {
+        return false;
+    }
+    
+   
+    return true;
+}
+
+    
     /**
      * @param args the command line arguments
      */
