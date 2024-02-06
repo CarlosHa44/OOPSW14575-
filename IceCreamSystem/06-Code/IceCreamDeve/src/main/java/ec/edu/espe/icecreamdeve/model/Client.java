@@ -1,5 +1,10 @@
 package ec.edu.espe.icecreamdeve.model;
+import com.google.gson.reflect.TypeToken;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
+import ec.edu.espe.icecreamdeve.utils.UseJson;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 
 /**
@@ -33,6 +38,64 @@ public class Client {
         }
         return null;
     }
+    private static int generateID(ArrayList<Client> clients) {
+        int actualId = 0;
+        for (Client currentClient : clients) {
+            actualId = currentClient.getId();
+        }
+        return actualId + 1;
+    }
+            public static Client addClient(ArrayList<Client> clients) {
+        Scanner scan = new Scanner(System.in);
+        UseJson<Client> jsonUtilClients = new UseJson<>();
+        clients = jsonUtilClients.readFile("clientdata.json", new TypeToken<ArrayList<Client>>() {
+        }.getType());
+        int newID = generateID(clients);
+        String name = "";
+        String email = "";
+        String cellphoneNumber = "";
+        boolean isNorth = false;
+        boolean isMajority = false;
+        boolean inputValid;
+
+        do {
+            try {
+
+                do {
+                    System.out.println("Enter the new name");
+                    name = scan.nextLine();
+                    if (!name.matches("[a-zA-Z]+")) {
+                        System.out.println("Please, Enter the customer name.");
+                        inputValid = false;
+                    } else {
+                        inputValid = true;
+                    }
+                } while (!inputValid);
+                System.out.println("Enter the customer's email");
+                email = scan.nextLine();
+                System.out.println("Enter the customer's phone number");
+                cellphoneNumber = scan.nextLine();
+                System.out.println("¿The client is in the north? (true/false)");
+                isNorth = scan.nextBoolean();
+                System.out.println("¿The client is the majority? (true/false)");
+                isMajority = scan.nextBoolean();
+                inputValid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("An error occurred");
+                inputValid = false;
+                scan.nextLine();
+            }
+        } while (!inputValid);
+        scan.nextLine();
+        Client newClient = new Client(newID, name, email, cellphoneNumber, isNorth, isMajority);
+        MDBManage.registerClient(newClient);
+        clients.add(newClient);
+      jsonUtilClients.writeFile("clientdata.json", clients);
+        return  newClient;
+        
+    }
+
+
 
     @Override
     public String toString() {

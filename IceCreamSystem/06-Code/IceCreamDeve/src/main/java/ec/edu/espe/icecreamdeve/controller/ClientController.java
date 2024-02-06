@@ -169,7 +169,7 @@ public class ClientController {
                 case 1:
                     clients.add(ClientController.addClient(clients));
                     System.out.println("Client added successfully!");
-                    jsonUtilClients.writeFile("clientdata.json", clients);
+                    
                     break;
                 case 2:
                      System.out.println("Enter the customer ID to edit:");
