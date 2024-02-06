@@ -19,6 +19,7 @@ public class FrmShowInvoices extends javax.swing.JFrame {
     public FrmShowInvoices() {
         initComponents();
         showAllInvoices();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -263,13 +264,14 @@ public class FrmShowInvoices extends javax.swing.JFrame {
         invoiceInfo.append("Fecha: ").append(document.getDate("dateI")).append("\n");
         
         ArrayList<Document> boxes = (ArrayList<Document>) document.get("boxes");
-        invoiceInfo.append("Boxes:\n");
+        invoiceInfo.append("Productos comprados:\n");
+        invoiceInfo.append("\tProducto" + "\tCantidad" + "\tValorUnitario");
         for (Document box : boxes) {
         double cost1 = box.getDouble("cost");
         String cost = String.format("%.2f", cost1);
-        invoiceInfo.append("\tNombre del Producto: ").append(box.getString("name"))
-               .append(", Cantidad: ").append(box.getInteger("amount"))
-               .append(", Costo: ").append(cost).append("\n");
+        invoiceInfo.append("\n\t").append(box.getString("name"))
+               .append("\t").append(box.getInteger("amount"))
+               .append("\t").append(cost).append("\n");
       }
         double value = document.getDouble("value");
         String formattedValue = String.format("%.2f", value);

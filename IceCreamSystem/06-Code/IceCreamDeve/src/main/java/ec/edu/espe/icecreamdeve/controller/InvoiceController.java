@@ -41,13 +41,13 @@ public class InvoiceController extends MDBManage {
         return actualId + 1;
     }
     
-    public ArrayList<Invoice> findAllProducts() {
+    public ArrayList<Invoice> findAllInvoices() {
         Class classType = Invoice.class;
-        String collection = "Products";
+        String collection = "Invoices";
         MongoCollection<Invoice> invoiceDB = MDBManage.getFromCollection(collection, classType);
-        ArrayList<Invoice> productList = new ArrayList<>();
-        invoiceDB.find().into(productList);
-        return productList;
+        ArrayList<Invoice> invoiceList = new ArrayList<>();
+        invoiceDB.find().into(invoiceList);
+        return invoiceList;
     }
 
     public void addAmount(ArrayList<Product> products, int id, int amount) {

@@ -1,16 +1,12 @@
-
 package ec.edu.espe.icecreamdeve.view;
 
-import com.mongodb.client.MongoCollection;
 import ec.edu.espe.icecreamdeve.controller.InvoiceController;
+import ec.edu.espe.icecreamdeve.controller.ProductController;
 import ec.edu.espe.icecreamdeve.model.Invoice;
 import ec.edu.espe.icecreamdeve.model.Product;
-import ec.edu.espe.icecreamdeve.controller.ProductController;
-import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import org.bson.Document;
 
 /**
  *
@@ -23,6 +19,7 @@ public class FrmAddInvoice extends javax.swing.JFrame {
      */
     public FrmAddInvoice() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -52,7 +49,8 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbDate = new javax.swing.JLabel();
+        btnAddNewProduct = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -196,31 +194,40 @@ public class FrmAddInvoice extends javax.swing.JFrame {
 
         jLabel1.setText("Selecciona el producto");
 
-        jLabel2.setText("Fecha de la compra");
+        lbDate.setText("Fecha de la compra");
+
+        btnAddNewProduct.setText("Añadir otro producto a la factura actual");
+        btnAddNewProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddNewProductActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnNewinvoice)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel1)
+                                .addComponent(lbDate)))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel30)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmbProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(btnNewinvoice)))
+                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddNewProduct)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -239,10 +246,12 @@ public class FrmAddInvoice extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(65, 65, 65)
-                .addComponent(btnNewinvoice)
-                .addContainerGap(125, Short.MAX_VALUE))
+                    .addComponent(lbDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNewinvoice)
+                    .addComponent(btnAddNewProduct))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,36 +291,35 @@ public class FrmAddInvoice extends javax.swing.JFrame {
 
     private void btnNewinvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewinvoiceActionPerformed
         addInvoice();
-         JOptionPane.showMessageDialog(this, "New invoice added successfully.");
+        JOptionPane.showMessageDialog(this, "New invoice added successfully.");
     }//GEN-LAST:event_btnNewinvoiceActionPerformed
 
     private void cmbProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductActionPerformed
-     
-     ArrayList<Product> products = findAllProducts();
-     for (Product product : products) {
-     cmbProduct.addItem(product); 
-          
+        ProductController controller=new ProductController();
+        ArrayList<Product> products = controller.findAllProducts();
+        for (Product product : products) {
+            cmbProduct.addItem(product);
     }//GEN-LAST:event_cmbProductActionPerformed
     }
     private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
-       txtAmount.setEditable(false);
+        txtAmount.setEditable(false);
     }//GEN-LAST:event_txtAmountActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        FrmProductsMenu  frmProductmenu = new FrmProductsMenu();
+        FrmProductsMenu frmProductmenu = new FrmProductsMenu();
         this.setVisible(false);
         frmProductmenu.setVisible(true);
 
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnProducts5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducts5ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnProducts5ActionPerformed
 
     private void btnClient3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClient3ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClient3ActionPerformed
@@ -321,7 +329,7 @@ public class FrmAddInvoice extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReport3ActionPerformed
 
     private void btnInvoice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice3ActionPerformed
-        FrmMenuInvoices invoiceMenu=new FrmMenuInvoices();
+        FrmMenuInvoices invoiceMenu = new FrmMenuInvoices();
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoice3ActionPerformed
@@ -333,36 +341,50 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalir3ActionPerformed
 
-        private void addInvoice() {
-        InvoiceController controller=new InvoiceController();
-        int id =controller.getActualIdInvoice(controller.findAllProducts());
-        Date date = new Date(txtDate.getText()); 
+    private void btnAddNewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewProductActionPerformed
+        cmbProduct.setSelectedIndex(-1);
+        txtDate.setVisible(false);
+        txtDate.setVisible(false);
+        lbDate.setVisible(false);
+    }//GEN-LAST:event_btnAddNewProductActionPerformed
+
+    private void addInvoice() {
+         InvoiceController controller = new InvoiceController();
+        int option=0;
+        int id = controller.getActualIdInvoice(controller.findAllInvoices());
+        Date date = new Date(txtDate.getText());
         Product selectedProduct = (Product) cmbProduct.getSelectedItem();
-        int amount=Integer.parseInt(txtAmount.getText());
-         
+        int amount = Integer.parseInt(txtAmount.getText());
+
         float totalValue = selectedProduct.getCost() * amount;
-        Product productAux=new Product(selectedProduct.getId(), amount, selectedProduct.getName(), totalValue);
+        Product productAux = new Product(selectedProduct.getId(), amount, selectedProduct.getName(), totalValue);
         ArrayList<Product> productsList = new ArrayList<>();
-          productsList.add(productAux);
-
-          Invoice newInvoice = new Invoice(id, date, totalValue, productsList); 
-          controller.register(newInvoice);
+        productsList.add(productAux);
+        cmbProduct.setSelectedIndex(-1);
+        txtDate.setVisible(false);
+        lbDate.setVisible(false);
+        option = JOptionPane.showConfirmDialog(this, "¿Desea agregar otro producto?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            while(option == JOptionPane.YES_OPTION){
+                totalValue = AddAnotherProduct(totalValue, productsList);
+            option = JOptionPane.showConfirmDialog(this, "¿Desea agregar otro producto?", "Confirmación", JOptionPane.YES_NO_OPTION);          
+            }
+        Invoice newInvoice = new Invoice(id, date, totalValue, productsList);
+        controller.register(newInvoice);
+        FrmMenuInvoices menuInvoices=new FrmMenuInvoices();
+        this.setVisible(false);
+        menuInvoices.setVisible(true);
     }
-      public ArrayList<Product> findAllProducts() {
-        Class classType = Product.class;
-        String collection = "Products";
-        MongoCollection<Product> productDB = MDBManage.getFromCollection(collection, classType);
-        ArrayList<Product> productList = new ArrayList<>();
-        productDB.find().into(productList);
-        return productList;
-        
+
+    public float AddAnotherProduct(float totalValue, ArrayList<Product> productsList) throws NumberFormatException {
+        Product product = (Product) cmbProduct.getSelectedItem();
+        int amountOfProducts = Integer.parseInt(txtAmount.getText());
+        float unitCost=product.getCost();
+        totalValue += unitCost * amountOfProducts;
+        Product product1=new Product(product.getId(), amountOfProducts, product.getName(), unitCost);
+        productsList.add(product1);
+        return totalValue;
     }
 
-    
-    
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -396,6 +418,7 @@ public class FrmAddInvoice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddNewProduct;
     private javax.swing.JButton btnClient3;
     private javax.swing.JButton btnInvoice3;
     private javax.swing.JButton btnMenu;
@@ -406,12 +429,12 @@ public class FrmAddInvoice extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir3;
     private javax.swing.JComboBox<Object> cmbProduct;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbDate;
     private javax.swing.JPanel pnlAccion5;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtDate;

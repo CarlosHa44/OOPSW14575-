@@ -23,7 +23,7 @@ public class FrmAddClient extends javax.swing.JFrame {
      */
     public FrmAddClient() {
         initComponents();
-     
+        setLocationRelativeTo(null);
     }
  private void btnAddClientActionPerformed(ActionEvent evt) {
         // Obtén los valores de los componentes de la interfaz
