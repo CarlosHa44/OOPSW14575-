@@ -1,8 +1,6 @@
 
 package ec.edu.espe.icecreamdeve.view;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author WILLIAM

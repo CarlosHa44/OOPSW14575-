@@ -15,6 +15,7 @@ public class FrmMenuSaleNote extends javax.swing.JFrame {
      */
     public FrmMenuSaleNote() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
