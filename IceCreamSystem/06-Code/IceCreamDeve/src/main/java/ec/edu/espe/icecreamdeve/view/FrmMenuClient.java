@@ -1,8 +1,6 @@
 
 package ec.edu.espe.icecreamdeve.view;
 
-import ec.edu.espe.icecreamdeve.view.FrmAddClient;
-
 /**
  *
  * @author mateo

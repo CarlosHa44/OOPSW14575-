@@ -261,6 +261,11 @@ public class FrmProductsMenu extends javax.swing.JFrame {
         btnSaleNote.setForeground(new java.awt.Color(255, 255, 255));
         btnSaleNote.setText("Notas de Venta");
         btnSaleNote.setBorder(null);
+        btnSaleNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaleNoteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAccion2Layout = new javax.swing.GroupLayout(pnlAccion2);
         pnlAccion2.setLayout(pnlAccion2Layout);
@@ -395,6 +400,12 @@ public class FrmProductsMenu extends javax.swing.JFrame {
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoiceActionPerformed
+
+    private void btnSaleNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleNoteActionPerformed
+        FrmMenuSaleNote saleNote=new FrmMenuSaleNote();
+        this.setVisible(false);
+        saleNote.setVisible(true);
+    }//GEN-LAST:event_btnSaleNoteActionPerformed
 
     /**
      * @param args the command line arguments

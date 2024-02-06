@@ -25,6 +25,8 @@ public class SaleNote {
         this.listOfProducts = listOfProducts;
         this.totalValue = totalValue;
     }
+    
+    public SaleNote(){}
 
     @Override
     public String toString() {

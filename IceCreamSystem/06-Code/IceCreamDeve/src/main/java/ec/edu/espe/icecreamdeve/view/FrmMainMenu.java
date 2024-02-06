@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.icecreamdeve.view;
 
 import javax.swing.JOptionPane;
@@ -99,6 +96,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
         btnSaleNote.setForeground(new java.awt.Color(255, 255, 255));
         btnSaleNote.setText("Notas de Venta");
         btnSaleNote.setBorder(null);
+        btnSaleNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaleNoteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAccionLayout = new javax.swing.GroupLayout(pnlAccion);
         pnlAccion.setLayout(pnlAccionLayout);
@@ -229,9 +231,9 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductsActionPerformed
 
     private void btnClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientActionPerformed
-        FrmMenuClient productMenu=new FrmMenuClient();
+        FrmMenuClient clientMenu=new FrmMenuClient();
         this.setVisible(false);
-        productMenu.setVisible(true);
+        clientMenu.setVisible(true);
     }//GEN-LAST:event_btnClientActionPerformed
 
     private void btnInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceActionPerformed
@@ -239,6 +241,12 @@ public class FrmMainMenu extends javax.swing.JFrame {
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoiceActionPerformed
+
+    private void btnSaleNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleNoteActionPerformed
+        FrmMenuSaleNote saleNote=new FrmMenuSaleNote();
+        this.setVisible(false);
+        saleNote.setVisible(true);
+    }//GEN-LAST:event_btnSaleNoteActionPerformed
 
     /**
      * @param args the command line arguments

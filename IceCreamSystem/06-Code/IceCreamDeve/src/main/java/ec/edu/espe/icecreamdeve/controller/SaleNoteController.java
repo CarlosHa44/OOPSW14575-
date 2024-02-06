@@ -2,7 +2,9 @@
 package ec.edu.espe.icecreamdeve.controller;
 
 import com.google.gson.reflect.TypeToken;
+import com.mongodb.client.MongoCollection;
 import ec.edu.espe.icecreamdeve.model.Client;
+import ec.edu.espe.icecreamdeve.model.Invoice;
 import ec.edu.espe.icecreamdeve.model.Product;
 import ec.edu.espe.icecreamdeve.model.SaleNote;
 import static ec.edu.espe.icecreamdeve.model.SaleNote.getScan;
@@ -17,7 +19,7 @@ import java.util.Scanner;
  *
  * @author mateo
  */
-public class SaleNoteController {
+public class SaleNoteController extends MDBManage{
    private static Scanner scan = new Scanner(System.in);
     
       public static int getActualId(ArrayList<SaleNote> saleNotes) {
@@ -26,6 +28,23 @@ public class SaleNoteController {
             actualId = saleNoteCurrent.getId();
         }
         return actualId + 1;
+    }
+      
+    @Override
+    public void register(Object object) {
+        Class classType = SaleNote.class;
+        String collection = "SaleNote";
+        MongoCollection<SaleNote> invoiceDB = MDBManage.getFromCollection(collection, classType);
+        invoiceDB.insertOne((SaleNote) object);
+    }
+    
+    public ArrayList<SaleNote> findAllInvoices() {
+        Class classType = SaleNote.class;
+        String collection = "SaleNote";
+        MongoCollection<SaleNote> invoiceDB = MDBManage.getFromCollection(collection, classType);
+        ArrayList<SaleNote> saleNoteList = new ArrayList<>();
+        invoiceDB.find().into(saleNoteList);
+        return saleNoteList;
     }
 
     public static void showSaleNote(SaleNote saleNote) {

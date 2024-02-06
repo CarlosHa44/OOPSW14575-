@@ -19,6 +19,7 @@ public class FrmSplash extends javax.swing.JFrame {
      */
     public FrmSplash() {
         initComponents();
+        setLocationRelativeTo(null);
          // Crear un temporizador que ejecutará la acción después de 5000 milisegundos (5 segundos)
         Timer timer = new Timer(5000, new ActionListener() {
             @Override

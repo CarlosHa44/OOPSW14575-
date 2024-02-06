@@ -115,6 +115,11 @@ public class FrmShowProducts extends javax.swing.JFrame {
         btnSaleNote3.setForeground(new java.awt.Color(255, 255, 255));
         btnSaleNote3.setText("Notas de Venta");
         btnSaleNote3.setBorder(null);
+        btnSaleNote3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaleNote3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAccion5Layout = new javax.swing.GroupLayout(pnlAccion5);
         pnlAccion5.setLayout(pnlAccion5Layout);
@@ -261,6 +266,12 @@ public class FrmShowProducts extends javax.swing.JFrame {
         System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalir3ActionPerformed
+
+    private void btnSaleNote3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleNote3ActionPerformed
+        FrmMenuSaleNote saleNote=new FrmMenuSaleNote();
+        this.setVisible(false);
+        saleNote.setVisible(true);
+    }//GEN-LAST:event_btnSaleNote3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,20 +1,14 @@
 
 package ec.edu.espe.icecreamdeve.view;
 
+import ec.edu.espe.icecreamdeve.controller.ClientController;
 import ec.edu.espe.icecreamdeve.model.Client;
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 /**
  *
  * @author mateo
  */
 public class FrmAddClient extends javax.swing.JFrame {
-
-  private ArrayList<Client> clientsList;
-
-
-
         
     /**
      * Creates new form FrmAddClient
@@ -23,20 +17,6 @@ public class FrmAddClient extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
- private void btnAddClientActionPerformed(ActionEvent evt) {
-        // Obtén los valores de los componentes de la interfaz
-        
-        String name = txtNameClient.getText();
-        String email = txtEmailClient.getText();
-        String cellphoneNumber = txCellphoneNumberClient.getText();
-        boolean isMajority = CbisMajority.getSelectedItem().equals("Si");
-        boolean isNorth = CbIsNorth.getSelectedItem().equals("Norte");
-
-        // Llama al método addClient de la clase Client y le pasa la lista existente
-        Client newClient = Client.addClient(clientsList);
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +82,11 @@ public class FrmAddClient extends javax.swing.JFrame {
         btnAddClient.setBackground(new java.awt.Color(204, 204, 204));
         btnAddClient.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAddClient.setText("Agregar");
+        btnAddClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddClientActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Telefono ");
@@ -273,6 +258,20 @@ public class FrmAddClient extends javax.swing.JFrame {
         this.setVisible(false);
         mainMenu.setVisible(true);  
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnAddClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClientActionPerformed
+        ClientController controller=new ClientController();
+        int id=ClientController.generateID(controller.findAllClients());
+        String name = txtNameClient.getText();
+        String email = txtEmailClient.getText();
+        String cellphoneNumber = txCellphoneNumberClient.getText();
+        boolean isMajority = CbisMajority.getSelectedItem().equals("Si");
+        boolean isNorth = CbIsNorth.getSelectedItem().equals("Norte");
+
+        // Llama al método addClient de la clase Client y le pasa la lista existente
+        Client newClient = new Client(id, name, email, cellphoneNumber, isNorth, isMajority);
+        controller.register(newClient);
+    }//GEN-LAST:event_btnAddClientActionPerformed
 
     /**
      * @param args the command line arguments

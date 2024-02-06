@@ -28,6 +28,8 @@ public class Client {
         this.isNorth = isNorth;
         this.isMajority = isMajority;
     }
+    
+    public Client(){}
 
 
     public static Client findClientById(ArrayList<Client> clients, int id) {
