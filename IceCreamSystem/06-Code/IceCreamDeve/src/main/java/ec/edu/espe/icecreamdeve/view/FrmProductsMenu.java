@@ -52,7 +52,6 @@ public class FrmProductsMenu extends javax.swing.JFrame {
         pnlAccion2 = new javax.swing.JPanel();
         btnProducts2 = new javax.swing.JButton();
         btnClient = new javax.swing.JButton();
-        btnReport = new javax.swing.JButton();
         btnInvoice = new javax.swing.JButton();
         btnSaleNote = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -246,17 +245,6 @@ public class FrmProductsMenu extends javax.swing.JFrame {
             }
         });
 
-        btnReport.setBackground(new java.awt.Color(51, 51, 51));
-        btnReport.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btnReport.setForeground(new java.awt.Color(255, 255, 255));
-        btnReport.setText("Reporte");
-        btnReport.setBorder(null);
-        btnReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportActionPerformed(evt);
-            }
-        });
-
         btnInvoice.setBackground(new java.awt.Color(51, 51, 51));
         btnInvoice.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         btnInvoice.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,7 +271,6 @@ public class FrmProductsMenu extends javax.swing.JFrame {
                 .addGroup(pnlAccion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSaleNote, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlAccion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnProducts2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClient, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -300,9 +287,7 @@ public class FrmProductsMenu extends javax.swing.JFrame {
                 .addComponent(btnInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSaleNote, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
@@ -405,10 +390,6 @@ public class FrmProductsMenu extends javax.swing.JFrame {
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClientActionPerformed
 
-    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportActionPerformed
-
     private void btnInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceActionPerformed
         FrmMenuInvoices invoiceMenu=new FrmMenuInvoices();
         this.setVisible(false);
@@ -455,7 +436,6 @@ public class FrmProductsMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnInvoice;
     private javax.swing.JButton btnProducts;
     private javax.swing.JButton btnProducts2;
-    private javax.swing.JButton btnReport;
     private javax.swing.JButton btnReturnMenu;
     private javax.swing.JButton btnSaleNote;
     private javax.swing.JButton btnSalir;

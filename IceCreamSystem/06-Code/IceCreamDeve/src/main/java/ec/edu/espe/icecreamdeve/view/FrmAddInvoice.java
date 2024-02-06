@@ -14,9 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class FrmAddInvoice extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmAddInvoice
-     */
+    private ArrayList<Product> productsList = new ArrayList<>();
+    
     public FrmAddInvoice() {
         initComponents();
         setLocationRelativeTo(null);
@@ -37,7 +36,6 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         pnlAccion5 = new javax.swing.JPanel();
         btnProducts5 = new javax.swing.JButton();
         btnClient3 = new javax.swing.JButton();
-        btnReport3 = new javax.swing.JButton();
         btnInvoice3 = new javax.swing.JButton();
         btnSaleNote3 = new javax.swing.JButton();
         btnSalir3 = new javax.swing.JButton();
@@ -50,7 +48,7 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         txtDate = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         lbDate = new javax.swing.JLabel();
-        btnAddNewProduct = new javax.swing.JButton();
+        btnAddProduct = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -96,17 +94,6 @@ public class FrmAddInvoice extends javax.swing.JFrame {
             }
         });
 
-        btnReport3.setBackground(new java.awt.Color(51, 51, 51));
-        btnReport3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btnReport3.setForeground(new java.awt.Color(255, 255, 255));
-        btnReport3.setText("Reporte");
-        btnReport3.setBorder(null);
-        btnReport3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReport3ActionPerformed(evt);
-            }
-        });
-
         btnInvoice3.setBackground(new java.awt.Color(51, 51, 51));
         btnInvoice3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         btnInvoice3.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,7 +120,6 @@ public class FrmAddInvoice extends javax.swing.JFrame {
                 .addGroup(pnlAccion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSaleNote3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInvoice3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReport3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlAccion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnProducts5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClient3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -150,9 +136,7 @@ public class FrmAddInvoice extends javax.swing.JFrame {
                 .addComponent(btnInvoice3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSaleNote3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReport3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         btnSalir3.setBackground(new java.awt.Color(204, 204, 204));
@@ -196,10 +180,10 @@ public class FrmAddInvoice extends javax.swing.JFrame {
 
         lbDate.setText("Fecha de la compra");
 
-        btnAddNewProduct.setText("Añadir otro producto a la factura actual");
-        btnAddNewProduct.addActionListener(new java.awt.event.ActionListener() {
+        btnAddProduct.setText("Añadir un nuevo Producto");
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddNewProductActionPerformed(evt);
+                btnAddProductActionPerformed(evt);
             }
         });
 
@@ -208,26 +192,26 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnNewinvoice)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel1)
-                                .addComponent(lbDate)))
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30)
                             .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel1)
+                                    .addComponent(lbDate))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmbProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAddNewProduct)))))
+                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(btnNewinvoice)
+                        .addGap(112, 112, 112)
+                        .addComponent(btnAddProduct)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -247,11 +231,11 @@ public class FrmAddInvoice extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNewinvoice)
-                    .addComponent(btnAddNewProduct))
-                .addGap(42, 42, 42))
+                    .addComponent(btnAddProduct))
+                .addGap(88, 88, 88))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -324,10 +308,6 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClient3ActionPerformed
 
-    private void btnReport3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReport3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReport3ActionPerformed
-
     private void btnInvoice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice3ActionPerformed
         FrmMenuInvoices invoiceMenu = new FrmMenuInvoices();
         this.setVisible(false);
@@ -341,48 +321,34 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalir3ActionPerformed
 
-    private void btnAddNewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewProductActionPerformed
-        cmbProduct.setSelectedIndex(-1);
-        txtDate.setVisible(false);
-        txtDate.setVisible(false);
-        lbDate.setVisible(false);
-    }//GEN-LAST:event_btnAddNewProductActionPerformed
-
-    private void addInvoice() {
-         InvoiceController controller = new InvoiceController();
-        int option=0;
-        int id = controller.getActualIdInvoice(controller.findAllInvoices());
-        Date date = new Date(txtDate.getText());
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+       registerProduct();
+    }//GEN-LAST:event_btnAddProductActionPerformed
+    private ArrayList<Product> registerProduct(){
         Product selectedProduct = (Product) cmbProduct.getSelectedItem();
         int amount = Integer.parseInt(txtAmount.getText());
-
-        float totalValue = selectedProduct.getCost() * amount;
-        Product productAux = new Product(selectedProduct.getId(), amount, selectedProduct.getName(), totalValue);
-        ArrayList<Product> productsList = new ArrayList<>();
+        
+        Product productAux = new Product(selectedProduct.getId(), amount, selectedProduct.getName(),selectedProduct.getCost());
         productsList.add(productAux);
         cmbProduct.setSelectedIndex(-1);
         txtDate.setVisible(false);
         lbDate.setVisible(false);
-        option = JOptionPane.showConfirmDialog(this, "¿Desea agregar otro producto?", "Confirmación", JOptionPane.YES_NO_OPTION);
-            while(option == JOptionPane.YES_OPTION){
-                totalValue = AddAnotherProduct(totalValue, productsList);
-            option = JOptionPane.showConfirmDialog(this, "¿Desea agregar otro producto?", "Confirmación", JOptionPane.YES_NO_OPTION);          
-            }
+        return productsList;
+    } 
+    private void addInvoice() {
+        InvoiceController controller = new InvoiceController();
+        int id = controller.getActualIdInvoice(controller.findAllInvoices());
+        Date date = new Date(txtDate.getText());
+        float totalValue=0;
+        for(Product auxProduct:productsList){
+            totalValue+=auxProduct.getAmount()*auxProduct.getCost();
+        }
+
         Invoice newInvoice = new Invoice(id, date, totalValue, productsList);
         controller.register(newInvoice);
         FrmMenuInvoices menuInvoices=new FrmMenuInvoices();
         this.setVisible(false);
         menuInvoices.setVisible(true);
-    }
-
-    public float AddAnotherProduct(float totalValue, ArrayList<Product> productsList) throws NumberFormatException {
-        Product product = (Product) cmbProduct.getSelectedItem();
-        int amountOfProducts = Integer.parseInt(txtAmount.getText());
-        float unitCost=product.getCost();
-        totalValue += unitCost * amountOfProducts;
-        Product product1=new Product(product.getId(), amountOfProducts, product.getName(), unitCost);
-        productsList.add(product1);
-        return totalValue;
     }
 
     public static void main(String args[]) {
@@ -418,13 +384,12 @@ public class FrmAddInvoice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddNewProduct;
+    private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnClient3;
     private javax.swing.JButton btnInvoice3;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnNewinvoice;
     private javax.swing.JButton btnProducts5;
-    private javax.swing.JButton btnReport3;
     private javax.swing.JButton btnSaleNote3;
     private javax.swing.JButton btnSalir3;
     private javax.swing.JComboBox<Object> cmbProduct;

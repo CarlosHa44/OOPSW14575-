@@ -72,6 +72,11 @@ public class FrmMenuClient extends javax.swing.JFrame {
         btnShowClient.setForeground(new java.awt.Color(204, 204, 204));
         btnShowClient.setText("Mostrar");
         btnShowClient.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnShowClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowClientActionPerformed(evt);
+            }
+        });
 
         btnDeleteClient.setBackground(new java.awt.Color(51, 51, 51));
         btnDeleteClient.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -219,6 +224,10 @@ public class FrmMenuClient extends javax.swing.JFrame {
         this.setVisible(false);
         mainMenu.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAtrasMenuClientActionPerformed
+
+    private void btnShowClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowClientActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_btnShowClientActionPerformed
 
     /**
      * @param args the command line arguments

@@ -73,7 +73,7 @@ public class InvoiceControllerTest {
         System.out.println("findAllProducts");
         InvoiceController instance = new InvoiceController();
         ArrayList<Invoice> expResult = null;
-        ArrayList<Invoice> result = instance.findAllProducts();
+        ArrayList<Invoice> result = instance.findAllInvoices();
         assertEquals(expResult, result);
 
     }

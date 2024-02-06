@@ -54,7 +54,6 @@ public class FrmShowProducts extends javax.swing.JFrame {
         pnlAccion5 = new javax.swing.JPanel();
         btnProducts5 = new javax.swing.JButton();
         btnClient3 = new javax.swing.JButton();
-        btnReport3 = new javax.swing.JButton();
         btnInvoice3 = new javax.swing.JButton();
         btnSaleNote3 = new javax.swing.JButton();
         btnSalir3 = new javax.swing.JButton();
@@ -100,17 +99,6 @@ public class FrmShowProducts extends javax.swing.JFrame {
             }
         });
 
-        btnReport3.setBackground(new java.awt.Color(51, 51, 51));
-        btnReport3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btnReport3.setForeground(new java.awt.Color(255, 255, 255));
-        btnReport3.setText("Reporte");
-        btnReport3.setBorder(null);
-        btnReport3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReport3ActionPerformed(evt);
-            }
-        });
-
         btnInvoice3.setBackground(new java.awt.Color(51, 51, 51));
         btnInvoice3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         btnInvoice3.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,7 +125,6 @@ public class FrmShowProducts extends javax.swing.JFrame {
                 .addGroup(pnlAccion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSaleNote3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInvoice3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReport3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlAccion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnProducts5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClient3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -154,9 +141,7 @@ public class FrmShowProducts extends javax.swing.JFrame {
                 .addComponent(btnInvoice3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSaleNote3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReport3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         btnSalir3.setBackground(new java.awt.Color(204, 204, 204));
@@ -264,10 +249,6 @@ public class FrmShowProducts extends javax.swing.JFrame {
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClient3ActionPerformed
 
-    private void btnReport3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReport3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReport3ActionPerformed
-
     private void btnInvoice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice3ActionPerformed
         FrmMenuInvoices invoiceMenu=new FrmMenuInvoices();
         this.setVisible(false);
@@ -321,7 +302,6 @@ public class FrmShowProducts extends javax.swing.JFrame {
     private javax.swing.JButton btnInvoice3;
     private javax.swing.JButton btnMenu1;
     private javax.swing.JButton btnProducts5;
-    private javax.swing.JButton btnReport3;
     private javax.swing.JButton btnSaleNote3;
     private javax.swing.JButton btnSalir3;
     private javax.swing.JLabel jLabel30;

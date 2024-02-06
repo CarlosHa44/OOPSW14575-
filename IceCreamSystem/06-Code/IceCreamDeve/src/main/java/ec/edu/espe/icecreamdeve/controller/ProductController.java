@@ -3,7 +3,6 @@ package ec.edu.espe.icecreamdeve.controller;
 import com.google.gson.reflect.TypeToken;
 import com.mongodb.client.MongoCollection;
 import ec.edu.espe.icecreamdeve.model.Inventory;
-import ec.edu.espe.icecreamdeve.model.Invoice;
 import ec.edu.espe.icecreamdeve.model.Product;
 import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import ec.edu.espe.icecreamdeve.utils.UseJson;
@@ -41,6 +40,7 @@ public class ProductController extends MDBManage {
         productDB.find().into(productList);
         return productList;
     }
+    
 
     
     public static void menuProduct(ArrayList<Product> products) {

@@ -1,10 +1,8 @@
 
 package ec.edu.espe.icecreamdeve.view;
 
-import ec.edu.espe.icecreamdeve.controller.ClientController;
 import ec.edu.espe.icecreamdeve.model.Client;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +26,7 @@ public class FrmAddClient extends javax.swing.JFrame {
  private void btnAddClientActionPerformed(ActionEvent evt) {
         // Obtén los valores de los componentes de la interfaz
         
-         String name = txtNameClient.getText();
+        String name = txtNameClient.getText();
         String email = txtEmailClient.getText();
         String cellphoneNumber = txCellphoneNumberClient.getText();
         boolean isMajority = CbisMajority.getSelectedItem().equals("Si");
