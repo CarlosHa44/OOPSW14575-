@@ -3,6 +3,12 @@ package ec.edu.espe.icecreamdeve.view;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import ec.edu.espe.icecreamdeve.utils.MDBManage;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 
@@ -56,6 +62,7 @@ public class FrmShowProducts extends javax.swing.JFrame {
         btnClient3 = new javax.swing.JButton();
         btnInvoice3 = new javax.swing.JButton();
         btnSaleNote3 = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
         btnSalir3 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
@@ -121,6 +128,13 @@ public class FrmShowProducts extends javax.swing.JFrame {
             }
         });
 
+        btnPrint.setText("Imprimir Lista");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlAccion5Layout = new javax.swing.GroupLayout(pnlAccion5);
         pnlAccion5.setLayout(pnlAccion5Layout);
         pnlAccion5Layout.setHorizontalGroup(
@@ -134,6 +148,10 @@ public class FrmShowProducts extends javax.swing.JFrame {
                         .addComponent(btnProducts5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClient3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
+            .addGroup(pnlAccion5Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(btnPrint)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlAccion5Layout.setVerticalGroup(
             pnlAccion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +164,9 @@ public class FrmShowProducts extends javax.swing.JFrame {
                 .addComponent(btnInvoice3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSaleNote3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(btnPrint)
+                .addGap(39, 39, 39))
         );
 
         btnSalir3.setBackground(new java.awt.Color(204, 204, 204));
@@ -204,16 +224,17 @@ public class FrmShowProducts extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMenu1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlAccion5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 102, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMenu1)
+                        .addGap(640, 640, 640))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlAccion5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,9 +270,9 @@ public class FrmShowProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProducts5ActionPerformed
 
     private void btnClient3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClient3ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmMenuClient clientMenu=new FrmMenuClient();
         this.setVisible(false);
-        productMenu.setVisible(true);
+        clientMenu.setVisible(true);
     }//GEN-LAST:event_btnClient3ActionPerformed
 
     private void btnInvoice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice3ActionPerformed
@@ -272,6 +293,40 @@ public class FrmShowProducts extends javax.swing.JFrame {
         this.setVisible(false);
         saleNote.setVisible(true);
     }//GEN-LAST:event_btnSaleNote3ActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        PrinterJob job = PrinterJob.getPrinterJob();
+            job.setJobName("Print Data");
+            
+            job.setPrintable(new Printable(){
+            public int print(Graphics pg,PageFormat pf, int pageNum){
+                    pf.setOrientation(PageFormat.LANDSCAPE);
+                 if(pageNum>0){
+                    return Printable.NO_SUCH_PAGE;
+                }
+                
+                Graphics2D g2 = (Graphics2D)pg;
+                g2.translate(pf.getImageableX(), pf.getImageableY());
+                g2.scale(0.80,1.2);
+                
+                jPanel7.paint(g2);
+//          
+               
+                return Printable.PAGE_EXISTS;
+                         
+                
+            }
+    });
+         
+        boolean ok = job.printDialog();
+        if(ok){
+        try{
+            
+        job.print();
+        }
+        catch (PrinterException ex){}
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +367,7 @@ public class FrmShowProducts extends javax.swing.JFrame {
     private javax.swing.JButton btnClient3;
     private javax.swing.JButton btnInvoice3;
     private javax.swing.JButton btnMenu1;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnProducts5;
     private javax.swing.JButton btnSaleNote3;
     private javax.swing.JButton btnSalir3;

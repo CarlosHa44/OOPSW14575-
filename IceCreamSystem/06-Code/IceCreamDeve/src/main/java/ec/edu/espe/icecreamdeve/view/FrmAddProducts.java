@@ -834,9 +834,9 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProducts5ActionPerformed
 
     private void btnClient3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClient3ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmMenuClient clientMenu=new FrmMenuClient();
         this.setVisible(false);
-        productMenu.setVisible(true);
+        clientMenu.setVisible(true);
     }//GEN-LAST:event_btnClient3ActionPerformed
 
     private void btnInvoice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice3ActionPerformed
