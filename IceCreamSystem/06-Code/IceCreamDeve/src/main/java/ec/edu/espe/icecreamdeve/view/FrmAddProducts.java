@@ -1,11 +1,9 @@
-
 package ec.edu.espe.icecreamdeve.view;
 
 import com.mongodb.client.MongoCollection;
 import ec.edu.espe.icecreamdeve.controller.ProductController;
 import ec.edu.espe.icecreamdeve.model.Product;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -720,23 +718,23 @@ public class FrmAddProducts extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
-     if (validateFields()) {
-        
-        addProduct();
-    } else {
-       
-        JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-        
+        if (validateFields()) {
+
+            addProduct();
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnAddProductActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-       FrmProductsMenu  frmProductmenu = new FrmProductsMenu();
-       this.setVisible(false);
-       frmProductmenu.setVisible(true);
-       
+        FrmProductsMenu frmProductmenu = new FrmProductsMenu();
+        this.setVisible(false);
+        frmProductmenu.setVisible(true);
+
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -745,13 +743,13 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnProducts2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducts2ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnProducts2ActionPerformed
 
     private void btnClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClientActionPerformed
@@ -761,7 +759,7 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReportActionPerformed
 
     private void btnInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceActionPerformed
-        FrmMenuInvoices invoiceMenu=new FrmMenuInvoices();
+        FrmMenuInvoices invoiceMenu = new FrmMenuInvoices();
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoiceActionPerformed
@@ -772,13 +770,13 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalir1ActionPerformed
 
     private void btnProducts3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducts3ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnProducts3ActionPerformed
 
     private void btnClient1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClient1ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClient1ActionPerformed
@@ -788,7 +786,7 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReport1ActionPerformed
 
     private void btnInvoice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice1ActionPerformed
-        FrmMenuInvoices invoiceMenu=new FrmMenuInvoices();
+        FrmMenuInvoices invoiceMenu = new FrmMenuInvoices();
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoice1ActionPerformed
@@ -799,13 +797,13 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalir2ActionPerformed
 
     private void btnProducts4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducts4ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnProducts4ActionPerformed
 
     private void btnClient2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClient2ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnClient2ActionPerformed
@@ -815,7 +813,7 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReport2ActionPerformed
 
     private void btnInvoice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice2ActionPerformed
-        FrmMenuInvoices invoiceMenu=new FrmMenuInvoices();
+        FrmMenuInvoices invoiceMenu = new FrmMenuInvoices();
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoice2ActionPerformed
@@ -828,82 +826,81 @@ public class FrmAddProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalir3ActionPerformed
 
     private void btnProducts5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducts5ActionPerformed
-        FrmProductsMenu productMenu=new FrmProductsMenu();
+        FrmProductsMenu productMenu = new FrmProductsMenu();
         this.setVisible(false);
         productMenu.setVisible(true);
     }//GEN-LAST:event_btnProducts5ActionPerformed
 
     private void btnClient3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClient3ActionPerformed
-        FrmMenuClient clientMenu=new FrmMenuClient();
+        FrmMenuClient clientMenu = new FrmMenuClient();
         this.setVisible(false);
         clientMenu.setVisible(true);
     }//GEN-LAST:event_btnClient3ActionPerformed
 
     private void btnInvoice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoice3ActionPerformed
-        FrmMenuInvoices invoiceMenu=new FrmMenuInvoices();
+        FrmMenuInvoices invoiceMenu = new FrmMenuInvoices();
         this.setVisible(false);
         invoiceMenu.setVisible(true);
     }//GEN-LAST:event_btnInvoice3ActionPerformed
 
     private void btnSaleNote3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleNote3ActionPerformed
-        FrmMenuSaleNote saleNote=new FrmMenuSaleNote();
+        FrmMenuSaleNote saleNote = new FrmMenuSaleNote();
         this.setVisible(false);
         saleNote.setVisible(true);
     }//GEN-LAST:event_btnSaleNote3ActionPerformed
-   private void addProduct() {
-    
-    if (validateFields()) {
-        
-        ProductController controller = new ProductController();
-        
-       
-        int id = controller.getActualId(controller.findAllProducts()) ;
-        
-        
-        int amount = Integer.parseInt(txtAmount.getText());
+    private void addProduct() {
+
+        if (validateFields()) {
+
+            ProductController controller = new ProductController();
+
+            int id = controller.getActualId(controller.findAllProducts());
+
+            int amount = Integer.parseInt(txtAmount.getText());
+            String name = txtName.getText();
+            if (!name.matches("[a-zA-Z ]+")) {
+                JOptionPane.showMessageDialog(null, "El nombre solo debe contener letras y espacios", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            String costText = txtCost.getText();
+            if (!costText.matches("[0-9]+(\\.?[0-9]+)?")) {
+                JOptionPane.showMessageDialog(null, "El costo solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            float cost = Float.parseFloat(costText);
+
+
+            Product newProduct = new Product(id, amount, name, cost);
+
+            controller.register(newProduct);
+
+            JOptionPane.showMessageDialog(null, "Producto agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private boolean validateFields() {
+
+        String amountText = txtAmount.getText();
+        if (!amountText.matches("\\d+")) {
+            return false;
+        }
+
         String name = txtName.getText();
-        float cost = Float.parseFloat(txtCost.getText());
-        
-       
-        Product newProduct = new Product(id, amount, name, cost);
-        
-        
-        controller.register(newProduct);
-        
-       
-        JOptionPane.showMessageDialog(null, "Producto agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-       
-        JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
-    
+        if (!name.matches("[a-zA-Z]+")) {
+            return false;
+        }
 
-            
-   private boolean validateFields() {
-    
-    String amountText = txtAmount.getText();
-    if (!amountText.matches("\\d+")) {
-        return false;
-    }
-    
-    
-    String name = txtName.getText();
-    if (!name.matches("[a-zA-Z]+")) {
-        return false;
-    }
-    
-    
-    String costText = txtCost.getText();
-    if (!costText.matches("\\d*\\.?\\d+")) {
-        return false;
-    }
-    
-   
-    return true;
-}
+        String costText = txtCost.getText();
+        if (!costText.matches("\\d*\\.?\\d+")) {
+            return false;
+        }
 
-    
+        return true;
+    }
+
     /**
      * @param args the command line arguments
      */
