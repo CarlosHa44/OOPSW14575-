@@ -138,7 +138,7 @@ public class InvoiceController extends MDBManage {
             Product productView = new Product(selectedProduct.getId(), numberOfProducts, selectedProduct.getName(), unitCost);
             productsInvoice.add(productView);
             totalValue += unitCost * numberOfProducts;
-
+                        
             System.out.println("Do you want to add more products? (1. Yes / 2. No)");
 
             while (true) {
@@ -153,6 +153,7 @@ public class InvoiceController extends MDBManage {
                     System.out.println("Invalid input. Please enter a valid number.");
                 }
             }
+
 
         } while (option != 2);
 

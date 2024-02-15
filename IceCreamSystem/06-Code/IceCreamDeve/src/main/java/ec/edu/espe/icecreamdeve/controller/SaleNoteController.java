@@ -157,10 +157,10 @@ public class SaleNoteController extends MDBManage{
         SaleNote saleNote = new SaleNote(idSaleNote, selectedClient, date, productsInSaleNote, totalValue);
         System.out.println("Sale Note created successfully!");
         showSaleNote(saleNote);
-
+     for (Product product : saleNote.listOfProducts) {
+        MDBManage.updateProductQuantity(product.getName(), product.getAmount());
+    }
         
-        MDBManage.registerSaleNote(saleNote, saleNotes);
-
         return saleNote;
     }
 
@@ -249,5 +249,4 @@ public class SaleNoteController extends MDBManage{
    
     MDBManage.deleteSaleNote(idToDelete, saleNotes);
 }
-
 }

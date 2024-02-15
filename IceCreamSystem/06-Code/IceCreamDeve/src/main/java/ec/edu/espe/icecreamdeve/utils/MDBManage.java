@@ -1,6 +1,8 @@
 
 package ec.edu.espe.icecreamdeve.utils;
-
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 import com.google.gson.Gson;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
@@ -10,11 +12,14 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
 import com.mongodb.client.result.DeleteResult;
 import ec.edu.espe.icecreamdeve.model.Client;
 import java.util.ArrayList;
 import org.bson.Document;
 import com.mongodb.client.result.UpdateResult;
+import ec.edu.espe.icecreamdeve.model.Product;
 import ec.edu.espe.icecreamdeve.model.SaleNote;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -170,6 +175,21 @@ public abstract class MDBManage {
             }
         }
         return null;
+    }
+    public static void updateProductQuantity(String productName, int soldQuantity) {
+        MongoCollection<Product> productCollection = getFromCollection("Products", Product.class);
+        // Buscar el producto por nombre
+        Product product = productCollection.find(eq("name", productName)).first();
+
+        if (product != null) {
+            // Actualizar la cantidad restando la cantidad vendida
+            int updatedQuantity = product.getAmount() - soldQuantity;
+            // Verificar que la cantidad no sea negativa
+            updatedQuantity = Math.max(updatedQuantity, 0);
+
+            // Actualizar en la base de datos
+            productCollection.updateOne(eq("name", productName), set("amount", updatedQuantity));
+        }
     }
 
         public static <T> MongoCollection<T> getFromCollection(String collectionName, Class<T> type) {

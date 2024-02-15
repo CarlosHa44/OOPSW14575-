@@ -1,5 +1,4 @@
 package ec.edu.espe.icecreamdeve.view;
-
 import ec.edu.espe.icecreamdeve.controller.ClientController;
 import ec.edu.espe.icecreamdeve.model.Client;
 import javax.swing.JOptionPane;

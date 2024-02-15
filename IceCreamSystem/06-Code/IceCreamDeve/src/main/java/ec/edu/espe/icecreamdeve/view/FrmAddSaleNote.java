@@ -1,6 +1,5 @@
 
 package ec.edu.espe.icecreamdeve.view;
-
 import ec.edu.espe.icecreamdeve.controller.ClientController;
 import ec.edu.espe.icecreamdeve.controller.ProductController;
 import ec.edu.espe.icecreamdeve.controller.SaleNoteController;
