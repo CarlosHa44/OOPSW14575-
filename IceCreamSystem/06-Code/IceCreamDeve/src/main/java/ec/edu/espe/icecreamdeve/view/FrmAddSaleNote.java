@@ -6,6 +6,7 @@ import ec.edu.espe.icecreamdeve.controller.SaleNoteController;
 import ec.edu.espe.icecreamdeve.model.Client;
 import ec.edu.espe.icecreamdeve.model.Product;
 import ec.edu.espe.icecreamdeve.model.SaleNote;
+import static ec.edu.espe.icecreamdeve.utils.MDBManage.updateProductQuantity;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -365,6 +366,7 @@ public class FrmAddSaleNote extends javax.swing.JFrame {
         float totalValue=0;
         for(Product auxProduct:productsList){
             totalValue+=auxProduct.getAmount()*auxProduct.getCost();
+             updateProductQuantity(auxProduct.getName(), auxProduct.getAmount());
         }
 
         SaleNote newSaleNote = new SaleNote(id, selectedClient, date, productsList, totalValue);
