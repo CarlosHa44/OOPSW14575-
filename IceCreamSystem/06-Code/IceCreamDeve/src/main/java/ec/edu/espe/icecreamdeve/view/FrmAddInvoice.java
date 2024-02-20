@@ -4,6 +4,7 @@ import ec.edu.espe.icecreamdeve.controller.InvoiceController;
 import ec.edu.espe.icecreamdeve.controller.ProductController;
 import ec.edu.espe.icecreamdeve.model.Invoice;
 import ec.edu.espe.icecreamdeve.model.Product;
+import ec.edu.espe.icecreamdeve.utils.MDBManage;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -353,6 +354,7 @@ public class FrmAddInvoice extends javax.swing.JFrame {
         float totalValue=0;
         for(Product auxProduct:productsList){
             totalValue+=auxProduct.getAmount()*auxProduct.getCost();
+            MDBManage.upProductQuantity(auxProduct.getName(), auxProduct.getAmount());
         }
 
         Invoice newInvoice = new Invoice(id, date, totalValue, productsList);

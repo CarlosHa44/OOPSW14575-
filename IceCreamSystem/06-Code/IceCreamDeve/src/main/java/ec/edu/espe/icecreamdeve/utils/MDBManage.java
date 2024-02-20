@@ -191,6 +191,22 @@ public abstract class MDBManage {
             productCollection.updateOne(eq("name", productName), set("amount", updatedQuantity));
         }
     }
+    
+    public static void upProductQuantity(String productName, int newQuantity) {
+        MongoCollection<Product> productCollection = getFromCollection("Products", Product.class);
+        // Buscar el producto por nombre
+        Product product = productCollection.find(eq("name", productName)).first();
+
+        if (product != null) {
+            // Actualizar la cantidad restando la cantidad vendida
+            int updatedQuantity = product.getAmount() + newQuantity;
+            // Verificar que la cantidad no sea negativa
+            updatedQuantity = Math.max(updatedQuantity, 0);
+
+            // Actualizar en la base de datos
+            productCollection.updateOne(eq("name", productName), set("amount", updatedQuantity));
+        }
+    }
 
         public static <T> MongoCollection<T> getFromCollection(String collectionName, Class<T> type) {
             MongoDatabase db = connectToDataBase();
