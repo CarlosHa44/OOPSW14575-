@@ -26,7 +26,7 @@
 
         @Override
         public String toString() {
-            return "id=" + id + "\tamount=" + amount + "\tname=" + name + "\tcost=" + cost + "\n";
+            return "cantidad: " + amount + " " + name + " cost=" + cost + "\n";
         }
 
         public int getId() {

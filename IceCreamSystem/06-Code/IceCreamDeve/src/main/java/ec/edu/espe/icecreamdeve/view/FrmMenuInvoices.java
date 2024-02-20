@@ -239,7 +239,7 @@ public class FrmMenuInvoices extends javax.swing.JFrame {
     private void itmShowInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmShowInvoiceActionPerformed
        FrmShowInvoices frmShowInvoice = new FrmShowInvoices();
        this.setVisible(false);
-       frmShowInvoice.setVisible(true);// TODO add your handling code here:
+       frmShowInvoice.setVisible(true);
     }//GEN-LAST:event_itmShowInvoiceActionPerformed
 
     private void btnProducts2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducts2ActionPerformed

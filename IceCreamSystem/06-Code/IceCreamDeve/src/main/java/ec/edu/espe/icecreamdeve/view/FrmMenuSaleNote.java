@@ -187,6 +187,11 @@ public class FrmMenuSaleNote extends javax.swing.JFrame {
         jMenu1.add(itmAddSaleNote);
 
         jMenuItem2.setText("Mostrar Notas de Ventas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -260,6 +265,12 @@ public class FrmMenuSaleNote extends javax.swing.JFrame {
         this.setVisible(false);
         addSaleNote.setVisible(true);
     }//GEN-LAST:event_itmAddSaleNoteActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FrmShowSaleNote saleNote=new FrmShowSaleNote();
+        this.setVisible(false);
+        saleNote.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
