@@ -1,0 +1,7 @@
+ec\edu\espe\icecreamdeve\controller\SaleNoteControllerTest.class
+ec\edu\espe\icecreamdeve\controller\ClientControllerTest.class
+ec\edu\espe\icecreamdeve\model\InvoiceTest.class
+ec\edu\espe\icecreamdeve\controller\ProductControllerTest.class
+ec\edu\espe\icecreamdeve\model\ReportOfBusinessTest.class
+ec\edu\espe\icecreamdeve\controller\InvoiceControllerTest.class
+ec\edu\espe\icecreamdeve\utils\AuthenticatorTest.class
