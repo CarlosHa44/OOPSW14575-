@@ -26,8 +26,8 @@
 
         @Override
         public String toString() {
-            return "cantidad: " + amount + " " + name + " cost=" + cost + "\n";
-        }
+            return "cantidad: " + amount + " " + name + "  costo=" + cost + "\n";
+        }   
 
         public int getId() {
             return id;

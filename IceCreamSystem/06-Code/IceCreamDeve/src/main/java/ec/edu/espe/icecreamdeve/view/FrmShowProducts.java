@@ -42,7 +42,7 @@ public class FrmShowProducts extends javax.swing.JFrame {
 
         // Agregar cada producto a la tabla
         for (Document document : iterable) {
-            Integer idInteger = document.getInteger("id");
+            Integer idInteger = document.getInteger("_id");
             int id = (idInteger != null) ? idInteger.intValue() : 0;
             int amount = document.getInteger("amount");
             String name = document.getString("name");
