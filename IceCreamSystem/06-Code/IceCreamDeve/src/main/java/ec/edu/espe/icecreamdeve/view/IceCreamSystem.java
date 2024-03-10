@@ -41,26 +41,16 @@ public class IceCreamSystem {
             }
 
             switch (option) {
-                case 1:
-                    ProductController.menuProduct(products);
-                    break;
-                case 2:
-                    InvoiceController.menuInvoice(invoices, products);
-                    break;
-                case 3:
-                    ClientController.menuClient(clients);
-                    break;
-                case 4:
-                    SaleNoteController.menuSaleNote(products, clients);
-                    break;
-                case 5:
-                    ReportOfBusiness.menuReportBusinness(reports);
-                    break;
-                case 6:
+                case 1 -> ProductController.menuProduct(products);
+                case 2 -> InvoiceController.menuInvoice(invoices, products);
+                case 3 -> ClientController.menuClient(clients);
+                case 4 -> SaleNoteController.menuSaleNote(products, clients);
+                case 5 -> ReportOfBusiness.menuReportBusinness(reports);
+                case 6 -> {
                     System.out.println("Exiting the Ice Cream System. Goodbye!");
                     return;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+                }
+                default -> System.out.println("Invalid option. Please try again.");
             }
         }
     } else {
@@ -71,7 +61,7 @@ public class IceCreamSystem {
     
 
     public static void showMainMenu() {
-        System.out.println("|///////Ice Cream System/////////|");
+        System.out.println("|_______Ice Cream System_________|");
         System.out.println("|1.Inventory                     |");
         System.out.println("|2.Invoice                       |");
         System.out.println("|3.Clients                       |");

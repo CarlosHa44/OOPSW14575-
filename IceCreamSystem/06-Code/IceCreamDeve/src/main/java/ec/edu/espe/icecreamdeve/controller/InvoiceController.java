@@ -13,7 +13,7 @@ import java.util.Date;
 
 /**
  *
- * @author Carlos
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class InvoiceController extends MDBManage {
 

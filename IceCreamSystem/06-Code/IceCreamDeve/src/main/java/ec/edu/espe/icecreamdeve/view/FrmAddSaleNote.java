@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Carlos
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmAddSaleNote extends javax.swing.JFrame {
 
@@ -87,7 +87,7 @@ public class FrmAddSaleNote extends javax.swing.JFrame {
 
         jLabel1.setText("Selecciona el producto");
 
-        lbDate.setText("Fecha de la vente");
+        lbDate.setText("Fecha de la venta");
 
         btnAddProduct.setText("Añadir un nuevo Producto");
         btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -124,9 +124,8 @@ public class FrmAddSaleNote extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmbProduct, 0, 364, Short.MAX_VALUE)
-                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtAmount, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                                    .addComponent(txtAmount)
+                                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                                     .addComponent(cmbClients, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(69, 69, 69)

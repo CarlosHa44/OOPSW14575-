@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.icecreamdeve.view;
 
 import com.mongodb.client.FindIterable;
@@ -12,7 +9,7 @@ import org.bson.Document;
 
 /**
  *
- * @author Carlos
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmShowSaleNote extends javax.swing.JFrame {
 

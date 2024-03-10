@@ -162,7 +162,7 @@
               <Border info="null"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -371,7 +371,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbDate">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha de la vente"/>
+            <Property name="text" type="java.lang.String" value="Fecha de la venta"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAddProduct">

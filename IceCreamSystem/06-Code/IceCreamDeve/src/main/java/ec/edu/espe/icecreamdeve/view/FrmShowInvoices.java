@@ -9,7 +9,7 @@ import org.bson.Document;
 
 /**
  *
- * @author JosuéG
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmShowInvoices extends javax.swing.JFrame {
 

@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author mateo
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class SaleNoteController extends MDBManage{
    private static Scanner scan = new Scanner(System.in);
