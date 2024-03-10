@@ -65,7 +65,7 @@ public class FrmAddClient extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Correo");
+        jLabel3.setText("Correo:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Es un cliente mayoritario");
@@ -77,6 +77,11 @@ public class FrmAddClient extends javax.swing.JFrame {
         jLabel5.setText("¿Dónde Vive?");
 
         CbIsNorth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Norte ", "Sur", " " }));
+        CbIsNorth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CbIsNorthActionPerformed(evt);
+            }
+        });
 
         btnAddClient.setBackground(new java.awt.Color(204, 204, 204));
         btnAddClient.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -88,7 +93,7 @@ public class FrmAddClient extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Telefono ");
+        jLabel6.setText("Teléfono: ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,14 +102,20 @@ public class FrmAddClient extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(161, 161, 161)
+                                .addComponent(jLabel2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel6)))
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNameClient)
                             .addComponent(txtEmailClient, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
@@ -272,6 +283,10 @@ public class FrmAddClient extends javax.swing.JFrame {
         Client newClient = new Client(id, name, email, cellphoneNumber, isNorth, isMajority);
         controller.register(newClient);
     }//GEN-LAST:event_btnAddClientActionPerformed
+
+    private void CbIsNorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbIsNorthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CbIsNorthActionPerformed
 
     /**
      * @param args the command line arguments

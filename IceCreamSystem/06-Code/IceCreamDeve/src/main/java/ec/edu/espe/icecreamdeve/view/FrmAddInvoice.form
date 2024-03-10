@@ -371,7 +371,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbDate">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha de la vente"/>
+            <Property name="text" type="java.lang.String" value="Fecha de la venta"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAddProduct">

@@ -184,7 +184,7 @@ public class FrmAddInvoice extends javax.swing.JFrame {
 
         jLabel1.setText("Selecciona el producto");
 
-        lbDate.setText("Fecha de la vente");
+        lbDate.setText("Fecha de la venta");
 
         btnAddProduct.setText("Añadir un nuevo Producto");
         btnAddProduct.addActionListener(new java.awt.event.ActionListener() {

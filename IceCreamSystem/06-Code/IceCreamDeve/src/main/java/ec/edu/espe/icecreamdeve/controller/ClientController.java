@@ -179,12 +179,11 @@ public class ClientController extends MDBManage {
             }
 
             switch (optionClient) {
-                case 1:
+                case 1 -> {
                     clients.add(ClientController.addClient(clients));
                     System.out.println("Client added successfully!");
-
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Enter the customer ID to edit:");
                     int idToEdit = Integer.parseInt(getScan().nextLine());
 
@@ -201,15 +200,15 @@ public class ClientController extends MDBManage {
                     } else {
                         System.out.println("Client not found.");
                     }
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
                     System.out.println("-----------------------------------------------------------------------------------------");
                     for (Client client : clients) {
                         System.out.println(client);
                     }
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     System.out.println("ID    Name             Email                        CellphoneNumber   isNorth  isMajority");
                     System.out.println("-----------------------------------------------------------------------------------------");
                     for (Client c : clients) {
@@ -223,12 +222,11 @@ public class ClientController extends MDBManage {
                     MDBManage.deleteClient(idToDelete, clients);
                     jsonUtilClients.writeFile("clientdata.json", clients);
                     System.out.println("Client deleted successfully.");
-
-                    break;
-                case 5:
+                }
+                case 5 -> {
                     return;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+                }
+                default -> System.out.println("Invalid option. Please try again.");
             }
         }
     }
