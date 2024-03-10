@@ -176,10 +176,10 @@ public class FrmMenuInvoices extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("Invoices");
+        jMenu1.setText("Facturas");
         jMenu1.setFont(new java.awt.Font("Californian FB", 0, 14)); // NOI18N
 
-        itmAddInvoice.setText("Add invoice");
+        itmAddInvoice.setText("Añadir Factura");
         itmAddInvoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itmAddInvoiceActionPerformed(evt);
@@ -187,7 +187,7 @@ public class FrmMenuInvoices extends javax.swing.JFrame {
         });
         jMenu1.add(itmAddInvoice);
 
-        itmShowInvoice.setText("Show invoices");
+        itmShowInvoice.setText("Mostrar Facturas");
         itmShowInvoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itmShowInvoiceActionPerformed(evt);

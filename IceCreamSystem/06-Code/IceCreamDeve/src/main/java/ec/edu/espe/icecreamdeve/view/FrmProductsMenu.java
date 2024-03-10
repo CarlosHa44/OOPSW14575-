@@ -295,11 +295,11 @@ public class FrmProductsMenu extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
         jMenuBar1.setForeground(new java.awt.Color(51, 51, 51));
 
-        mnuProducts.setText("Products");
+        mnuProducts.setText("Productos");
         mnuProducts.setFont(new java.awt.Font("Californian FB", 0, 14)); // NOI18N
 
         itmAddproduct.setFont(new java.awt.Font("Californian FB", 0, 14)); // NOI18N
-        itmAddproduct.setText("Add new product");
+        itmAddproduct.setText("Añadir Producto");
         itmAddproduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itmAddproductActionPerformed(evt);
@@ -308,7 +308,7 @@ public class FrmProductsMenu extends javax.swing.JFrame {
         mnuProducts.add(itmAddproduct);
 
         itmShowproduct.setFont(new java.awt.Font("Californian FB", 0, 14)); // NOI18N
-        itmShowproduct.setText("Show the products");
+        itmShowproduct.setText("Mostrar Productos");
         itmShowproduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itmShowproductActionPerformed(evt);
