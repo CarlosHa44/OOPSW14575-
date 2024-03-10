@@ -14,20 +14,21 @@ import java.util.Date;
 /**
  *
  * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
+ * @param <T>
  */
 public class UseJson<T> {
 
     public ArrayList<T> readFile(String fileAddress, Type type) {
         ArrayList<T> items = new ArrayList<>();
         try {
-            FileReader fileReader = new FileReader(fileAddress);
+            try (FileReader fileReader = new FileReader(fileAddress)) {
                 Gson gson = new GsonBuilder()
-                   .registerTypeAdapter(Date.class, new DateSerializer())
-                   .registerTypeAdapter(Date.class, new DateDeserializer())
-                   .setPrettyPrinting()
-                   .create();
-            items = gson.fromJson(fileReader, type);
-            fileReader.close();
+                        .registerTypeAdapter(Date.class, new DateSerializer())
+                        .registerTypeAdapter(Date.class, new DateDeserializer())
+                        .setPrettyPrinting()
+                        .create();
+                items = gson.fromJson(fileReader, type);
+            }
 
         } catch (FileNotFoundException e) {
             System.err.println("Error in creating the File Reader Object");
@@ -39,14 +40,14 @@ public class UseJson<T> {
 
     public void writeFile(String fileAddress, ArrayList<T> items) {
         try {
-            FileWriter fileWriter = new FileWriter(fileAddress);
+            try (FileWriter fileWriter = new FileWriter(fileAddress)) {
                 Gson gson = new GsonBuilder()
-                   .registerTypeAdapter(Date.class, new DateSerializer())
-                   .registerTypeAdapter(Date.class, new DateDeserializer())
-                   .setPrettyPrinting()
-                   .create();
-            gson.toJson(items, fileWriter);
-            fileWriter.close();
+                        .registerTypeAdapter(Date.class, new DateSerializer())
+                        .registerTypeAdapter(Date.class, new DateDeserializer())
+                        .setPrettyPrinting()
+                        .create();
+                gson.toJson(items, fileWriter);
+            }
 
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -93,17 +93,15 @@ public class ReportOfBusiness {
             }
 
             switch (optionReport) {
-                case 1:
+                case 1 -> {
                     reports.add(createAReport(reports, saleNotes, invoices));
                     jsonUtilReport.writeFile("reportdata.json", reports);
-                    break;
-                case 2:
-                    System.out.println("Products" + reports);
-                    break;
-                case 3:
+                }
+                case 2 -> System.out.println("Products" + reports);
+                case 3 -> {
                     return;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+                }
+                default -> System.out.println("Invalid option. Please try again.");
             }
         }
     }

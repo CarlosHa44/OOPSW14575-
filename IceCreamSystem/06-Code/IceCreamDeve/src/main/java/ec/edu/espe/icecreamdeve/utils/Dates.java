@@ -27,26 +27,11 @@ public class Dates {
             }
         } while (month <= 0 || month > 12);
         switch (month-1) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                day = dayValidator(month, 31);
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                day = dayValidator(month, 30);
-                break;
-            case 2:
-                day = dayValidator(month, 28);
-                break;
-            default:
-                break;
+            case 1, 3, 5, 7, 8, 10, 12 -> day = dayValidator(month, 31);
+            case 4, 6, 9, 11 -> day = dayValidator(month, 30);
+            case 2 -> day = dayValidator(month, 28);
+            default -> {
+            }
         }
         
         return new Date(2023 - 1900, month-1, day);
