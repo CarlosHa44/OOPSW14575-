@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mateo
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmAddClient extends javax.swing.JFrame {
 

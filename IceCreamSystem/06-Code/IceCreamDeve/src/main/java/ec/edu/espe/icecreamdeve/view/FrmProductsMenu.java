@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.icecreamdeve.view;
 
 /**
  *
- * @author JosuéG
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmProductsMenu extends javax.swing.JFrame {
 

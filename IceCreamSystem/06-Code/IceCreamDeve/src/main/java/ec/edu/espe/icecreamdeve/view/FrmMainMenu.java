@@ -3,7 +3,7 @@ package ec.edu.espe.icecreamdeve.view;
 
 /**
  *
- * @author WILLIAM
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmMainMenu extends javax.swing.JFrame {
 

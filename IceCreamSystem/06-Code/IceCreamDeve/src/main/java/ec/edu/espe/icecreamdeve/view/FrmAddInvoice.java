@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author JosuéG
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmAddInvoice extends javax.swing.JFrame {
 

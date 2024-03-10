@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author mateo
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class ClientController extends MDBManage {
 

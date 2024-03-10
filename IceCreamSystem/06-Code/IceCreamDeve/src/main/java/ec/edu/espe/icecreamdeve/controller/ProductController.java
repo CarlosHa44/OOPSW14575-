@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Carlos
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class ProductController extends MDBManage {
     static Scanner scan = new Scanner(System.in);

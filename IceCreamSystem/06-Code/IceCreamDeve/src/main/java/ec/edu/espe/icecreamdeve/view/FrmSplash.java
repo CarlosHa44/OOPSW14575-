@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.icecreamdeve.view;
 
 import java.awt.event.ActionEvent;
@@ -10,7 +7,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author mateo
+ * @author Carlos Hernandez, Mateo Iza, Juan Granda, Josue Guayasamin
  */
 public class FrmSplash extends javax.swing.JFrame {
 
