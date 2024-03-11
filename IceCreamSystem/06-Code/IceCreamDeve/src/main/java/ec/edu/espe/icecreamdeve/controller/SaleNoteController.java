@@ -4,7 +4,7 @@ package ec.edu.espe.icecreamdeve.controller;
 import com.google.gson.reflect.TypeToken;
 import com.mongodb.client.MongoCollection;
 import ec.edu.espe.icecreamdeve.model.Client;
-import ec.edu.espe.icecreamdeve.model.Invoice;
+
 import ec.edu.espe.icecreamdeve.model.Product;
 import ec.edu.espe.icecreamdeve.model.SaleNote;
 import static ec.edu.espe.icecreamdeve.model.SaleNote.getScan;

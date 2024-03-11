@@ -1,8 +1,5 @@
 
 package ec.edu.espe.icecreamdeve.utils;
-import org.bson.Document;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 import com.google.gson.Gson;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
