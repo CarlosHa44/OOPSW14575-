@@ -65,21 +65,19 @@ public class ProductController extends MDBManage {
                 }
 
                 switch (optionInventory) {
-                    case 1:
+                    case 1 -> {
                         products.add(Inventory.addProduct(products));
                         jsonUtilProducts.writeFile("Productdata.json", products);
-
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("ID    Amount      Name             Cost");
                         System.out.println("----------------------------------------------");
                         System.out.println(products);
-
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         return;
-                    default:
-                        System.out.println("Invalid option. Please try again.");
+                    }
+                    default -> System.out.println("Invalid option. Please try again.");
                 }
             }
         }

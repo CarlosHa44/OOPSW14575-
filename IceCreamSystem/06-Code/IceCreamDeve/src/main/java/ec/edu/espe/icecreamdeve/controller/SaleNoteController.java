@@ -207,25 +207,25 @@ public class SaleNoteController extends MDBManage{
             }
 
             switch (optionSaleNote) {
-                case 1:
+                case 1 -> {
                     saleNotes.add(SaleNoteController.createSaleNote(clients, products, saleNotes));
                     jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
                     jsonUtilProducts.writeFile("Productdata.json", products);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Listado");
                     for (SaleNote currentSaleNote : saleNotes) {
                         SaleNoteController.showSaleNote(currentSaleNote);
                     }
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     SaleNoteController.deleteSaleNote(saleNotes);
                     jsonUtilSaleNotes.writeFile("salenotedata.json", saleNotes);
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     return;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+                }
+                default -> System.out.println("Invalid option. Please try again.");
             }
         }
     }
